@@ -1,0 +1,108 @@
+Index: core/src/com/titanicrun/game/Objects/FallObjectsCrreator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/src/com/titanicrun/game/Objects/FallObjectsCrreator.java	(revision )
++++ core/src/com/titanicrun/game/Objects/FallObjectsCrreator.java	(revision )
+@@ -0,0 +1,75 @@
++package com.titanicrun.game.Objects;
++
++import com.badlogic.gdx.graphics.g2d.SpriteBatch;
++import com.badlogic.gdx.math.Vector2;
++import com.titanicrun.game.Screens.GameScreen;
++import com.titanicrun.game.TitanicClass;
++
++import java.util.ArrayList;
++import java.util.Random;
++
++/**
++ * Created by Никита on 24.04.2016.
++ */
++public class FallObjectsCrreator extends Creator {
++    private FallObject current;
++    private Random randAnim, randType;
++    public FallObjectsCrreator(GameScreen gameScreens, Animation[] objAnimations, float interval) {
++        super(objAnimations, interval);
++        this.randAnim = new Random();
++        this.randType = new Random();
++        this.current = new FallObject(gameScreens, objAnimations[randAnim.nextInt(objAnimations.length)], randType.nextInt(2));
++    }
++    private void tick() {
++        current.set(objAnimations[randAnim.nextInt(objAnimations.length)], randType.nextInt(2));
++    }
++    @Override
++    public void update() {
++        time++;
++        if(time >= interval) {
++            time = 0;
++            tick();
++        }
++        current.update();
++    }
++
++    @Override
++    public void render(SpriteBatch spriteBatch) {
++        current.render(spriteBatch);
++    }
++}
++class FallObject extends BaseObject {
++    private boolean wasTuched;
++    public FallObject(GameScreen gameScreen, Animation animation, int type) {
++        super(gameScreen, animation, new Vector2(0,0));
++        set(animation, type);
++    }
++
++    @Override
++    public void update() {
++        position.y--;
++        if(!wasTuched) {
++            if (TitanicClass.getMouse().overlaps(getBound())) {
++                gameScreen.playBallance.setBalance(gameScreen.playBallance.getBalance() + 10);
++                wasTuched = true;
++            }
++        }
++    }
++
++    @Override
++    public void render(SpriteBatch spriteBatch) {
++        spriteBatch.draw(animation.getTexture(), position.x,position.y);
++    }
++
++    public void set(Animation animation, int type) {
++        this.animation = animation;
++        this.wasTuched = false;
++        this.position.y = TitanicClass.ScreenHeight;
++        if(type == 0) {
++            this.position.x = 30;
++        }
++        else {
++            this.position.x = TitanicClass.ScreenWidth-30-animation.getTexture().getWidth();
++        }
++    }
++}
+Index: core/src/com/titanicrun/game/Objects/Creator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/src/com/titanicrun/game/Objects/Creator.java	(revision 6e445efc9ea0d060abec10ace8fa8c712c04b10c)
++++ core/src/com/titanicrun/game/Objects/Creator.java	(revision )
+@@ -14,11 +14,17 @@
+  */
+ public abstract class Creator {
+     protected Animation objAnimation;
++    protected Animation[] objAnimations;
+     protected float interval;
+     protected int time;
+ 
+     public Creator(Animation objAnimation, float interval) {
+         this.objAnimation = objAnimation;
++        this.interval = interval;
++        this.time = 0;
++    }
++    public Creator(Animation[] objAnimations, float interval) {
++        this.objAnimations = objAnimations;
+         this.interval = interval;
+         this.time = 0;
+     }

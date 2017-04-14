@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\Game Projects\TitanicRun\core\build\libs\core-1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1ab420ee700bd6b0acc3951e267cb3016bbfe9f2">
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\pre-dexed\debug\core-1.0_881c383e93ba9290c001cb98950603e3a608b627.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,7 @@
+#Fri Mar 24 00:41:41 GMT+03:00 2017
+base.0=D\:\\Project\\GameProjects\\TitanicRun\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_2df3d5a9c38ee849b253932277b69181aeda8468
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=D\:\\Project\\GameProjects\\TitanicRun\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_f7a40ae27f789c8134fd3c05080f10ee7cffa2af\\classes.dex
+base.1=D\:\\Project\\GameProjects\\TitanicRun\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_f7a40ae27f789c8134fd3c05080f10ee7cffa2af
+file.0=D\:\\Project\\GameProjects\\TitanicRun\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_2df3d5a9c38ee849b253932277b69181aeda8468\\classes.dex
