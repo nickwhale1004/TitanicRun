@@ -31,7 +31,7 @@ public class TitanicClass extends ApplicationAdapter {
 		scoreABC[10] = new Texture("numbers/space.png");
 
 		gameScreenManager = new GameScreenManager();
-        gameScreenManager.addScreen(new MenuScreen(gameScreenManager));
+        gameScreenManager.addScreen(new SplashScreen(gameScreenManager));
 		spriteBatch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, ScreenWidth, ScreenHeight);
