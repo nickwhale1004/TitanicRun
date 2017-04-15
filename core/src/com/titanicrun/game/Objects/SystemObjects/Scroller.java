@@ -31,25 +31,28 @@ public class Scroller extends BaseObject {
             items.update();
         if(Gdx.input.isTouched()) {
             if(TitanicClass.getMouse().overlaps(getBound()) || touchPosition != null) {
-                position.y = TitanicClass.getMouse().getY() - animation.getTexture().getHeight()/2;
+                int prevScrollPosition =  animation.getTexture().getHeight()/2;
+                position.y = TitanicClass.getMouse().getY() - prevScrollPosition;
                 Vector2 touch = new Vector2(TitanicClass.getMouse().getX(), TitanicClass.getMouse().getY());
                 if (touchPosition == null) {
                     touchPosition = touch;
                 }
                 else {
-                    if (touch.y > touchPosition.y &&
+                    if (touch.y > prevScrollPosition &&
                             items.skins.get(items.skins.size()-1).position.y < upPos) {
                         for (int i = 0; i < items.skins.size(); i++) {
-                            float speed = touch.y - touchPosition.y;
+                            float speed = touch.y - prevScrollPosition;
                             speed/=20;
                             if(speed >= 10)
                                 speed = 10;
                             items.skins.get(i).position.y += speed;
                         }
                     }
-                    else if (touch.y < touchPosition.y && items.skins.get(0).position.y > downPos) {
+                    else if (touch.y < prevScrollPosition &&
+                            items.skins.get(0).position.y > downPos) {
                         for (int i = 0; i < items.skins.size(); i++) {
-                            float speed = touchPosition.y - touch.y;
+                            float speed = prevScrollPosition - touch.y;
+                            speed/=20;
                             if(speed >= 10)
                                 speed = 10;
                             items.skins.get(i).position.y -= speed;
