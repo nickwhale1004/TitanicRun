@@ -25,7 +25,6 @@ public class Text extends BaseObject {
         this.parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         this.parameter.size = 55;
         this.parameter.color = color;
-                //new Color(0.95f, 0.92f, 0.03f, 1);
         this.font = generator.generateFont(parameter);
     }
 

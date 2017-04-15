@@ -32,7 +32,7 @@ public class GameScore extends BaseObject {
     public void update() {
         if (!failingObjectCatched) {
             ballanceText.textValue = Integer.toString(gameScreen.playBallance.getBalance());
-            ballanceText.position.x = TitanicClass.ScreenWidth - ballanceText.textValue.length() * 28 - 5;
+            ballanceText.position.x = TitanicClass.ScreenWidth - ballanceText.textValue.length() * 29f - 5;
             ballanceText.position.y = TitanicClass.ScreenHeight - 12;
             moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
         }
@@ -56,14 +56,14 @@ public class GameScore extends BaseObject {
             }
             //Д В И Ж Е Н И Е  В Л Е В О
             if (isFinished && moveableText.position.x >
-                    (TitanicClass.ScreenWidth - Integer.toString(gameScreen.playBallance.getBalance()).length()*28 - 5)) {
+                    (TitanicClass.ScreenWidth - Integer.toString(gameScreen.playBallance.getBalance()).length()*29f - 5)) {
                 moveableText.change(new Vector2(TitanicClass.ScreenWidth -
-                        Integer.toString(gameScreen.playBallance.getBalance()).length()*28 - 5 ,ballanceText.position.y));
+                        Integer.toString(gameScreen.playBallance.getBalance()).length()*29f - 5 ,ballanceText.position.y));
                 moveableText.update();
             }
             //О Б Н У Л Е Н И Е  П Е Р Е М Е Н Н Ы Х
             if (isFinished && moveableText.position.x == (TitanicClass.ScreenWidth -
-                    Integer.toString(gameScreen.playBallance.getBalance()).length()*28 - 5)) {
+                    Integer.toString(gameScreen.playBallance.getBalance()).length()*29f - 5)) {
                 failingObjectCatched = false;
                 isFinished = false;
                 objectFalled = false;

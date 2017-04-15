@@ -1,8 +1,8 @@
 android {
     signingConfigs {
     }
-    buildToolsVersion "23.0.2"
-    compileSdkVersion 19
+    buildToolsVersion '25.0.2'
+    compileSdkVersion 23
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -18,8 +18,6 @@ android {
     }
     defaultConfig {
         applicationId "com2.titanicrun.game"
-        minSdkVersion 19
-        targetSdkVersion 19
     }
     productFlavors {
     }

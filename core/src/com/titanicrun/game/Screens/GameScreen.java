@@ -36,6 +36,7 @@ public class GameScreen extends Screen {
     public Player player;
     public Score score;
     public Text scoreText;
+    private Texture pauseLine;
     public Water water;
     public AudioPlayerInt playBGM;
     public Balance playBallance;
@@ -60,6 +61,7 @@ public class GameScreen extends Screen {
         pause = true;
         shadow = new Shadow(this, anim("backs/shadow.png"));
         night = new Texture("backs/night.png");
+        pauseLine = new Texture("backs/pauseLine.png");
         playerAnimations = new ArrayList<PlayerAnimation>();
         for(int i = 1; i <= 4; i++)
             playerAnimations.add(new PlayerAnimation(new Animation(new Texture[]{new Texture("players/"+i+"player.png"),
@@ -127,11 +129,13 @@ public class GameScreen extends Screen {
         water.update();
         gameScore.update();
         scoreText.textValue = Integer.toString(score.getScore());
+        scoreText.update();
     }
 
     @Override
     public void render(SpriteBatch spriteBatch) {
         spriteBatch.draw(night, 0, 0);
+        spriteBatch.draw(pauseLine, 0, 0);
         backFirstLvl.render(spriteBatch);
         backSecondLvl.render(spriteBatch);
         player.render(spriteBatch);
