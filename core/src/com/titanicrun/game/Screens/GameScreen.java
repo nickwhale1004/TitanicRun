@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
@@ -21,6 +23,7 @@ import com.titanicrun.game.Objects.PlayObjects.Water;
 import com.titanicrun.game.TitanicClass;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Никита on 28.01.2016.
@@ -76,7 +79,7 @@ public class GameScreen extends Screen {
             animations[i-1] = anim("fallObj/fall"+i+".png");
         }
         animations[7] = new Animation(new Texture[]{new Texture("fallObj/fallMan.png"),new Texture("fallObj/fallMan2.png")},8);
-        fallObj = new FallObjectsCreator(this,animations,600);
+        fallObj = new FallObjectsCreator(this,animations, 600);
         player.animation.update();
         water.update();
         backFirstLvl.update();
@@ -133,7 +136,13 @@ public class GameScreen extends Screen {
         if(score.getScore()>50)
             shadow.render(spriteBatch);
         score.render(spriteBatch);
-        playBallance.render(spriteBatch);
+        //playBallance.render(spriteBatch);
+        BitmapFont font = new BitmapFont();
+        font.getData().setScale(3.5f);
+        font.setColor(0.95f, 0.92f, 0.03f, 1);
+        font.draw(spriteBatch, Integer.toString(playBallance.getBalance()),
+                TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length()*30 - 10,
+                TitanicClass.ScreenHeight - 12);
     }
 
     public void Die() {
