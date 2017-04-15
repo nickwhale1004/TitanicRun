@@ -6,7 +6,6 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
@@ -23,7 +22,6 @@ import com.titanicrun.game.Objects.PlayObjects.Water;
 import com.titanicrun.game.TitanicClass;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by Никита on 28.01.2016.
@@ -141,7 +139,7 @@ public class GameScreen extends Screen {
         font.getData().setScale(3.5f);
         font.setColor(0.95f, 0.92f, 0.03f, 1);
         font.draw(spriteBatch, Integer.toString(playBallance.getBalance()),
-                TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length()*30 - 10,
+                TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length() * 30 - 10,
                 TitanicClass.ScreenHeight - 12);
     }
 
