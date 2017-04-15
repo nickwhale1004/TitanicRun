@@ -228,10 +228,11 @@ public class SkinScreen extends Screen {
             //Н О В А Я  О Т Р И С О В К А  Б А Л А Н С А
             //F O N T   Д Л Я   Т Е К С Т А
             BitmapFont font = new BitmapFont();
-            Gdx.gl.glClearColor(1, 1, 1, 1);
             font.getData().setScale(2f);
-            //Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+            //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             font.draw(spriteBatch, ": ", 105, TitanicClass.ScreenHeight - 2);
+
+            font.setColor(0.95f, 0.92f, 0.03f, 1);
             font.draw(spriteBatch, Integer.toString(playBalance.getBalance()), 120, TitanicClass.ScreenHeight - 4);
         }
         else {
