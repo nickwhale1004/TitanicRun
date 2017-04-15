@@ -2,6 +2,7 @@ package com.titanicrun.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -110,6 +111,7 @@ public class SkinScreen extends Screen {
         //С Л А Й Д Е Р
         this.sliderAnim = anim("backs/runner.png");
         this.slider = new MoveObject(sliderAnim, new Vector2(2*sliderAnim.getTexture().getWidth(),0), new Vector2(0,0),20);
+
     }
     @Override
     public void update() {
@@ -219,7 +221,18 @@ public class SkinScreen extends Screen {
             else {
                 buy.render(spriteBatch);
             }
+            /*
+            C Т А Р А Я  О Т Р И С О В К А  Б А Л А Н С А
             playBalance.render(spriteBatch);
+            */
+            //Н О В А Я  О Т Р И С О В К А  Б А Л А Н С А
+            //F O N T   Д Л Я   Т Е К С Т А
+            BitmapFont font = new BitmapFont();
+            Gdx.gl.glClearColor(1, 1, 1, 1);
+            font.getData().setScale(2f);
+            //Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+            font.draw(spriteBatch, ": ", 105, TitanicClass.ScreenHeight - 2);
+            font.draw(spriteBatch, Integer.toString(playBalance.getBalance()), 120, TitanicClass.ScreenHeight - 4);
         }
         else {
             screen.render(spriteBatch);
