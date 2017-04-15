@@ -179,12 +179,6 @@ public class GameScreen extends Screen {
             shadow.render(spriteBatch);
         score.render(spriteBatch);
         //playBallance.render(spriteBatch);
-        BitmapFont font = new BitmapFont();
-        font.getData().setScale(3.5f);
-        font.setColor(0.95f, 0.92f, 0.03f, 1);
-        font.draw(spriteBatch, Integer.toString(playBallance.getBalance()),
-                TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length() * 30 - 10,
-                TitanicClass.ScreenHeight - 12);
         moveableText.render(spriteBatch);
     }
 
