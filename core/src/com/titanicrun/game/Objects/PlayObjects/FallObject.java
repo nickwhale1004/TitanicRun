@@ -28,11 +28,11 @@ public class FallObject extends BaseObject {
             if (TitanicClass.getMouse().overlaps(getBound())) {
                 wasTuched = true;
                 animation = Screen.anim("fallObj/+10.png");
-                gameScreen.failingObjectCatched = true;
+                gameScreen.gameScore.failingObjectCatched = true;
             }
         }
         if(!wasTuched && Gdx.input.isKeyPressed(Input.Keys.Z)) {
-            gameScreen.failingObjectCatched = true;
+            gameScreen.gameScore.failingObjectCatched = true;
             wasTuched = true;
             animation = Screen.anim("fallObj/+10.png");
         }

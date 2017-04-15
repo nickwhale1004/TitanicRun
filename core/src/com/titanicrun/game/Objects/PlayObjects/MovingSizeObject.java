@@ -10,7 +10,7 @@ import com.titanicrun.game.Objects.BaseObject;
  */
 public class MovingSizeObject extends BaseObject{
     private SizeChangeObject obj;
-    private int process; //0- zero to min, 1- min to max, 0- max to min
+    private int process; //0- zero to min, 1- min to max, 0- max to min, 2- die
     public float maxSize, minSize, speed;
     public MovingSizeObject(Vector2 position, Animation animation, float maxSize, float minSize, float speed) {
         super(animation, position);
@@ -36,6 +36,14 @@ public class MovingSizeObject extends BaseObject{
                 process = 0;
             }
         }
+        else if (process == 2) {
+            if(obj.end) {
+                obj.changeTo(0,speed);
+            }
+        }
+    }
+    public void die() {
+        process = 2;
     }
 
     @Override
