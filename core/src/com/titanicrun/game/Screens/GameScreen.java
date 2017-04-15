@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
+import com.titanicrun.game.Objects.PlayObjects.MovingSizeObject;
 import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Objects.PlayObjects.BackgroundCreator;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
  * Created by Никита on 28.01.2016.
  */
 public class GameScreen extends Screen {
+    private MovingSizeObject texttt;
     public Player player;
     public Score score;
     public Water water;
@@ -57,6 +59,7 @@ public class GameScreen extends Screen {
         Load();
     }
     public void Load() {
+        texttt = new MovingSizeObject(new Vector2(50,100), anim("splashes/touchtoplay.png"), 100, 140, 1.5f);
         pause = true;
         shadow = new Shadow(this, anim("backs/shadow.png"));
         night = new Texture("backs/night.png");
@@ -92,6 +95,7 @@ public class GameScreen extends Screen {
     }
     @Override
     public void update() {
+        texttt.update();
         if(!pause) {
             if(Gdx.input.justTouched()) {
                 Rectangle pauseRect = new Rectangle(0,TitanicClass.ScreenHeight/2,TitanicClass.ScreenWidth,
@@ -180,6 +184,7 @@ public class GameScreen extends Screen {
         score.render(spriteBatch);
         //playBallance.render(spriteBatch);
         moveableText.render(spriteBatch);
+        texttt.render(spriteBatch);
     }
 
     public void Die() {

@@ -12,9 +12,9 @@ import com.titanicrun.game.Objects.PlayObjects.Animation;
 public class SizeChangeObject extends BaseObject {
     public boolean end, isToBeBig;
     public float size, toSize, speed;
-    public SizeChangeObject(Vector2 position, Animation animation) {
+    public SizeChangeObject(Vector2 position, Animation animation, float size) {
         super(animation, position);
-        size = 10;
+        this.size = size;
         end = true;
     }
     @Override
@@ -47,8 +47,7 @@ public class SizeChangeObject extends BaseObject {
     }
     @Override
     public void render(SpriteBatch spriteBatch) {
-        spriteBatch.draw(animation.getTexture(),position.x, position.y,
-                (animation.getTexture().getWidth()/100.f)*size, (animation.getTexture().getHeight()/100.0f)*size);
-        Gdx.app.log("asd ",position.x +" "+position.y+" size="+size);
+        spriteBatch.draw(animation.getTexture(), position.x, position.y,
+                (animation.getTexture().getWidth() / 100.f) * size, (animation.getTexture().getHeight() / 100.0f) * size);
     }
 }
