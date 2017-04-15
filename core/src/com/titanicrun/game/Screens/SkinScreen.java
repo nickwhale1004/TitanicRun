@@ -32,9 +32,9 @@ import java.util.Map;
  */
 public class SkinScreen extends Screen {
 
-    private BitmapFont font = new BitmapFont();
-    FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("arial.ttf"));
-    FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+    private BitmapFont font, font2;
+    FreeTypeFontGenerator generator;
+    FreeTypeFontGenerator.FreeTypeFontParameter parameter, parameter2;
     private Putter tableSkin;
     private Scroller scroll;
     private Texture scrollBack, skinBack, skinUpBack;
@@ -62,6 +62,19 @@ public class SkinScreen extends Screen {
         //Н А С Т Р О Й К И
         this.animSittings = Gdx.app.getPreferences("Animation");
         this.lockSittings = Gdx.app.getPreferences("Locked");
+        this.font = new BitmapFont();
+        this.font2 = new BitmapFont();
+        this.generator = new FreeTypeFontGenerator(Gdx.files.internal("peepo.ttf"));
+        this.parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        this.parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        this.parameter.size = 30;
+        this.parameter.color = Color.WHITE;
+        this.font = generator.generateFont(parameter);
+
+        //font.setColor(0.95f, 0.92f, 0.03f, 1);
+        this.parameter2.size = 30;
+        this.parameter2.color = new Color(0.95f, 0.92f, 0.03f, 1);
+        this.font2 = generator.generateFont(parameter2);
         //Т Е К С Т У Р Ы
         this.scrollBack = new Texture("sllBack.png");
         this.skinBack = new Texture("backs/skin.png");
@@ -233,15 +246,8 @@ public class SkinScreen extends Screen {
             */
             //Н О В А Я  О Т Р И С О В К А  Б А Л А Н С А
             //F O N T   Д Л Я   Т Е К С Т А
-
-            parameter.size = 30;
-            parameter.color = Color.WHITE;
-            font = generator.generateFont(parameter);
             font.draw(spriteBatch, ": ", 105, TitanicClass.ScreenHeight - 2);
-            //font.setColor(0.95f, 0.92f, 0.03f, 1);
-            parameter.color = new Color(0.95f, 0.92f, 0.03f, 1);
-            font = generator.generateFont(parameter);
-            font.draw(spriteBatch, Integer.toString(playBalance.getBalance()), 120, TitanicClass.ScreenHeight - 4);
+            font2.draw(spriteBatch, Integer.toString(playBalance.getBalance()), 120, TitanicClass.ScreenHeight - 4);
         }
         else {
             screen.render(spriteBatch);
