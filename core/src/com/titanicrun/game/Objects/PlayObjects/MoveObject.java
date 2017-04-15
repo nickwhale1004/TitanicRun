@@ -12,29 +12,34 @@ import com.titanicrun.game.Objects.SystemObjects.TextDraw;
 public class MoveObject extends BaseObject {
     public boolean end;
     protected Vector2 toPosition;
-    protected int speed;
+    public Vector2 speed;
     private Vector2 fromPosition;
     private TextDraw textDraw;
     public BaseObject obj;
 
-    public MoveObject(Animation animation, Vector2 position, Vector2 toPosition, int speed) {
+    public MoveObject(Animation animation, Vector2 position, Vector2 toPosition, float speedx, float speedy) {
         super(animation, position);
         this.fromPosition = new Vector2(position.x, position.y);
-        inicializate(toPosition,speed);
+        inicializate(toPosition,new Vector2(speedx, speedy));
+    }
+    public MoveObject(Animation animation, Vector2 position, Vector2 toPosition, float speed) {
+        super(animation, position);
+        this.fromPosition = new Vector2(position.x, position.y);
+        inicializate(toPosition,new Vector2(speed, speed));
     }
     public MoveObject(TextDraw textDraw, Vector2 toPosition, int speed) {
         super(null, textDraw.drawPosition);
         this.textDraw = textDraw;
-        inicializate(toPosition,speed);
+        inicializate(toPosition, new Vector2(speed, speed));
     }
-    public MoveObject(BaseObject obj, Vector2 toPosition, int speed) {
+    public MoveObject(BaseObject obj, Vector2 toPosition, int speed) {//
         super(obj.animation, obj.position);
         this.obj = obj;
         this.fromPosition = obj.position;
-        inicializate(toPosition,speed);
+        inicializate(toPosition,new Vector2(speed, speed));
 
     }
-    private void inicializate(Vector2 toPosition, int speed)
+    private void inicializate(Vector2 toPosition, Vector2 speed)
     {
         this.toPosition = toPosition;
         this.fromPosition = new Vector2(position.x, position.y);
@@ -48,16 +53,16 @@ public class MoveObject extends BaseObject {
         if(obj != null)
             obj.update();
         if(position.y < toPosition.y) {
-            position.y += speed;
+            position.y += speed.y;
         }
         else if(position.y > toPosition.y) {
-            position.y -= speed;
+            position.y -= speed.y;
         }
         if(position.x < toPosition.x) {
-            position.x += speed;
+            position.x += speed.x;
         }
         else if(position.x > toPosition.x) {
-            position.x -= speed;
+            position.x -= speed.x;
         }
         if(position.y < toPosition.y && fromPosition.y > toPosition.y ||
                 position.y > toPosition.y && fromPosition.y < toPosition.y) {
