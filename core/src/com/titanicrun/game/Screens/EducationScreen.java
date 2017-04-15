@@ -28,24 +28,42 @@ import java.util.ArrayList;
  * Created by Никита on 15.04.2017.
  */
 public class EducationScreen extends GameScreen {
-    int process; // 0 - begin game, 1 - game, 2 - press to top, 3 - pause, 4 - fallobjcts
-    protected MovingSizeObject touchToPlay;
+    int process; // 0 - begin game,1 - press to top, 2 - pause, 3 - fallobjcts
+    protected MovingSizeObject touchToPlay, goTop;
     public EducationScreen(GameScreenManager gameScreenManager, Balance balance) {
         super(gameScreenManager, balance);
         Load();
-        touchToPlay = new MovingSizeObject(new Vector2(50,100), anim("splashes/touchtoplay.png"), 100, 140, 1.5f);
-        process = 0;
     }
     @Override
     public void Load() {
         super.Load();
         touchToPlay= new MovingSizeObject(new Vector2(50,100), anim("splashes/touchtoplay.png"), 100, 140, 1.5f);
+        process = 0;
+        goTop = new MovingSizeObject(new Vector2(50,100), anim("splashes/touchtoplay.png"), 100, 140, 1.5f);
     }
     @Override
     public void update() {
        super.update();
         if(process == 0) {
             touchToPlay.update();
+            if(Gdx.input.justTouched()) {
+                touchToPlay.die();
+            }
+            if(touchToPlay.end) {
+                process = 1;
+            }
+        }
+        else if(process == 1) {
+            goTop.update();
+            if(player.position.y == TitanicClass.ScreenHeight-player.animation.getTexture().getHeight()) {
+                goTop.die();
+            }
+            if(goTop.end) {
+                process = 2;
+            }
+        }
+        else if(process == 2) {
+
         }
     }
 

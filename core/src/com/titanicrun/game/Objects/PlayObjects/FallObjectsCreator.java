@@ -15,7 +15,7 @@ import java.util.Random;
  * Created by Никита on 24.04.2016.
  */
 public class FallObjectsCreator extends Creator {
-    boolean isFirst = true;
+    public boolean isFirst = true;
     public FallObject current;
     private Random randAnim, randType;
     public FallObjectsCreator(GameScreen gameScreens, Animation[] objAnimations, float interval) {
