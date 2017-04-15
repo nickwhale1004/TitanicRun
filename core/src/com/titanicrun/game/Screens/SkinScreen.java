@@ -93,7 +93,7 @@ public class SkinScreen extends Screen {
         ArrayList<Button> buttons = new ArrayList<Button>();
         for(int i = 1; i <= countOfPerson; i++)
             buttons.add(new Button(anim("players/"+i+"playerSkin.png"), anim("players/"+i+"playerSkin.png"), new Vector2(0, 0)));
-        Rectangle rectangle = new Rectangle(0,TitanicClass.ScreenHeight/2, TitanicClass.ScreenWidth-40, TitanicClass.ScreenHeight/2);
+        Rectangle rectangle = new Rectangle(53,TitanicClass.ScreenHeight/2, TitanicClass.ScreenWidth, TitanicClass.ScreenHeight/2);
         //Т А Б Л И Ц А  ( P U T T E R )
         this.tableSkin = new Putter(rectangle,buttons);
         //S C R O L L E R
@@ -225,11 +225,15 @@ public class SkinScreen extends Screen {
     @Override
     public void render(SpriteBatch spriteBatch) {
         if (process != 2) {
+
             spriteBatch.draw(skinBack, 0, 0);
+
             scroll.items.render(spriteBatch);
+
             for(Mark x : lockedMarks) {
                 x.render(spriteBatch);
             }
+
             preview.render(spriteBatch);
             selected.render(spriteBatch);
             spriteBatch.draw(skinUpBack, 0, 0);
@@ -254,7 +258,6 @@ public class SkinScreen extends Screen {
             playBalance.render(spriteBatch);
             */
             //Н О В А Я  О Т Р И С О В К А  Б А Л А Н С А
-            //F O N T   Д Л Я   Т Е К С Т А
             font.draw(spriteBatch, "MONEY: ", 5, TitanicClass.ScreenHeight - 4);
             font2.draw(spriteBatch, Integer.toString(playBalance.getBalance()), 100, TitanicClass.ScreenHeight - 4);
         }
@@ -262,6 +265,7 @@ public class SkinScreen extends Screen {
             screen.render(spriteBatch);
         }
         spriteBatch.draw(slider.getTexture(), slider.position.x, slider.position.y);
+
     }
 
 }

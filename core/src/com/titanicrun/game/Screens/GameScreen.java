@@ -97,9 +97,7 @@ public class GameScreen extends Screen {
     public void update() {
         if(!pause) {
             if(Gdx.input.justTouched()) {
-                Rectangle pauseRect = new Rectangle(0,TitanicClass.ScreenHeight/2,TitanicClass.ScreenWidth,
-                        TitanicClass.ScreenHeight/2);
-                if (TitanicClass.getMouse().overlaps(pauseRect)) {
+                if (TitanicClass.getMouse().getY() >= TitanicClass.ScreenHeight - 125) {
                     pause = true;
                     // playBGM.waterSound.pause();
                     gameScreenManager.setScreen(new PauseScreen(gameScreenManager, this));
@@ -135,7 +133,6 @@ public class GameScreen extends Screen {
     @Override
     public void render(SpriteBatch spriteBatch) {
         spriteBatch.draw(night, 0, 0);
-        spriteBatch.draw(pauseLine, 0, 0);
         backFirstLvl.render(spriteBatch);
         backSecondLvl.render(spriteBatch);
         player.render(spriteBatch);
@@ -147,10 +144,11 @@ public class GameScreen extends Screen {
         //score.render(spriteBatch);
         scoreText.render(spriteBatch);
         gameScore.render(spriteBatch);
+        spriteBatch.draw(pauseLine, 0, 0);
     }
 
     public void Die() {
-//        playBGM.dispose();
+        //playBGM.dispose();
         deathScreen = new DeathScreen(gameScreenManager,this);
         gameScreenManager.setScreen(deathScreen);
     }
