@@ -38,20 +38,20 @@ public class Scroller extends BaseObject {
                     touchPosition = touch;
                 }
                 else {
-                    if (touch.y > prevScrollPosition &&
+                    if (touch.y > (prevScrollPosition + 25) &&
                             items.skins.get(items.skins.size()-1).position.y < upPos) {
                         for (int i = 0; i < items.skins.size(); i++) {
-                            float speed = touch.y - prevScrollPosition;
+                            float speed = touch.y - prevScrollPosition - 25;
                             speed/=20;
                             if(speed >= 10)
                                 speed = 10;
                             items.skins.get(i).position.y += speed;
                         }
                     }
-                    else if (touch.y < prevScrollPosition &&
+                    else if (touch.y < (prevScrollPosition + 25) &&
                             items.skins.get(0).position.y > downPos) {
                         for (int i = 0; i < items.skins.size(); i++) {
-                            float speed = prevScrollPosition - touch.y;
+                            float speed = prevScrollPosition + 25 - touch.y;
                             speed/=20;
                             if(speed >= 10)
                                 speed = 10;
