@@ -38,10 +38,10 @@ public class SkinScreen extends Screen {
     private Putter tableSkin;
     private Scroller scroll;
     private Texture scrollBack, skinBack, skinUpBack;
-    private Preferences animSittings, lockSittings;
+    private Preferences animSittings, lockSittings, prices;
     private Button select, menu, buy;
     private ArrayList<PlayerAnimation> playerAnimations;
-    private ArrayList<Integer> prices;
+    //private ArrayList<Integer> prices;
     private Map<Integer, Integer> lockedIDs;
     private ArrayList<Mark> lockedMarks;
     private Animation front, back, sliderAnim;
@@ -108,9 +108,12 @@ public class SkinScreen extends Screen {
         //И Н И Ц И А Л И З А Ц И Я  З А Б Л О К И Р О В А Н Н Ы Х  П Е Р С О Н А Ж Е Й  И  ИХ  М Е Т О К
         lockedIDs = new HashMap<Integer, Integer>();
         lockedMarks = new ArrayList<Mark>();
-        prices = new ArrayList<Integer>();
-        for (int i = 0; i < countOfPerson; i++) {
-            prices.add(i * 250);
+        prices = Gdx.app.getPreferences("Prices");
+        if (prices.getInteger("1") == 0) {
+            for (int i = 0; i < countOfPerson; i++) {
+                prices.putInteger(Integer.toString(i), i * 250);
+            }
+            prices.flush();
         }
         lockedMarks.add(new Mark(anim("players/unknow.png"), tableSkin, -1, new Vector2(0, 0)));
         lockedIDs.put(0,0);
@@ -155,7 +158,7 @@ public class SkinScreen extends Screen {
             else {
                 buy.update();
                 if (buy.isPressed()) {
-                    if (playBalance.getBalance() - prices.get(scroll.items.getAnimation()) >= 0) {
+                    if (playBalance.getBalance() - prices.getInteger(Integer.toString(scroll.items.getAnimation())) >= 0) {
                         gameScreenManager.setScreen(new BuyMessage(gameScreenManager, this));
                         lockSittings.putInteger(scroll.items.getAnimation()+"",1);
                         lockSittings.flush();
@@ -171,7 +174,7 @@ public class SkinScreen extends Screen {
                 process = 1;
             }
             if(messResult) {
-                playBalance.Buy(prices.get(scroll.items.getAnimation()));
+                playBalance.Buy(prices.getInteger(Integer.toString(scroll.items.getAnimation())));
                 lockedIDs.put(scroll.items.getAnimation(), 1);
                 lockedMarks.set(scroll.items.getAnimation(),
                         new Mark(anim("players/unknow.png"), tableSkin, -1, new Vector2(0, 0)));
@@ -244,7 +247,7 @@ public class SkinScreen extends Screen {
             }
             else {
                 buy.render(spriteBatch);
-                font.draw(spriteBatch, "PRICE: " + Integer.toString(prices.get(scroll.items.getAnimation())), TitanicClass.ScreenWidth - 150, TitanicClass.ScreenHeight - 4);
+                font.draw(spriteBatch, "PRICE: " + Integer.toString(prices.getInteger(Integer.toString(scroll.items.getAnimation()))), TitanicClass.ScreenWidth - 150, TitanicClass.ScreenHeight - 4);
             }
             /*
             C Т А Р А Я  О Т Р И С О В К А  Б А Л А Н С А
