@@ -22,7 +22,6 @@ public class Putter {
         this.skins = skins;
         this.sittings = Gdx.app.getPreferences("Animation");
         this.curr = sittings.getInteger("Animation");
-        Gdx.app.log("asd", ""+ curr);
         this.rectangle = rectangle;
         int n = (int)rectangle.getWidth()/(skins.get(0).animation.getTexture().getWidth() + 20);
         if(n > skins.size())
@@ -43,7 +42,6 @@ public class Putter {
                 s++;
             }
         }
-        Gdx.app.log(""+n, ""+k);
     }
 
     public void update() {
