@@ -15,6 +15,7 @@ import java.util.Random;
  * Created by Никита on 24.04.2016.
  */
 public class FallObjectsCreator extends Creator {
+    boolean isFirst = true;
     private FallObject current;
     private Random randAnim, randType;
     public FallObjectsCreator(GameScreen gameScreens, Animation[] objAnimations, float interval) {
@@ -30,10 +31,12 @@ public class FallObjectsCreator extends Creator {
     public void update() {
         time++;
         if(time >= interval) {
+            isFirst = false;
             time = 0;
             tick();
         }
-        current.update();
+        if(!isFirst)
+            current.update();
     }
 
     @Override
