@@ -65,7 +65,7 @@ public class SkinScreen extends Screen {
         this.lockSittings = Gdx.app.getPreferences("Locked");
         this.font = new BitmapFont();
         this.font2 = new BitmapFont();
-        this.generator = new FreeTypeFontGenerator(Gdx.files.internal("peepo.ttf"));
+        this.generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/peepo.ttf"));
         this.parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         this.parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         this.parameter.size = 30;

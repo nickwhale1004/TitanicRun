@@ -111,6 +111,7 @@ public class GameScreen extends Screen {
             player.update();
             enemiesCreator.update();
             shadow.update();
+            fallObj.update();
         }
         else {
             if (Gdx.input.justTouched()) {
@@ -122,7 +123,6 @@ public class GameScreen extends Screen {
         backFirstLvl.update();
         if(score.getScore() >= 90 && score.getScore() <=190)
             backSecondLvl.update();
-        fallObj.update();
         player.animation.update();
         water.update();
         gameScore.update();

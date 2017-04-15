@@ -21,7 +21,7 @@ public class Text extends BaseObject {
         this.position = position;
         textValue = startText;
         this.font = new BitmapFont();
-        this.generator = new FreeTypeFontGenerator(Gdx.files.internal("peepo.ttf"));
+        this.generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/peepo.ttf"));
         this.parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         this.parameter.size = 55;
         this.parameter.color = color;

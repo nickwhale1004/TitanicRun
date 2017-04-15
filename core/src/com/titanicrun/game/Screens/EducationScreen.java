@@ -29,7 +29,7 @@ import java.util.ArrayList;
  */
 public class EducationScreen extends GameScreen {
     int process; // 0 - begin game,1 - press to top, 2 - pause, 3 - fallobjcts
-    protected MovingSizeObject touchToPlay, goTop;
+    protected MovingSizeObject touchToPlay, goTop, pressPause, catchFall;
     public EducationScreen(GameScreenManager gameScreenManager, Balance balance) {
         super(gameScreenManager, balance);
         Load();
@@ -37,50 +37,62 @@ public class EducationScreen extends GameScreen {
     @Override
     public void Load() {
         super.Load();
-        touchToPlay= new MovingSizeObject(new Vector2(50,100), anim("splashes/touchtoplay.png"), 100, 140, 1.5f);
+        touchToPlay= new MovingSizeObject(new Vector2(50,100), anim("splashes/touchtoplay.png"), 100, 140, 2f);
         process = 0;
-        goTop = new MovingSizeObject(new Vector2(50,100), anim("splashes/touchtoplay.png"), 100, 140, 1.5f);
+        goTop = new MovingSizeObject(new Vector2(50,100), anim("splashes/pressscreen.png"), 100, 140, 2f);
+        pressPause = new MovingSizeObject(new Vector2(50,100), anim("splashes/presspause.png"), 100, 140, 2f);
+        catchFall = new MovingSizeObject(new Vector2(50,100), anim("splashes/catchit.png"), 100, 140, 2f);
     }
     @Override
     public void update() {
-       super.update();
-        if(process == 0) {
+        int moneybefore = playBallance.getBalance();
+        if (process == 0) {
+            super.update();
             touchToPlay.update();
-            if(Gdx.input.justTouched()) {
+            if (Gdx.input.justTouched()) {
                 touchToPlay.die();
             }
-            if(touchToPlay.end) {
+            if (touchToPlay.end) {
                 process = 1;
             }
-        }
-        else if(process == 1) {
+        } else if (process == 1) {
             goTop.update();
-            if(player.position.y == TitanicClass.ScreenHeight-player.animation.getTexture().getHeight()) {
+            if(Gdx.input.isTouched()) {
+                player.update();
+                backFirstLvl.update();
+            }
+            if (player.position.y == TitanicClass.ScreenHeight - player.animation.getTexture().getHeight()) {
                 goTop.die();
             }
-            if(goTop.end) {
+            if (goTop.end) {
                 process = 2;
             }
-        }
-        else if(process == 2) {
-
+        } else if (process == 2) {
+            pressPause.update();
+            if (pause) {
+                pressPause.die();
+                fallObj.isFirst = false;
+            }
+            if (pressPause.end) {
+                process = 3;
+            }
+        } else if (process == 3) {
+            catchFall.update();
+            if (moneybefore < playBallance.getBalance()) {
+                catchFall.die();
+            }
+            if (catchFall.end) {
+                process = 4;
+            }
         }
     }
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-        spriteBatch.draw(night, 0, 0);
-        backFirstLvl.render(spriteBatch);
-        backSecondLvl.render(spriteBatch);
-        player.render(spriteBatch);
-        enemiesCreator.render(spriteBatch);
-        fallObj.render(spriteBatch);
-        water.render(spriteBatch);
-        if(score.getScore()>50)
-            shadow.render(spriteBatch);
-        score.render(spriteBatch);
-        //playBallance.render(spriteBatch);
-        gameScore.render(spriteBatch);
+        super.render(spriteBatch);
         touchToPlay.render(spriteBatch);
+        goTop.render(spriteBatch);
+        pressPause.render(spriteBatch);
+        catchFall.render(spriteBatch);
     }
 }

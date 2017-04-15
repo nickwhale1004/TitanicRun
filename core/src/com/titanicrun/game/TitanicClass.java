@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
+import com.titanicrun.game.Screens.EducationScreen;
 import com.titanicrun.game.Screens.GameScreenManager;
 import com.titanicrun.game.Screens.MenuScreen;
 import com.titanicrun.game.Screens.SplashScreen;
@@ -31,7 +32,7 @@ public class TitanicClass extends ApplicationAdapter {
 		scoreABC[10] = new Texture("numbers/space.png");
 
 		gameScreenManager = new GameScreenManager();
-        gameScreenManager.addScreen(new MenuScreen(gameScreenManager));
+        gameScreenManager.addScreen(new MenuScreen(gameScreenManager, new Balance(0, new Vector2(0,0))));
 		spriteBatch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, ScreenWidth, ScreenHeight);
