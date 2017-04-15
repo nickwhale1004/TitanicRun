@@ -3,6 +3,7 @@ package com.titanicrun.game.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -34,6 +35,7 @@ public class GameScreen extends Screen {
     public GameScore gameScore;
     public Player player;
     public Score score;
+    public Text scoreText;
     public Water water;
     public AudioPlayerInt playBGM;
     public Balance playBallance;
@@ -87,6 +89,7 @@ public class GameScreen extends Screen {
         player.animation.update();
         water.update();
         backFirstLvl.update();
+        scoreText = new Text(new Vector2(20, TitanicClass.ScreenHeight - 12), Integer.toString(score.getScore()), Color.WHITE);
     }
     @Override
     public void update() {
@@ -123,6 +126,7 @@ public class GameScreen extends Screen {
         player.animation.update();
         water.update();
         gameScore.update();
+        scoreText.textValue = Integer.toString(score.getScore());
     }
 
     @Override
@@ -136,7 +140,8 @@ public class GameScreen extends Screen {
         water.render(spriteBatch);
         if(score.getScore()>50)
             shadow.render(spriteBatch);
-        score.render(spriteBatch);
+        //score.render(spriteBatch);
+        scoreText.render(spriteBatch);
         gameScore.render(spriteBatch);
     }
 

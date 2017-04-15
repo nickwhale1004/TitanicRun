@@ -1,5 +1,6 @@
 package com.titanicrun.game.Objects.PlayObjects;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.BaseObject;
@@ -12,19 +13,26 @@ import com.titanicrun.game.TitanicClass;
  */
 public class GameScore extends BaseObject {
     private GameScreen gameScreen;
-    public Text ballanceText = new Text(new Vector2(0, 0), Integer.toString(0));
-    public boolean failingObjectCatched = false;
-    public boolean objectFalled = false;
-    public boolean isFinished = false;
-    MoveObject moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
+    public Text ballanceText;
+    public boolean failingObjectCatched;
+    public boolean objectFalled;
+    public boolean isFinished;
+    MoveObject moveableText;
+
+
     public GameScore(GameScreen gameScreen) {
         this.gameScreen = gameScreen;
+        ballanceText = new Text(new Vector2(0, 0), Integer.toString(0), new Color(0.95f, 0.92f, 0.03f, 1));
+        failingObjectCatched = false;
+        objectFalled = false;
+        isFinished = false;
+        moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
     }
     @Override
     public void update() {
         if (!failingObjectCatched) {
             ballanceText.textValue = Integer.toString(gameScreen.playBallance.getBalance());
-            ballanceText.position.x = TitanicClass.ScreenWidth - ballanceText.textValue.length() * 30 - 10;
+            ballanceText.position.x = TitanicClass.ScreenWidth - ballanceText.textValue.length() * 28 - 5;
             ballanceText.position.y = TitanicClass.ScreenHeight - 12;
             moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
         }
@@ -48,14 +56,14 @@ public class GameScore extends BaseObject {
             }
             //Д В И Ж Е Н И Е  В Л Е В О
             if (isFinished && moveableText.position.x >
-                    (TitanicClass.ScreenWidth - Integer.toString(gameScreen.playBallance.getBalance()).length()*30 - 10)) {
+                    (TitanicClass.ScreenWidth - Integer.toString(gameScreen.playBallance.getBalance()).length()*28 - 5)) {
                 moveableText.change(new Vector2(TitanicClass.ScreenWidth -
-                        Integer.toString(gameScreen.playBallance.getBalance()).length()*30 - 10 ,ballanceText.position.y));
+                        Integer.toString(gameScreen.playBallance.getBalance()).length()*28 - 5 ,ballanceText.position.y));
                 moveableText.update();
             }
             //О Б Н У Л Е Н И Е  П Е Р Е М Е Н Н Ы Х
             if (isFinished && moveableText.position.x == (TitanicClass.ScreenWidth -
-                    Integer.toString(gameScreen.playBallance.getBalance()).length()*30 - 10)) {
+                    Integer.toString(gameScreen.playBallance.getBalance()).length()*28 - 5)) {
                 failingObjectCatched = false;
                 isFinished = false;
                 objectFalled = false;

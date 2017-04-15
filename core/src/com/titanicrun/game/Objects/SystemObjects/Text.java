@@ -17,14 +17,15 @@ public class Text extends BaseObject {
     private BitmapFont font;
     FreeTypeFontGenerator generator;
     FreeTypeFontGenerator.FreeTypeFontParameter parameter;
-    public Text (Vector2 position, String startText) {
+    public Text (Vector2 position, String startText, Color color) {
         this.position = position;
         textValue = startText;
         this.font = new BitmapFont();
         this.generator = new FreeTypeFontGenerator(Gdx.files.internal("peepo.ttf"));
         this.parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         this.parameter.size = 55;
-        this.parameter.color = new Color(0.95f, 0.92f, 0.03f, 1);
+        this.parameter.color = color;
+                //new Color(0.95f, 0.92f, 0.03f, 1);
         this.font = generator.generateFont(parameter);
     }
 
