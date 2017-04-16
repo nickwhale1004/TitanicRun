@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
-import com.titanicrun.game.Objects.PlayObjects.GameScore;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.PlayObjects.MovingSizeObject;
 import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
@@ -31,20 +30,26 @@ import java.util.ArrayList;
  * Created by Никита on 28.01.2016.
  */
 public class GameScreen extends Screen {
+    //private MovingSizeObject texttt;
     public Player player;
     public Score score;
     public Water water;
     public AudioPlayerInt playBGM;
     public Balance playBallance;
-    public  Shadow shadow;
-    public  Texture night;
-    public  EnemiesCreator enemiesCreator;
-    public  BackgroundCreator backFirstLvl, backSecondLvl;
-    public  DeathScreen deathScreen;
-    public ArrayList<PlayerAnimation> playerAnimations;
-    public  FallObjectsCreator fallObj;
-    public GameScore gameScore;
+    private Shadow shadow;
+    private Texture night;
+    private EnemiesCreator enemiesCreator;
+    private BackgroundCreator backFirstLvl, backSecondLvl;
+    private DeathScreen deathScreen;
+    private ArrayList<PlayerAnimation> playerAnimations;
+    private FallObjectsCreator fallObj;
     public boolean pause;
+    public boolean objectFalled = false;
+    public boolean isFinished = false;
+    BitmapFont font = new BitmapFont();
+    public Text ballanceText = new Text(new Vector2(0, 0), Integer.toString(0));
+    public boolean failingObjectCatched = false;
+    MoveObject moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
 
     public GameScreen(GameScreenManager gameScreenManager, Balance balance) {
         super(gameScreenManager);
@@ -54,7 +59,7 @@ public class GameScreen extends Screen {
         Load();
     }
     public void Load() {
-        gameScore = new GameScore(this);
+        //texttt = new MovingSizeObject(new Vector2(50,100), anim("splashes/touchtoplay.png"), 100, 140, 1.5f);
         pause = true;
         shadow = new Shadow(this, anim("backs/shadow.png"));
         night = new Texture("backs/night.png");
@@ -90,6 +95,7 @@ public class GameScreen extends Screen {
     }
     @Override
     public void update() {
+        //texttt.update();
         if(!pause) {
             if(Gdx.input.justTouched()) {
                 Rectangle pauseRect = new Rectangle(0,TitanicClass.ScreenHeight/2,TitanicClass.ScreenWidth,
@@ -123,10 +129,45 @@ public class GameScreen extends Screen {
             backFirstLvl.update();
         if(score.getScore() >= 90 && score.getScore() <=190)
             backSecondLvl.update();
-        gameScore.update();
+
         playBallance.drawPosition.x = TitanicClass.ScreenWidth-5-
                 (playBallance.getBalance() + "").length() * TitanicClass.scoreABC[0].getWidth();
+        if (!failingObjectCatched) {
+            ballanceText.textValue = Integer.toString(playBallance.getBalance());
+            ballanceText.position.x = TitanicClass.ScreenWidth - ballanceText.textValue.length() * 30 - 10;
+            ballanceText.position.y = TitanicClass.ScreenHeight - 12;
+            moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
+        }
+        //failingObjectCatched  П Р О В Е Р К А  П О Й М А Н  Л И  П А Д А Ю Щ И Й  О Б Ь Е К Т
+        if (fallObj.current.position.y == 0) {
+            objectFalled = true;
+        }
 
+        if(failingObjectCatched && objectFalled) {
+            //Н А Ч И Н А Е М  Д В И Ж Е Н И Е  В П Р А В О
+            if (!isFinished) {
+                moveableText.change(new Vector2(TitanicClass.ScreenWidth, ballanceText.position.y));
+                moveableText.update();
+            }
+            //П Р О В Е Р К А  Н А  О К О Н Ч А Н И Е  Д В И Ж Е Н И Я  И  Д О Б А В Л Е Н И Е  М О Н Е Т
+            if (moveableText.position.x == TitanicClass.ScreenWidth) {
+                isFinished = true;
+                playBallance.addPoint(10);
+                ballanceText.textValue = Integer.toString(playBallance.getBalance());
+                moveableText = new MoveObject(ballanceText, moveableText.position, 5);
+            }
+            //Д В И Ж Е Н И Е  В Л Е В О
+            if (isFinished && moveableText.position.x > (TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length()*30 - 10)) {
+                moveableText.change(new Vector2(TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length()*30 - 10 ,ballanceText.position.y));
+                moveableText.update();
+            }
+            //О Б Н У Л Е Н И Е  П Е Р Е М Е Н Н Ы Х
+            if (isFinished && moveableText.position.x == (TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length()*30 - 10)) {
+                failingObjectCatched = false;
+                isFinished = false;
+                objectFalled = false;
+            }
+        }
     }
 
     @Override
@@ -142,7 +183,8 @@ public class GameScreen extends Screen {
             shadow.render(spriteBatch);
         score.render(spriteBatch);
         //playBallance.render(spriteBatch);
-        gameScore.render(spriteBatch);
+        moveableText.render(spriteBatch);
+        //texttt.render(spriteBatch);
     }
 
     public void Die() {

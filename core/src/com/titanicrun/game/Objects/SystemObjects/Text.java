@@ -10,9 +10,8 @@ import com.titanicrun.game.Objects.BaseObject;
  */
 
 public class Text extends BaseObject {
-    public BitmapFont font = new BitmapFont();
     public String textValue = new String();
-
+    BitmapFont font = new BitmapFont();
     public Text (Vector2 position, String startText) {
         this.position = position;
         textValue = startText;
@@ -22,6 +21,7 @@ public class Text extends BaseObject {
     public void update() {
 
     }
+
 
     @Override
     public void render(SpriteBatch spriteBatch) {
