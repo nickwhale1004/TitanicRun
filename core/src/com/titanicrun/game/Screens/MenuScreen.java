@@ -17,7 +17,7 @@ import com.titanicrun.game.TitanicClass;
  */
 public class MenuScreen extends Screen {
     private Screen screen;
-    private Button playButton, skinButton;
+    private Button playButton, skinButton, settingsButton;
     private Water waterUp, waterMid, waterDown, ship;
     private Texture back;
     private byte process; // 0 -wait, 1 - toScreen, 2 - outScreen
@@ -41,6 +41,8 @@ public class MenuScreen extends Screen {
                 TitanicClass.ScreenHeight/2-animation.getTexture().getHeight()/2));
         this.skinButton = new Button(anim("buttons/skin.png"), anim("buttons/skinTuched.png"),
                 new Vector2(playButton.position.x, playButton.position.y - anim("buttons/skin.png").getTexture().getHeight()-40));
+        this.settingsButton = new Button (anim("buttons/settings.png"), anim("buttons/settings.png"),
+                new Vector2(TitanicClass.ScreenWidth - 74, TitanicClass.ScreenHeight - 74));
         float speed = 0.15f;
         this.waterUp = new Water(null,anim("menu/waterMenu.png"), new Vector2(0,-0.5f*TitanicClass.ScreenHeight/10),
                 0, speed, speed);
@@ -73,6 +75,10 @@ public class MenuScreen extends Screen {
                 screen = new SkinScreen(gameScreenManager, balance);
                 process = 1;
             }
+            if (settingsButton.isPressed()) {
+                screen = new SettingsScreen(gameScreenManager);
+                process = 1;
+            }
         } else if (process == 1) {
             slider.update();
             if (slider.end) {
@@ -89,6 +95,7 @@ public class MenuScreen extends Screen {
         if (process != 2) {
             skinButton.update();
             playButton.update();
+            settingsButton.update();
             waterDown.update();
             waterMid.update();
             waterUp.update();
@@ -109,6 +116,7 @@ public class MenuScreen extends Screen {
             waterDown.render(spriteBatch);
             playButton.render(spriteBatch);
             skinButton.render(spriteBatch);
+            settingsButton.render(spriteBatch);
         }
         slider.render(spriteBatch);
     }
