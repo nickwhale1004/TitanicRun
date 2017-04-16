@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Screens.GameScreenManager;
 import com.titanicrun.game.Screens.MenuScreen;
+import com.titanicrun.game.Screens.SplashScreen;
 
 public class TitanicClass extends ApplicationAdapter {
 	SpriteBatch spriteBatch;

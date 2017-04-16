@@ -2,8 +2,10 @@ package com.titanicrun.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
@@ -29,6 +31,10 @@ import java.util.Map;
  * Created by Никита on 08.04.2016.
  */
 public class SkinScreen extends Screen {
+
+    private BitmapFont font = new BitmapFont();
+    FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("arial.ttf"));
+    FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
     private Putter tableSkin;
     private Scroller scroll;
     private Texture scrollBack, skinBack, skinUpBack;
@@ -227,10 +233,14 @@ public class SkinScreen extends Screen {
             */
             //Н О В А Я  О Т Р И С О В К А  Б А Л А Н С А
             //F O N T   Д Л Я   Т Е К С Т А
-            BitmapFont font = new BitmapFont();
-            font.getData().setScale(2f);
+
+            parameter.size = 30;
+            parameter.color = Color.WHITE;
+            font = generator.generateFont(parameter);
             font.draw(spriteBatch, ": ", 105, TitanicClass.ScreenHeight - 2);
-            font.setColor(0.95f, 0.92f, 0.03f, 1);
+            //font.setColor(0.95f, 0.92f, 0.03f, 1);
+            parameter.color = new Color(0.95f, 0.92f, 0.03f, 1);
+            font = generator.generateFont(parameter);
             font.draw(spriteBatch, Integer.toString(playBalance.getBalance()), 120, TitanicClass.ScreenHeight - 4);
         }
         else {
