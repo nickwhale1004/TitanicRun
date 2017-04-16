@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
+import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Objects.PlayObjects.BackgroundCreator;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
@@ -21,6 +22,7 @@ import com.titanicrun.game.Objects.PlayObjects.Score;
 import com.titanicrun.game.Objects.PlayObjects.Shadow;
 import com.titanicrun.game.Objects.PlayObjects.Water;
 import com.titanicrun.game.TitanicClass;
+import com.titanicrun.game.Objects.SystemObjects.Text;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -42,6 +44,12 @@ public class GameScreen extends Screen {
     private ArrayList<PlayerAnimation> playerAnimations;
     private FallObjectsCreator fallObj;
     public boolean pause;
+    public boolean objectFalled = false;
+    public boolean isFinished = false;
+    BitmapFont font = new BitmapFont();
+    public Text ballanceText = new Text(new Vector2(0, 0), Integer.toString(0));
+    public boolean failingObjectCatched = false;
+    MoveObject moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
 
     public GameScreen(GameScreenManager gameScreenManager, Balance balance) {
         super(gameScreenManager);
@@ -122,6 +130,42 @@ public class GameScreen extends Screen {
 
         playBallance.drawPosition.x = TitanicClass.ScreenWidth-5-
                 (playBallance.getBalance() + "").length() * TitanicClass.scoreABC[0].getWidth();
+        if (!failingObjectCatched) {
+            ballanceText.textValue = Integer.toString(playBallance.getBalance());
+            ballanceText.position.x = TitanicClass.ScreenWidth - ballanceText.textValue.length() * 30 - 10;
+            ballanceText.position.y = TitanicClass.ScreenHeight - 12;
+            moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
+        }
+        //failingObjectCatched  П Р О В Е Р К А  П О Й М А Н  Л И  П А Д А Ю Щ И Й  О Б Ь Е К Т
+        if (fallObj.current.position.y == 0) {
+            objectFalled = true;
+        }
+
+        if(failingObjectCatched && objectFalled) {
+            //Н А Ч И Н А Е М  Д В И Ж Е Н И Е  В П Р А В О
+            if (!isFinished) {
+                moveableText.change(new Vector2(TitanicClass.ScreenWidth, ballanceText.position.y));
+                moveableText.update();
+            }
+            //П Р О В Е Р К А  Н А  О К О Н Ч А Н И Е  Д В И Ж Е Н И Я  И  Д О Б А В Л Е Н И Е  М О Н Е Т
+            if (moveableText.position.x == TitanicClass.ScreenWidth) {
+                isFinished = true;
+                playBallance.addPoint(10);
+                ballanceText.textValue = Integer.toString(playBallance.getBalance());
+                moveableText = new MoveObject(ballanceText, moveableText.position, 5);
+            }
+            //Д В И Ж Е Н И Е  В Л Е В О
+            if (isFinished && moveableText.position.x > (TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length()*30 - 10)) {
+                moveableText.change(new Vector2(TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length()*30 - 10 ,ballanceText.position.y));
+                moveableText.update();
+            }
+            //О Б Н У Л Е Н И Е  П Е Р Е М Е Н Н Ы Х
+            if (isFinished && moveableText.position.x == (TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length()*30 - 10)) {
+                failingObjectCatched = false;
+                isFinished = false;
+                objectFalled = false;
+            }
+        }
     }
 
     @Override
@@ -137,12 +181,7 @@ public class GameScreen extends Screen {
             shadow.render(spriteBatch);
         score.render(spriteBatch);
         //playBallance.render(spriteBatch);
-        BitmapFont font = new BitmapFont();
-        font.getData().setScale(3.5f);
-        font.setColor(0.95f, 0.92f, 0.03f, 1);
-        font.draw(spriteBatch, Integer.toString(playBallance.getBalance()),
-                TitanicClass.ScreenWidth - Integer.toString(playBallance.getBalance()).length()*30 - 10,
-                TitanicClass.ScreenHeight - 12);
+        moveableText.render(spriteBatch);
     }
 
     public void Die() {
