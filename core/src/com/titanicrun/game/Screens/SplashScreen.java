@@ -105,7 +105,7 @@ public class SplashScreen extends Screen {
             texttt.update();
             if(pic42.end) {
                 if(Gdx.input.justTouched()) {
-                    gameScreenManager.addScreen(new MenuScreen(gameScreenManager));
+                    gameScreenManager.addScreen(new EducationScreen(gameScreenManager));
                 }
             }
         }

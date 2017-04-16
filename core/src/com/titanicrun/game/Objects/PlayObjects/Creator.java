@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public abstract class Creator {
     protected Animation objAnimation;
     protected Animation[] objAnimations;
-    protected float interval;
+    public float interval;
     protected int time;
 
     public Creator(Animation objAnimation, float interval) {

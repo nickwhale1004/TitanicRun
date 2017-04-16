@@ -4,12 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.sun.corba.se.impl.oa.poa.ActiveObjectMap;
 import com.titanicrun.game.Objects.BaseObject;
 import com.titanicrun.game.Screens.GameScreen;
 import com.titanicrun.game.TitanicClass;
 
-import sun.awt.SunHints;
 
 /**
  * Created by Никита on 28.01.2016.
@@ -30,6 +28,7 @@ public class Player extends BaseObject {
     }
     @Override
     public void update() {
+        animation.update();
         if(toDown) {
             position.y-=5;
             if(position.y <= TitanicClass.ScreenHeight - animation.getTexture().getHeight())

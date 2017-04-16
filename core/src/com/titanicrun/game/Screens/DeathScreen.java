@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
 import com.titanicrun.game.Objects.SystemObjects.Button;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
+import com.titanicrun.game.Objects.SystemObjects.IncreasingButton;
 import com.titanicrun.game.Objects.SystemObjects.TextDraw;
 import com.titanicrun.game.TitanicClass;
 
@@ -14,7 +15,7 @@ import com.titanicrun.game.TitanicClass;
  * Created by Никита on 30.01.2016.
  */
 public class DeathScreen extends Screen {
-    private Button menu;
+    private IncreasingButton menu;
     private GameScreen gameScreen;
     private MoveObject back, gameOver, score, of, max, moveButton;
     private Screen screen;
@@ -62,7 +63,7 @@ public class DeathScreen extends Screen {
                         TitanicClass.ScreenHeight / 2 - TitanicClass.scoreABC[0].getHeight() - 10), 7);
         this.screen = gameScreen;
         Animation buttonAnim = anim("buttons/menu.png");
-        this.menu = new Button(buttonAnim, anim("buttons/menuTuched.png"), new Vector2(
+        this.menu = new IncreasingButton (buttonAnim, anim("buttons/menuTuched.png"), new Vector2(
                 TitanicClass.ScreenWidth / 2 - buttonAnim.getTexture().getWidth() / 2, - buttonAnim.getTexture().getHeight()));
         this.moveButton = new MoveObject(menu,
                 new Vector2(TitanicClass.ScreenWidth / 2 - buttonAnim.getTexture().getWidth() / 2,

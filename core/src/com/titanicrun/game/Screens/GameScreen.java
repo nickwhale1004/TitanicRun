@@ -28,9 +28,6 @@ import com.titanicrun.game.Objects.SystemObjects.Text;
 
 import java.util.ArrayList;
 
-/**
- * Created by Никита on 28.01.2016.
- */
 public class GameScreen extends Screen {
     public GameScore gameScore;
     public Player player;
@@ -135,6 +132,7 @@ public class GameScreen extends Screen {
         spriteBatch.draw(night, 0, 0);
         backFirstLvl.render(spriteBatch);
         backSecondLvl.render(spriteBatch);
+        spriteBatch.draw(pauseLine, 0, 0);
         player.render(spriteBatch);
         enemiesCreator.render(spriteBatch);
         fallObj.render(spriteBatch);
@@ -144,7 +142,6 @@ public class GameScreen extends Screen {
         //score.render(spriteBatch);
         scoreText.render(spriteBatch);
         gameScore.render(spriteBatch);
-        spriteBatch.draw(pauseLine, 0, 0);
     }
 
     public void Die() {

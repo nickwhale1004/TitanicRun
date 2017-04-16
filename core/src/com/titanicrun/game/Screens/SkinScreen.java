@@ -13,6 +13,7 @@ import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Objects.SystemObjects.Button;
 import com.titanicrun.game.Objects.PlayObjects.Mark;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
+import com.titanicrun.game.Objects.SystemObjects.IncreasingButton;
 import com.titanicrun.game.Objects.SystemObjects.PlayerAnimation;
 import com.titanicrun.game.Objects.SystemObjects.Putter;
 import  com.badlogic.gdx.graphics.Texture;
@@ -39,7 +40,7 @@ public class SkinScreen extends Screen {
     private Scroller scroll;
     private Texture scrollBack, skinBack, skinUpBack;
     private Preferences animSittings, lockSittings, prices;
-    private Button select, menu, buy;
+    private IncreasingButton select, menu, buy;
     private ArrayList<PlayerAnimation> playerAnimations;
     //private ArrayList<Integer> prices;
     private Map<Integer, Integer> lockedIDs;
@@ -81,12 +82,13 @@ public class SkinScreen extends Screen {
         this.skinBack = new Texture("backs/skin.png");
         this.skinUpBack = new Texture("backs/skinUp.png");
         //К Н О П К И
-        this.select = new Button(anim("buttons/select.png"), anim("buttons/selectTuched.png"),
+        this.select = new IncreasingButton(anim("buttons/select.png"), anim("buttons/selectTuched.png"),
                 new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 45));
-        this.menu = new Button(anim("buttons/menuSmall.png"), anim("buttons/menuSmallTuched.png"),
+        Gdx.app.log("im in SKIN", "");
+        this.menu = new IncreasingButton(anim("buttons/menuSmall.png"), anim("buttons/menuSmallTuched.png"),
                 new Vector2(TitanicClass.ScreenWidth/2 - anim("buttons/menu.png").getTexture().getWidth() - 23,
                         TitanicClass.ScreenHeight/2 + 45));
-        this.buy = new Button(anim("buttons/buy.png"), anim("buttons/buyTuched.png"),
+        this.buy = new IncreasingButton(anim("buttons/buy.png"), anim("buttons/buyTuched.png"),
                 new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 45));
         //С П И С О К  К Н О П О К
         this.countOfPerson = 4;

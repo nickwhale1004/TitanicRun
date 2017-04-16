@@ -10,6 +10,7 @@ import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Objects.SystemObjects.Button;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.PlayObjects.Water;
+import com.titanicrun.game.Objects.SystemObjects.IncreasingButton;
 import com.titanicrun.game.TitanicClass;
 
 /**
@@ -17,7 +18,8 @@ import com.titanicrun.game.TitanicClass;
  */
 public class MenuScreen extends Screen {
     private Screen screen;
-    private Button playButton, skinButton, settingsButton;
+    private Button settingsButton;
+    private IncreasingButton playButton, skinButton;
     private Water waterUp, waterMid, waterDown, ship;
     private Texture back;
     private byte process; // 0 -wait, 1 - toScreen, 2 - outScreen
@@ -36,10 +38,10 @@ public class MenuScreen extends Screen {
     public void Load() {
         Animation animation = anim("buttons/play.png");
         this.back = new Texture("backs/night.png");
-        this.playButton = new Button(animation,
+        this.playButton = new IncreasingButton(animation,
                 anim("buttons/playTuched.png"), new Vector2(TitanicClass.ScreenWidth/2-animation.getTexture().getWidth()/2,
                 TitanicClass.ScreenHeight/2-animation.getTexture().getHeight()/2));
-        this.skinButton = new Button(anim("buttons/skin.png"), anim("buttons/skinTuched.png"),
+        this.skinButton = new IncreasingButton(anim("buttons/skin.png"), anim("buttons/skinTuched.png"),
                 new Vector2(playButton.position.x, playButton.position.y - anim("buttons/skin.png").getTexture().getHeight()-40));
         this.settingsButton = new Button (anim("buttons/settings.png"), anim("buttons/settings.png"),
                 new Vector2(TitanicClass.ScreenWidth - 74, TitanicClass.ScreenHeight - 74));

@@ -32,6 +32,9 @@ public class Animation {
     public Texture getTexture() {
         return textures[textureID];
     }
+    public Texture[] getTextures() {
+        return textures;
+    }
 
     public void setTexture(String s) {
         textures[textureID] = new Texture(s);
