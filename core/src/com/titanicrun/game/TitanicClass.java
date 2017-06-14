@@ -15,6 +15,7 @@ import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.Screens.EducationScreen;
 import com.titanicrun.game.Screens.GameScreen;
 import com.titanicrun.game.Screens.GameScreenManager;
+import com.titanicrun.game.Screens.LoadingScreen;
 import com.titanicrun.game.Screens.MenuScreen;
 import com.titanicrun.game.Screens.PauseScreen;
 import com.titanicrun.game.Screens.SettingsScreen;
@@ -22,13 +23,12 @@ import com.titanicrun.game.Screens.SkinScreen;
 import com.titanicrun.game.Screens.SplashScreen;
 
 public class TitanicClass extends ApplicationAdapter {
-	//TitanicClass
 	private SpriteBatch spriteBatch;
 	public static Texture[] scoreABC = new Texture[11];
 	public static final int ScreenHeight = 800;
 	public static final int ScreenWidth = 480;
 	private static OrthographicCamera camera;
-
+	private boolean flag = true;
 	public GameScreenManager gameScreenManager;
 	@Override
 	public void create () {
@@ -37,16 +37,8 @@ public class TitanicClass extends ApplicationAdapter {
 			scoreABC[i] = new Texture("numbers/"+i+".png");
 		}
 		scoreABC[10] = new Texture("numbers/space.png");
-		GameTexturesLoader gtl = new GameTexturesLoader();
 		gameScreenManager = new GameScreenManager();
-		Preferences sittings = Gdx.app.getPreferences("Balance");
-		Balance balance= new Balance(sittings.getInteger("Balance"));
-        gameScreenManager.addScreen(new SplashScreen(gameScreenManager,"SplashScreen"));
-		gameScreenManager.addScreen(new GameScreen(gameScreenManager, balance,"GameScreen"));
-		gameScreenManager.addScreen(new SettingsScreen(gameScreenManager, "SettingScreen"));
-		gameScreenManager.addScreen(new SkinScreen(gameScreenManager, "SkinScreen"));
-		gameScreenManager.addScreen(new EducationScreen(gameScreenManager, "EducationScreen"));
-		gameScreenManager.addScreen(new MenuScreen(gameScreenManager, "MenuScreen"));
+		gameScreenManager.addScreen(new LoadingScreen(gameScreenManager, "LoadingScreen"));
 		spriteBatch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, ScreenWidth, ScreenHeight);

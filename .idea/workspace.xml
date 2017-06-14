@@ -5,153 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6480ee6d-ed75-4359-8b28-178a379b7630" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/GameTexturesLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/SettingsButton.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_update_operation_at_24_04_2016_10_42_[Default].patch" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/assets/backs/backPrev.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/assets/backs/backUsuall.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/assets/fallObj/fallMan.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/assets/fallObj/fallMan2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/build/generated/source/buildConfig/debug/com/titanicrun/game/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/build/generated/source/r/debug/com/titanicrun/game/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/backs/backPrev.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/backs/backUsuall.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/fallObj/fallMan.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/fallObj/fallMan2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/Score.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/IncreasingButton.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/backs/deathBack.png" afterPath="$PROJECT_DIR$/android/assets/backs/deathBack.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/backs/skinUp.png" afterPath="$PROJECT_DIR$/android/assets/backs/skinUp.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/fallObj/fall1.png" afterPath="$PROJECT_DIR$/android/assets/fallObj/fall1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/fallObj/fall6.png" afterPath="$PROJECT_DIR$/android/assets/fallObj/fall6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/fallObj/fall7.png" afterPath="$PROJECT_DIR$/android/assets/fallObj/fall7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/2player.png" afterPath="$PROJECT_DIR$/android/assets/players/2player.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/2player2.png" afterPath="$PROJECT_DIR$/android/assets/players/2player2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/2player3.png" afterPath="$PROJECT_DIR$/android/assets/players/2player3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/2playerFront.png" afterPath="$PROJECT_DIR$/android/assets/players/2playerFront.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/2playerPreview.png" afterPath="$PROJECT_DIR$/android/assets/players/2playerPreview.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/2playerSkin.png" afterPath="$PROJECT_DIR$/android/assets/players/2playerSkin.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/3player.png" afterPath="$PROJECT_DIR$/android/assets/players/3player.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/3player2.png" afterPath="$PROJECT_DIR$/android/assets/players/3player2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/3player3.png" afterPath="$PROJECT_DIR$/android/assets/players/3player3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/3playerFront.png" afterPath="$PROJECT_DIR$/android/assets/players/3playerFront.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/assets/players/3playerPreview.png" afterPath="$PROJECT_DIR$/android/assets/players/3playerPreview.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/backs/deathBack.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/backs/deathBack.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/backs/skinUp.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/backs/skinUp.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/fallObj/fall1.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/fallObj/fall1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/fallObj/fall6.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/fallObj/fall6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/fallObj/fall7.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/fallObj/fall7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2player.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2player.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2player2.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2player2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2player3.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2player3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2playerFront.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2playerFront.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2playerPreview.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2playerPreview.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2playerSkin.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/2playerSkin.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/3player.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/3player.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/3player2.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/3player2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/3player3.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/3player3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/3playerFront.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/3playerFront.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/3playerPreview.png" afterPath="$PROJECT_DIR$/android/build/intermediates/assets/debug/players/3playerPreview.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/instant-run-resources/resources-debug.ir.ap_" afterPath="$PROJECT_DIR$/android/build/intermediates/instant-run-resources/resources-debug.ir.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/android/build/intermediates/res/resources-debug.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_1_9_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_1_9_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_backend_android_1_9_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_backend_android_1_9_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_backend_lwjgl_1_9_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_backend_lwjgl_1_9_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_backend_robovm_1_9_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_backend_robovm_1_9_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_box2d_1_9_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_box2d_1_9_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_box2d_platform_1_9_1_natives_desktop.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_box2d_platform_1_9_1_natives_desktop.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_box2d_platform_1_9_1_natives_ios.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_box2d_platform_1_9_1_natives_ios.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_freetype_1_9_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_freetype_1_9_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_freetype_platform_1_9_1_natives_desktop.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_freetype_platform_1_9_1_natives_desktop.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_platform_1_9_1_natives_desktop.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_platform_1_9_1_natives_desktop.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gdx_platform_1_9_1_natives_ios.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gdx_platform_1_9_1_natives_ios.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/jinput_2_0_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/jinput_2_0_5.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/jinput_platform_2_0_5_natives_linux.xml" afterPath="$PROJECT_DIR$/.idea/libraries/jinput_platform_2_0_5_natives_linux.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/jinput_platform_2_0_5_natives_osx.xml" afterPath="$PROJECT_DIR$/.idea/libraries/jinput_platform_2_0_5_natives_osx.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/jinput_platform_2_0_5_natives_windows.xml" afterPath="$PROJECT_DIR$/.idea/libraries/jinput_platform_2_0_5_natives_windows.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/jlayer_1_0_1_gdx.xml" afterPath="$PROJECT_DIR$/.idea/libraries/jlayer_1_0_1_gdx.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/jorbis_0_0_17.xml" afterPath="$PROJECT_DIR$/.idea/libraries/jorbis_0_0_17.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/jutils_1_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/jutils_1_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lwjgl_2_9_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lwjgl_2_9_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lwjgl_platform_2_9_2_natives_linux.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lwjgl_platform_2_9_2_natives_linux.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lwjgl_platform_2_9_2_natives_osx.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lwjgl_platform_2_9_2_natives_osx.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lwjgl_platform_2_9_2_natives_windows.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lwjgl_platform_2_9_2_natives_windows.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/lwjgl_util_2_9_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lwjgl_util_2_9_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/robovm_cocoatouch_1_12_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/robovm_cocoatouch_1_12_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/robovm_objc_1_12_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/robovm_objc_1_12_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/robovm_rt_1_12_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/robovm_rt_1_12_0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/AndroidManifest.xml" afterPath="$PROJECT_DIR$/android/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/android.iml" afterPath="$PROJECT_DIR$/android/android.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build.gradle" afterPath="$PROJECT_DIR$/android/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/single/drawable-hdpi.json" afterPath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/single/drawable-hdpi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/single/drawable-mdpi.json" afterPath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/single/drawable-mdpi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/single/drawable-xhdpi.json" afterPath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/single/drawable-xhdpi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/single/drawable-xxhdpi.json" afterPath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/single/drawable-xxhdpi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugAssets/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugShaders/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/file-input-save-data.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/instant-run-support/debug/manifest.crc" afterPath="$PROJECT_DIR$/android/build/intermediates/instant-run-support/debug/manifest.crc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/instant-run-support/debug/manifest.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/instant-run-support/debug/manifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/values/values.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/restart-dex/debug/build-info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/android/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/BaseObject.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/BaseObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/BackgroundCreator.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/BackgroundCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/EnemiesCreator.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/EnemiesCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/FallObject.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/FallObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/FallObjectsCreator.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/FallObjectsCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/MoveObject.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/MoveObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/MovingSizeObject.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/MovingSizeObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/Player.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/SizeChangeObject.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/SizeChangeObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Balance.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Balance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Button.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Button.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Putter.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Putter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Scroller.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Scroller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Text.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Text.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/DeathScreen.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/DeathScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/EducationScreen.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/EducationScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/GameScreen.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/GameScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/GameScreenManager.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/GameScreenManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/MenuScreen.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/MenuScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/MessageScreen.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/MessageScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/Messages/BuyMessage.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/Messages/BuyMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/Messages/CantBuyMessage.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/Messages/CantBuyMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/PauseScreen.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/PauseScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/Screen.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/Screen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SettingsScreen.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SettingsScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SkinScreen.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SkinScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SplashScreen.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SplashScreen.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/titanicrun/game/TitanicClass.java" afterPath="$PROJECT_DIR$/core/src/com/titanicrun/game/TitanicClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop/build.gradle" afterPath="$PROJECT_DIR$/desktop/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/build.gradle" afterPath="$PROJECT_DIR$/ios/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/ios.iml" afterPath="$PROJECT_DIR$/ios/ios.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
     <ignored path="TitanicRun.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -183,40 +39,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SettingsScreen.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SettingsScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2431">
-              <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FallObject.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/FallObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="54" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FallObjectsCreator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/FallObjectsCreator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="51" column="39" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EducationScreen.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EducationScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/EducationScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2363">
+            <state relative-caret-position="181">
               <caret line="146" column="26" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
               <folding />
             </state>
@@ -226,8 +52,34 @@
       <file leaf-file-name="GameScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/GameScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1615">
-              <caret line="116" column="46" selection-start-line="116" selection-start-column="46" selection-end-line="116" selection-end-column="46" />
+            <state relative-caret-position="153">
+              <caret line="63" column="79" selection-start-line="58" selection-start-column="19" selection-end-line="63" selection-end-column="79" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameTexturesLoader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/GameTexturesLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="47" column="65" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="65" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3791#3792#0" expanded="true" />
+                <element signature="e#3830#3831#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadingScreen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/LoadingScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -245,33 +97,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/Player.java">
+      <file leaf-file-name="TitanicClass.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/TitanicClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameScore.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/GameScore.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+            <state relative-caret-position="266">
+              <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TitanicClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/TitanicClass.java">
+      <file leaf-file-name="SplashScreen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SplashScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
+            <state relative-caret-position="17">
+              <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SkinScreen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SkinScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="110" column="79" selection-start-line="110" selection-start-column="79" selection-end-line="110" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingsScreen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SettingsScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -299,6 +159,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -3169,12 +3030,10 @@
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/Animation.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/IncreasingButton.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/BaseObject.java" />
-        <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/GameTexturesLoader.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Balance.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/Screen.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SplashScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/MessageScreen.java" />
-        <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/TitanicClass.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/Messages/BuyMessage.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/Messages/CantBuyMessage.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/BackgroundCreator.java" />
@@ -3188,7 +3047,6 @@
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Scroller.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Putter.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/MoveObject.java" />
-        <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SkinScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/MenuScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/FallObject.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/PauseScreen.java" />
@@ -3196,9 +3054,13 @@
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SettingsScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/FallObjectsCreator.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/Player.java" />
-        <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/GameScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/DeathScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/EducationScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/GameTexturesLoader.java" />
+        <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/TitanicClass.java" />
+        <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/LoadingScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/GameScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SkinScreen.java" />
       </list>
     </option>
   </component>
@@ -3233,7 +3095,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -3384,11 +3251,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane />
-      </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3396,6 +3258,8 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="device.picker.selection" value="192.168.1.8:5555" />
+    <property name="android.project.structure.last.selected" value="Project" />
+    <property name="android.project.structure.proportion" value="0.15" />
   </component>
   <component name="RunManager" selected="Application.Descktop">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -3743,12 +3607,26 @@
       <option name="project" value="LOCAL" />
       <updated>1492340691108</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="new zalupa with unlagi ebanimi">
+      <created>1497426482012</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1497426482012</updated>
+    </task>
+    <task id="LOCAL-00003" summary="new zalupa with unlagi ebanimi">
+      <created>1497438082979</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1497438082979</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854864" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -3757,13 +3635,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854864" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38118023" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38118023" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854864" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -3829,14 +3707,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/TitanicClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="57" column="1" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/SettingsButton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3876,14 +3746,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/android/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
@@ -3897,7 +3767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4073,16 +3942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/GameTexturesLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="57" column="14" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/SettingsButton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
@@ -4119,14 +3978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SplashScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/Putter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -4139,16 +3990,6 @@
         <state relative-caret-position="111">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SkinScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="282" column="38" selection-start-line="282" selection-start-column="38" selection-end-line="282" selection-end-column="38" />
-          <folding>
-            <element signature="e#4622#4630#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4172,26 +4013,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SettingsScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2431">
-          <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/PlayObjects/GameScore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
           <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/TitanicClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
           <folding />
         </state>
       </provider>
@@ -4232,16 +4057,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/GameScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="116" column="46" selection-start-line="116" selection-start-column="46" selection-end-line="116" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/DeathScreen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -4252,8 +4067,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/EducationScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2363">
+        <state relative-caret-position="181">
           <caret line="146" column="26" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SettingsScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/LoadingScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Objects/SystemObjects/GameTexturesLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="47" column="65" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3791#3792#0" expanded="true" />
+            <element signature="e#3830#3831#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/GameScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="63" column="79" selection-start-line="58" selection-start-column="19" selection-end-line="63" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SplashScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/Screens/SkinScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="110" column="79" selection-start-line="110" selection-start-column="79" selection-end-line="110" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/titanicrun/game/TitanicClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
           <folding />
         </state>
       </provider>
