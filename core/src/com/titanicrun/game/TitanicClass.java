@@ -22,6 +22,7 @@ import com.titanicrun.game.Screens.SkinScreen;
 import com.titanicrun.game.Screens.SplashScreen;
 
 public class TitanicClass extends ApplicationAdapter {
+	//TitanicClass
 	private SpriteBatch spriteBatch;
 	public static Texture[] scoreABC = new Texture[11];
 	public static final int ScreenHeight = 800;
