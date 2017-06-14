@@ -2,6 +2,7 @@ package com.titanicrun.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -10,9 +11,14 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
+import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.Screens.EducationScreen;
+import com.titanicrun.game.Screens.GameScreen;
 import com.titanicrun.game.Screens.GameScreenManager;
 import com.titanicrun.game.Screens.MenuScreen;
+import com.titanicrun.game.Screens.PauseScreen;
+import com.titanicrun.game.Screens.SettingsScreen;
+import com.titanicrun.game.Screens.SkinScreen;
 import com.titanicrun.game.Screens.SplashScreen;
 
 public class TitanicClass extends ApplicationAdapter {
@@ -30,9 +36,16 @@ public class TitanicClass extends ApplicationAdapter {
 			scoreABC[i] = new Texture("numbers/"+i+".png");
 		}
 		scoreABC[10] = new Texture("numbers/space.png");
-
+		GameTexturesLoader gtl = new GameTexturesLoader();
 		gameScreenManager = new GameScreenManager();
-        gameScreenManager.addScreen(new MenuScreen(gameScreenManager));
+		Preferences sittings = Gdx.app.getPreferences("Balance");
+		Balance balance= new Balance(sittings.getInteger("Balance"));
+        gameScreenManager.addScreen(new SplashScreen(gameScreenManager,"SplashScreen"));
+		gameScreenManager.addScreen(new GameScreen(gameScreenManager, balance,"GameScreen"));
+		gameScreenManager.addScreen(new SettingsScreen(gameScreenManager, "SettingScreen"));
+		gameScreenManager.addScreen(new SkinScreen(gameScreenManager, "SkinScreen"));
+		gameScreenManager.addScreen(new EducationScreen(gameScreenManager, "EducationScreen"));
+		gameScreenManager.addScreen(new MenuScreen(gameScreenManager, "MenuScreen"));
 		spriteBatch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, ScreenWidth, ScreenHeight);

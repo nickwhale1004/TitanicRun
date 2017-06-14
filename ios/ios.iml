@@ -28,6 +28,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="core" exported="" />
+    <orderEntry type="library" exported="" name="gdx-freetype-platform-1.9.1-natives-ios" level="project" />
     <orderEntry type="library" exported="" name="robovm-rt-1.12.0" level="project" />
     <orderEntry type="library" exported="" name="robovm-cocoatouch-1.12.0" level="project" />
     <orderEntry type="library" exported="" name="gdx-backend-robovm-1.9.1" level="project" />

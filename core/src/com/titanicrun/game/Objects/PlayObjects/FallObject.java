@@ -14,7 +14,7 @@ import com.titanicrun.game.TitanicClass;
  */
 
 public class FallObject extends BaseObject {
-    private boolean wasTuched;
+    public  boolean wasTuched;
     public FallObject(GameScreen gameScreen, Animation animation, int type) {
         super(gameScreen, animation, new Vector2(0, 0));
         set(animation, type);

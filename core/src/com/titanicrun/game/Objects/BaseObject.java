@@ -14,7 +14,7 @@ public abstract class BaseObject {
     public com.titanicrun.game.Objects.PlayObjects.Animation animation;
     public Vector2 position;
     protected float angle;
-    private Rectangle bound;
+    protected Rectangle bound;
     public BaseObject() {    }
     public BaseObject(GameScreen gameScreen, com.titanicrun.game.Objects.PlayObjects.Animation animation, Vector2 position){
         this.gameScreen = gameScreen;

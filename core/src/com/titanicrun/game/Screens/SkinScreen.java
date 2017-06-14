@@ -8,12 +8,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Objects.SystemObjects.Button;
 import com.titanicrun.game.Objects.PlayObjects.Mark;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
-import com.titanicrun.game.Objects.SystemObjects.IncreasingButton;
+import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.Objects.SystemObjects.PlayerAnimation;
 import com.titanicrun.game.Objects.SystemObjects.Putter;
 import  com.badlogic.gdx.graphics.Texture;
@@ -25,7 +26,6 @@ import com.badlogic.gdx.Preferences;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 /**
@@ -40,11 +40,11 @@ public class SkinScreen extends Screen {
     private Scroller scroll;
     private Texture scrollBack, skinBack, skinUpBack;
     private Preferences animSittings, lockSittings, prices;
-    private IncreasingButton select, menu, buy;
+    private Button select, menu, buy;
     private ArrayList<PlayerAnimation> playerAnimations;
     //private ArrayList<Integer> prices;
     private Map<Integer, Integer> lockedIDs;
-    private ArrayList<Mark> lockedMarks;
+    private Array<Mark> lockedMarks;
     private Animation front, back, sliderAnim;
     private Mark selected, preview;
     private int countOfPerson;
@@ -52,16 +52,16 @@ public class SkinScreen extends Screen {
     private Balance playBalance;
     public byte process; //0 -nothing, 1 - slider to center, 2 - slider out screen
     public boolean messResult;
-    private Screen screen;
+    private String screen;
 
-    public SkinScreen(GameScreenManager gameScreenManager, Balance balance) {
-        super(gameScreenManager);
+    public SkinScreen(GameScreenManager gameScreenManager, String name) {
+        super(gameScreenManager, name);
         //----------------------------------------------------//
         this.process = 0;
-        this.playBalance = balance;
-        this.screen = new MenuScreen(gameScreenManager, playBalance);
         //----------------------------------------------------//
         //Н А С Т Р О Й К И
+        Preferences sittings = Gdx.app.getPreferences("Balance");
+        this.playBalance = new Balance(sittings.getInteger("Balance"));
         this.animSittings = Gdx.app.getPreferences("Animation");
         this.lockSittings = Gdx.app.getPreferences("Locked");
         this.font = new BitmapFont();
@@ -78,55 +78,54 @@ public class SkinScreen extends Screen {
         this.parameter2.color = new Color(0.95f, 0.92f, 0.03f, 1);
         this.font2 = generator.generateFont(parameter2);
         //Т Е К С Т У Р Ы
-        this.scrollBack = new Texture("sllBack.png");
-        this.skinBack = new Texture("backs/skin.png");
-        this.skinUpBack = new Texture("backs/skinUp.png");
+        this.scrollBack = GameTexturesLoader.get("sllBack.png").getTexture();
+        this.skinBack = GameTexturesLoader.get("backs/skin.png").getTexture();
+        this.skinUpBack = GameTexturesLoader.get("backs/skinUp.png").getTexture();
         //К Н О П К И
-        this.select = new IncreasingButton(anim("buttons/select.png"), anim("buttons/selectTuched.png"),
-                new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 45));
-        Gdx.app.log("im in SKIN", "");
-        this.menu = new IncreasingButton(anim("buttons/menuSmall.png"), anim("buttons/menuSmallTuched.png"),
-                new Vector2(TitanicClass.ScreenWidth/2 - anim("buttons/menu.png").getTexture().getWidth() - 23,
-                        TitanicClass.ScreenHeight/2 + 45));
-        this.buy = new IncreasingButton(anim("buttons/buy.png"), anim("buttons/buyTuched.png"),
-                new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 45));
+        this.select = new Button(GameTexturesLoader.get("buttons/select.png"), GameTexturesLoader.get("buttons/selectTuched.png"),
+                new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 45), 0);
+        this.menu = new Button(GameTexturesLoader.get("buttons/menuSmall.png"), GameTexturesLoader.get("buttons/menuSmallTuched.png"),
+                new Vector2(TitanicClass.ScreenWidth/2 - GameTexturesLoader.get("buttons/menu.png").getTexture().getWidth() - 23,
+                        TitanicClass.ScreenHeight/2 + 45),0);
+        this.buy = new Button(GameTexturesLoader.get("buttons/buy.png"), GameTexturesLoader.get("buttons/buyTuched.png"),
+                new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 45),0);
         //С П И С О К  К Н О П О К
-        this.countOfPerson = 4;
+        this.countOfPerson = 9;
         ArrayList<Button> buttons = new ArrayList<Button>();
         for(int i = 1; i <= countOfPerson; i++)
-            buttons.add(new Button(anim("players/"+i+"playerSkin.png"), anim("players/"+i+"playerSkin.png"), new Vector2(0, 0)));
+            buttons.add(new Button(GameTexturesLoader.get("players/"+i+"playerSkin.png"), GameTexturesLoader.get("players/"+i+"playerSkin.png"), new Vector2(0, 0),1));
         Rectangle rectangle = new Rectangle(53,TitanicClass.ScreenHeight/2, TitanicClass.ScreenWidth, TitanicClass.ScreenHeight/2);
         //Т А Б Л И Ц А  ( P U T T E R )
         this.tableSkin = new Putter(rectangle,buttons);
         //S C R O L L E R
-        this.scroll = new Scroller(tableSkin, anim("sll.png"), 30);
+        this.scroll = new Scroller(tableSkin, GameTexturesLoader.get("sll.png"), 30);
         //А Н И М А Ц И И  П Е Р С О Н А Ж Е Й
         this.playerAnimations = new ArrayList<PlayerAnimation>();
         for(int i = 1; i <= countOfPerson; i++)
-            playerAnimations.add(new PlayerAnimation(new Animation(new Texture[]{new Texture("players/"+i+"player.png"),
-                new Texture("players/"+i+"player2.png"),
-                new Texture("players/"+i+"player3.png"), new Texture("players/"+i+"player2.png")},5),
-                anim("players/"+i+"playerFront.png"), anim("players/"+i+"playerPreview.png")));
+            playerAnimations.add(new PlayerAnimation(new Animation(new Texture[]{
+                GameTexturesLoader.get("player"+i).getTexture(),
+                GameTexturesLoader.get("player2"+i).getTexture(),
+                GameTexturesLoader.get("player3"+i).getTexture(),
+                GameTexturesLoader.get("player2"+i).getTexture()},5),
+                GameTexturesLoader.get("playerFront"+i), GameTexturesLoader.get("playerPreview"+i)));
         //И Н И Ц И А Л И З А Ц И Я  З А Б Л О К И Р О В А Н Н Ы Х  П Е Р С О Н А Ж Е Й  И  ИХ  М Е Т О К
         lockedIDs = new HashMap<Integer, Integer>();
-        lockedMarks = new ArrayList<Mark>();
+        lockedMarks = new Array<Mark>();
         prices = Gdx.app.getPreferences("Prices");
-        if (prices.getInteger("1") == 0) {
             for (int i = 0; i < countOfPerson; i++) {
-                prices.putInteger(Integer.toString(i), i * 250);
+                prices.putInteger(Integer.toString(i), i * 500);
             }
             prices.flush();
-        }
-        lockedMarks.add(new Mark(anim("players/unknow.png"), tableSkin, -1, new Vector2(0, 0)));
+        lockedMarks.add(new Mark(GameTexturesLoader.get("players/unknow.png"), tableSkin, -1, new Vector2(0, 0)));
         lockedIDs.put(0,0);
         for(int i = 1; i < countOfPerson; i++) {
             int value = lockSittings.getInteger(i+"");
             lockedIDs.put(i,value);
             if(value == 0) {
-                lockedMarks.add(new Mark(anim("players/unknow.png"), tableSkin, i, new Vector2(0, 0)));
+                lockedMarks.add(new Mark(GameTexturesLoader.get("players/unknow.png"), tableSkin, i, new Vector2(0, 0)));
             }
             else {
-                lockedMarks.add(new Mark(anim("players/unknow.png"), tableSkin, -1, new Vector2(0, 0)));
+                lockedMarks.add(new Mark(GameTexturesLoader.get("players/unknow.png"), tableSkin, -1, new Vector2(0, 0)));
             }
         }
         //П Р Е В Ь Ю  А Н И М А Ц И И
@@ -134,17 +133,21 @@ public class SkinScreen extends Screen {
         this.front = playerAnimations.get(animation).preview;
         this.back = playerAnimations.get(animation).run;
         //М Е Т К И  В Ы Б О Р А  И  П Р Е В Ь Ю
-        this.selected = new Mark(anim("selected.png"),tableSkin,animSittings.getInteger("Animation"),
-                new Vector2(5, tableSkin.skins.get(0).animation.getTexture().getHeight() - anim("selected.png").getTexture().getHeight()-5));
-        this.preview = new Mark(anim("preview.png"), tableSkin, animSittings.getInteger("Animation"), new Vector2(0,0));
+        this.selected = new Mark(GameTexturesLoader.get("selected.png"),tableSkin,animSittings.getInteger("Animation"),
+                new Vector2(5, tableSkin.skins.get(0).animation.getTexture().getHeight() - GameTexturesLoader.get("selected.png").getTexture().getHeight()-5));
+        this.preview = new Mark(GameTexturesLoader.get("preview.png"), tableSkin, animSittings.getInteger("Animation"), new Vector2(0,0));
         //С Л А Й Д Е Р
-        this.sliderAnim = anim("backs/runner.png");
+        this.sliderAnim = GameTexturesLoader.get("backs/runner.png");
         this.slider = new MoveObject(sliderAnim, new Vector2(2*sliderAnim.getTexture().getWidth(),0), new Vector2(0,0),20);
-
     }
     @Override
     public void update() {
+        gameScreenManager.removeScreen("Buy");
+        gameScreenManager.removeScreen("Cant Buy");
         if(process == 0) {       //nothing
+            if(screen == null) {
+                screen = "MenuScreen";
+            }
             selected.update();
             scroll.update();
             if(lockedIDs.get(scroll.items.getAnimation()) != 0 || scroll.items.getAnimation() == 0) {
@@ -161,12 +164,12 @@ public class SkinScreen extends Screen {
                 buy.update();
                 if (buy.isPressed()) {
                     if (playBalance.getBalance() - prices.getInteger(Integer.toString(scroll.items.getAnimation())) >= 0) {
-                        gameScreenManager.setScreen(new BuyMessage(gameScreenManager, this));
+                        gameScreenManager.addScreen(new BuyMessage(gameScreenManager, this, "Buy"));
                         lockSittings.putInteger(scroll.items.getAnimation()+"",1);
                         lockSittings.flush();
                     }
                     else {
-                        gameScreenManager.setScreen(new CantBuyMessage(gameScreenManager, this));
+                        gameScreenManager.addScreen(new CantBuyMessage(gameScreenManager, this, "Cant Buy"));
                     }
                 }
             }
@@ -179,7 +182,7 @@ public class SkinScreen extends Screen {
                 playBalance.Buy(prices.getInteger(Integer.toString(scroll.items.getAnimation())));
                 lockedIDs.put(scroll.items.getAnimation(), 1);
                 lockedMarks.set(scroll.items.getAnimation(),
-                        new Mark(anim("players/unknow.png"), tableSkin, -1, new Vector2(0, 0)));
+                        new Mark(GameTexturesLoader.get("players/unknow.png"), tableSkin, -1, new Vector2(0, 0)));
                 messResult = false;
             }
 
@@ -217,7 +220,7 @@ public class SkinScreen extends Screen {
         }
         else if(process == 2) {     //slider out screen
             slider.update();
-            screen.update();
+            gameScreenManager.getScreen(screen).update();
             if(slider.end) {
                 gameScreenManager.setScreen(screen);
             }
@@ -227,7 +230,6 @@ public class SkinScreen extends Screen {
     @Override
     public void render(SpriteBatch spriteBatch) {
         if (process != 2) {
-
             spriteBatch.draw(skinBack, 0, 0);
 
             scroll.items.render(spriteBatch);
@@ -264,10 +266,21 @@ public class SkinScreen extends Screen {
             font2.draw(spriteBatch, Integer.toString(playBalance.getBalance()), 100, TitanicClass.ScreenHeight - 4);
         }
         else {
-            screen.render(spriteBatch);
+            gameScreenManager.getScreen(screen).render(spriteBatch);
         }
         spriteBatch.draw(slider.getTexture(), slider.position.x, slider.position.y);
 
+    }
+
+    @Override
+    public void reset() {
+        process = 0;
+        scroll.reset();
+        slider.reset();
+        menu.reset();
+        buy.reset();
+        select.reset();
+        slider.change(new Vector2(0,0));
     }
 
 }

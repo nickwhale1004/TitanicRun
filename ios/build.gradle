@@ -4,7 +4,7 @@ sourceCompatibility = '1.7'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 ext {
-	mainClassName = "com.titanicrun.game.IOSLauncher"
+	mainClassName = "сcom.titanicrun.game.IOSLauncher"
 }
 
 launchIPhoneSimulator.dependsOn build

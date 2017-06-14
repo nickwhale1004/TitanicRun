@@ -79,13 +79,17 @@ public class BackgroundCreator extends Creator {
         interval = 30+random.nextInt(100);
         toPosX = -20+random.nextInt(40);
         preview.toPosX = toPosX;
-        secondBack.toPosX = toPosX;
-        firstBack.toPosX = toPosX;
     }
     public void render(SpriteBatch spriteBatch) {
         preview.render(spriteBatch);
         firstBack.render(spriteBatch);
         secondBack.render(spriteBatch);
+    }
+    public void reset() {
+        preview.reset(new Vector2(0,TitanicClass.ScreenHeight));
+        firstBack.reset(new Vector2(0,2*TitanicClass.ScreenHeight));
+        secondBack.reset(new Vector2(0,3*TitanicClass.ScreenHeight));
+        time = 0;
     }
 
     static class Background extends BaseObject {
@@ -124,6 +128,10 @@ public class BackgroundCreator extends Creator {
         @Override
         public void render(SpriteBatch spriteBatch) {
             spriteBatch.draw(animation.getTexture(),posX, position.y);
+        }
+        public void reset(Vector2 position) {
+            this.position = position;
+            this.toPosX = 0;
         }
     }
 }

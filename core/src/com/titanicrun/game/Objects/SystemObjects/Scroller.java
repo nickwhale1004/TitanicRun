@@ -12,12 +12,14 @@ import com.titanicrun.game.TitanicClass;
  */
 public class Scroller extends BaseObject {
     public Putter items;
+    private Vector2 itemlBasePos;
     private Vector2 touchPosition;
     private int upDownLimit;
     private int upPos, downPos;
     public Scroller(Putter items, Animation animation, int upDownLimit) {
         super(animation, new Vector2(TitanicClass.ScreenWidth-animation.getTexture().getWidth()-5, 0));
         this.items = items;
+        this.itemlBasePos = new Vector2(items.skins.get(0).position.x, items.skins.get(0).position.y);
         this.upDownLimit = upDownLimit;
         this.upPos = (int)items.skins.get(0).position.y;
         this.downPos = (int)items.rectangle.getY() - (int)items.rectangle.getHeight() + 20;
@@ -76,5 +78,8 @@ public class Scroller extends BaseObject {
     @Override
     public void render(SpriteBatch spriteBatch) {
         spriteBatch.draw(animation.getTexture(),position.x,position.y);
+    }
+    public void reset() {
+        items.reset();
     }
 }

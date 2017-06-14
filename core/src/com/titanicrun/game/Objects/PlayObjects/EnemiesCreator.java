@@ -1,7 +1,9 @@
 package com.titanicrun.game.Objects.PlayObjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.titanicrun.game.Objects.BaseObject;
 import com.titanicrun.game.Screens.GameScreen;
 import com.titanicrun.game.TitanicClass;
@@ -14,12 +16,14 @@ import java.util.Random;
  * Created by Никита on 29.01.2016.
  */
 public class EnemiesCreator extends Creator {
-    private ArrayList<Enemy> readyList, workList;
+    private Array<Enemy> readyList, workList;
+    private GameScreen gameScreen;
 
     public EnemiesCreator(GameScreen gameScreen, Animation animation, float speed) {
         super(animation, speed);
-        readyList = new ArrayList<Enemy>(20);
-        workList = new ArrayList<Enemy>(20);
+        this.gameScreen = gameScreen;
+        readyList = new Array<Enemy>(20);
+        workList = new Array<Enemy>(20);
         for (int i = 0; i < 20; i++) {
             readyList.add(new Enemy(gameScreen, animation, new Texture("ball.png"), 0, -1));
             //создаём предметы в базовом размещении
@@ -35,7 +39,7 @@ public class EnemiesCreator extends Creator {
                 interval-=0.5;
             tick();
         }
-        for (int i = 0; i < workList.size(); i++) {
+        for (int i = 0; i < workList.size; i++) {
         //обновляю только рабочие предметы и удаляю те, что в процессе 5 (закончили работу)
             Enemy x = workList.get(i);
             x.update();
@@ -43,7 +47,7 @@ public class EnemiesCreator extends Creator {
                 x.process = 0;
                 x.change(-1, 0, objAnimation);
                 readyList.add(x);
-                workList.remove(x);
+                workList.removeValue(x,true);
             }
         }
     }
@@ -51,7 +55,7 @@ public class EnemiesCreator extends Creator {
     private void tick() {
         //меняю расположение предмета и делаю его рабочим
         Enemy temp = readyList.get(0);
-        readyList.remove(0);
+        readyList.removeIndex(0);
 
         Random random = new Random();
         int type = random.nextInt(2);   //0 - слева, 1 - справа
@@ -68,6 +72,17 @@ public class EnemiesCreator extends Creator {
         for (BaseObject x : workList) {
             x.render(spriteBatch);
         }
+    }
+    public void reset() {
+        time = 0;
+        for (int i = 0; i < workList.size; i++) {
+            Enemy x = workList.get(i);
+                x.process = 0;
+                x.time = 0;
+                x.change(-1, 0, objAnimation);
+                readyList.add(x);
+        }
+        workList = new Array<Enemy>(20);
     }
 
     public static class Enemy extends BaseObject {
@@ -146,13 +161,13 @@ public class EnemiesCreator extends Creator {
                     position.x += 15;
                     if (position.x >= TitanicClass.ScreenWidth) {
                         process = 5;
-                        gameScreen.score.addPoint();
+                        gameScreen.score++;
                     }
                 } else {
                     position.x -= 15;
                     if (position.x + animation.getTexture().getWidth() <= 0) {
                         process = 5;        //end
-                        gameScreen.score.addPoint();
+                        gameScreen.score++;
                     }
                 }
             }

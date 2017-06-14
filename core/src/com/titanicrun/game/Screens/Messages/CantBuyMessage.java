@@ -11,8 +11,8 @@ import com.titanicrun.game.Screens.SkinScreen;
  * Created by Никита on 12.06.2016.
  */
 public class CantBuyMessage extends MessageScreen {
-    public CantBuyMessage(GameScreenManager gameScreenManager, SkinScreen screen) {
-        super(gameScreenManager, new Texture("messages/cantBuyMessage.png"), screen);
+    public CantBuyMessage(GameScreenManager gameScreenManager, SkinScreen screen, String name) {
+        super(gameScreenManager, new Texture("messages/cantBuyMessage.png"), screen.name, name);
     }
 
     @Override
@@ -22,6 +22,11 @@ public class CantBuyMessage extends MessageScreen {
 
     @Override
     public void cansleButtonUpdate() {
+
+    }
+
+    @Override
+    public void reset() {
 
     }
 }

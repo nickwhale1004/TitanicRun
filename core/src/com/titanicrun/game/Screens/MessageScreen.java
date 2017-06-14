@@ -15,24 +15,24 @@ import com.titanicrun.game.TitanicClass;
 public abstract class MessageScreen extends Screen {
     protected Texture backTexture;
     protected Button okButton, cansleButton;
-    private Screen baseScreen;
+    private String baseScreen;
     private byte process; //0 - to screen, 1 - nothing, 2 - out screen
     private MoveObject backMove, yesMove, noMove;
     private Animation buttonAnim;
-    public MessageScreen(GameScreenManager gameScreenManager, Texture backTexture, Screen screen) {
-        super(gameScreenManager);
+    public MessageScreen(GameScreenManager gameScreenManager, Texture backTexture, String screen, String name) {
+        super(gameScreenManager, name);
         this.baseScreen = screen;
         this.backTexture = backTexture;
         this.buttonAnim = anim("buttons/ok.png");
         this.okButton = new Button(buttonAnim, anim("buttons/okTuched.png"),
                 new Vector2(TitanicClass.ScreenWidth + backTexture.getWidth() / 2
                         - buttonAnim.getTexture().getWidth() - 5,
-                        TitanicClass.ScreenHeight / 2 - buttonAnim.getTexture().getHeight() - 5));
+                        TitanicClass.ScreenHeight / 2 - buttonAnim.getTexture().getHeight() - 5),1);
 
         this.cansleButton = new Button(anim("buttons/cansle.png"), anim("buttons/cansleTuched.png"),
                 new Vector2(TitanicClass.ScreenWidth +
                         backTexture.getWidth()/2 + 5,
-                        TitanicClass.ScreenHeight / 2 - buttonAnim.getTexture().getHeight() - 5));
+                        TitanicClass.ScreenHeight / 2 - buttonAnim.getTexture().getHeight() - 5),1);
 
         this.backMove = new MoveObject(anim(backTexture), new Vector2(TitanicClass.ScreenWidth,
                 TitanicClass.ScreenHeight / 2 - backTexture.getHeight() / 2),
@@ -76,7 +76,7 @@ public abstract class MessageScreen extends Screen {
             }
         }
         else if(process == 2) {
-            baseScreen.update();
+            gameScreenManager.getScreen(baseScreen).update();
             if(noMove.end) {
                 gameScreenManager.setScreen(baseScreen);
             }
@@ -87,7 +87,7 @@ public abstract class MessageScreen extends Screen {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-        baseScreen.render(spriteBatch);
+        gameScreenManager.getScreen(baseScreen).render(spriteBatch);
         backMove.render(spriteBatch);
         okButton.render(spriteBatch);
         cansleButton.render(spriteBatch);

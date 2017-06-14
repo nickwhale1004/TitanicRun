@@ -13,19 +13,20 @@ import com.titanicrun.game.Objects.BaseObject;
  */
 
 public class Text extends BaseObject {
-    public String textValue;
+    public String textValue, sartText;
     private BitmapFont font;
     FreeTypeFontGenerator generator;
     FreeTypeFontGenerator.FreeTypeFontParameter parameter;
     public Text (Vector2 position, String startText, Color color) {
         this.position = position;
-        textValue = startText;
+        textValue = startText+"";
         this.font = new BitmapFont();
         this.generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/peepo.ttf"));
         this.parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         this.parameter.size = 55;
         this.parameter.color = color;
         this.font = generator.generateFont(parameter);
+        this.sartText = startText;
     }
 
     @Override
@@ -37,5 +38,8 @@ public class Text extends BaseObject {
     @Override
     public void render(SpriteBatch spriteBatch) {
         font.draw(spriteBatch, textValue, position.x, position.y);
+    }
+    public void reset() {
+        textValue = sartText+"";
     }
 }

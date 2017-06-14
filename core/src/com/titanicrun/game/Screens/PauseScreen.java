@@ -16,8 +16,8 @@ public class PauseScreen extends Screen {
     private GameScreen gameScreen;
     private MoveObject pause, c3, c2, c1, pauseText, run;
     private Texture pauseTexture, big3, big2, big1;
-    public PauseScreen(GameScreenManager gameScreenManager, GameScreen gameScreen) {
-        super(gameScreenManager);
+    public PauseScreen(GameScreenManager gameScreenManager, GameScreen gameScreen, String name) {
+        super(gameScreenManager, name);
         this.gameScreen = gameScreen;
         this.pauseTexture = new Texture("numbers/pause.png");
         this.big3 = new Texture("numbers/big3.png");
@@ -99,7 +99,7 @@ public class PauseScreen extends Screen {
             gameScreen.update();
             if(pause.end) {
                 gameScreen.pause = false;
-                gameScreenManager.setScreen(gameScreen);
+                gameScreenManager.setScreen(gameScreen.name);
             }
         }
     }
@@ -113,5 +113,10 @@ public class PauseScreen extends Screen {
         c2.render(spriteBatch);
         c1.render(spriteBatch);
         run.render(spriteBatch);
+    }
+
+    @Override
+    public void reset() {
+
     }
 }

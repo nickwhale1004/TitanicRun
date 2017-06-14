@@ -43,5 +43,19 @@ public class FallObjectsCreator extends Creator {
     public void render(SpriteBatch spriteBatch) {
         current.render(spriteBatch);
     }
+    public void reset() {
+        time = 0;
+        current.position.y = TitanicClass.ScreenHeight + current.animation.getTexture().getHeight();
+        current.wasTuched = false;
+        isFirst = true;
+        current.animation = objAnimations[randAnim.nextInt(objAnimations.length)];
+        int type = randType.nextInt(2);
+        if(type == 0) {
+            current.position.x = 30;
+        }
+        else {
+            current.position.x = TitanicClass.ScreenWidth-30-current.animation.getTexture().getWidth();
+        }
+    }
 }
 

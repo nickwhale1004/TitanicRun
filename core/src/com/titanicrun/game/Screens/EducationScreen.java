@@ -1,28 +1,13 @@
 package com.titanicrun.game.Screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Preferences;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
-import com.titanicrun.game.Objects.PlayObjects.BackgroundCreator;
-import com.titanicrun.game.Objects.PlayObjects.EnemiesCreator;
-import com.titanicrun.game.Objects.PlayObjects.FallObjectsCreator;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.PlayObjects.MovingSizeObject;
-import com.titanicrun.game.Objects.PlayObjects.Player;
-import com.titanicrun.game.Objects.PlayObjects.Score;
-import com.titanicrun.game.Objects.PlayObjects.Shadow;
-import com.titanicrun.game.Objects.PlayObjects.Water;
-import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
-import com.titanicrun.game.Objects.SystemObjects.PlayerAnimation;
 import com.titanicrun.game.TitanicClass;
-
-import java.util.ArrayList;
 
 /**
  * Created by Никита on 15.04.2017.
@@ -31,8 +16,8 @@ public class EducationScreen extends GameScreen {
     int process; // 0 - begin game,1 - press to top, 2 - pause, 3 - fallobjcts
     protected MovingSizeObject touchToPlay, goTop, pressPause, catchFall;
     private MoveObject goodLuck, pauseField;
-    public EducationScreen(GameScreenManager gameScreenManager) {
-        super(gameScreenManager, new Balance(0, new Vector2(0,0)));
+    public EducationScreen(GameScreenManager gameScreenManager, String name) {
+        super(gameScreenManager, new Balance(10000), name);
         Load();
     }
     @Override
@@ -43,7 +28,7 @@ public class EducationScreen extends GameScreen {
         goodLuck = new MoveObject(goodLAnim,
                 new Vector2(-goodLAnim.getTexture().getWidth(),
                         TitanicClass.ScreenHeight/2 - goodLAnim.getTexture().getHeight()/2 ),
-                new Vector2(0, TitanicClass.ScreenHeight/2 - goodLAnim.getTexture().getHeight()/2), 5);
+                new Vector2(0, TitanicClass.ScreenHeight/2 - goodLAnim.getTexture().getHeight()/2), 10);
         pauseField = new MoveObject(pauseAnim,
                 new Vector2(0, TitanicClass.ScreenHeight),
                 new Vector2(0, TitanicClass.ScreenHeight - pauseAnim.getTexture().getHeight()), 3);
@@ -71,7 +56,7 @@ public class EducationScreen extends GameScreen {
                 player.update();
                 backFirstLvl.update();
             }
-            if (player.position.y >= TitanicClass.ScreenHeight - player.animation.getTexture().getHeight()-5) {
+            if (player.position.y >= TitanicClass.ScreenHeight - player.animation.getTexture().getHeight()) {
                 process = 11;
                 goTop.die();
             }
@@ -88,7 +73,7 @@ public class EducationScreen extends GameScreen {
             if(Gdx.input.justTouched()) {
                 if (!pause && TitanicClass.getMouse().getY() >= TitanicClass.ScreenHeight - 125) {
                     pause = true;
-                    gameScreenManager.setScreen(new PauseScreen(gameScreenManager, this));
+                    gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
                 }
             }
             pressPause.update();
@@ -151,5 +136,14 @@ public class EducationScreen extends GameScreen {
         pressPause.render(spriteBatch);
         catchFall.render(spriteBatch);
         goodLuck.render(spriteBatch);
+    }
+    @Override
+    public void reset() {
+        super.reset();
+        process = 0;
+        touchToPlay.reset();
+        goTop.reset();
+        pressPause.reset();
+        catchFall.reset();
     }
 }

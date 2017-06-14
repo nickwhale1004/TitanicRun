@@ -10,8 +10,8 @@ import com.titanicrun.game.Screens.SkinScreen;
  */
 public class BuyMessage extends MessageScreen {
     private SkinScreen screen;
-    public BuyMessage(GameScreenManager gameScreenManager,  SkinScreen screen) {
-        super(gameScreenManager, new Texture("messages/buyMessage.png"), screen);
+    public BuyMessage(GameScreenManager gameScreenManager,  SkinScreen screen, String name) {
+        super(gameScreenManager, new Texture("messages/buyMessage.png"), screen.name, name);
         this.screen = screen;
     }
     @Override
@@ -21,5 +21,10 @@ public class BuyMessage extends MessageScreen {
     @Override
     public void cansleButtonUpdate() {
         screen.messResult = false;
+    }
+
+    @Override
+    public void reset() {
+
     }
 }

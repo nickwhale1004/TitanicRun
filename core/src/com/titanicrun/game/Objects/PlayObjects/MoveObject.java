@@ -10,6 +10,7 @@ import com.titanicrun.game.Objects.SystemObjects.TextDraw;
  * Created by Никита on 30.01.2016.
  */
 public class MoveObject extends BaseObject {
+    private Vector2 basePos;
     public boolean end;
     protected Vector2 toPosition;
     public Vector2 speed;
@@ -41,10 +42,11 @@ public class MoveObject extends BaseObject {
     }
     private void inicializate(Vector2 toPosition, Vector2 speed)
     {
-        this.toPosition = toPosition;
+        this.toPosition = new Vector2(toPosition.x, toPosition.y);
         this.fromPosition = new Vector2(position.x, position.y);
         this.speed = speed;
         this.end = false;
+        this.basePos = new Vector2(position.x, position.y);
     }
     @Override
     public void update() {
@@ -52,6 +54,7 @@ public class MoveObject extends BaseObject {
             animation.update();
         if(obj != null)
             obj.update();
+
         if(position.y < toPosition.y) {
             position.y += speed.y;
         }
@@ -103,5 +106,10 @@ public class MoveObject extends BaseObject {
     }
     public Texture getTexture() {
         return animation.getTexture();
+    }
+    public void reset() {
+        position.x = basePos.x;
+        position.y = basePos.y;
+        toPosition = null;
     }
 }

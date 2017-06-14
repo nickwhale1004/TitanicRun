@@ -13,12 +13,19 @@ import java.util.ArrayList;
  * Created by Никита on 01.03.2016.
  */
 public class Putter {
-    public ArrayList<com.titanicrun.game.Objects.SystemObjects.Button> skins;
+    public ArrayList<com.titanicrun.game.Objects.SystemObjects.Button> skins, baseSkins;
     public Rectangle rectangle;
     private Preferences sittings;
     private int curr;
 
     public Putter(Rectangle rectangle, ArrayList<Button> skins) {
+        baseSkins = new ArrayList<Button>();
+        for (Button b: skins) {
+            this.baseSkins.add(b);
+        }
+        Load(rectangle, skins);
+    }
+    private void Load(Rectangle rectangle, ArrayList<Button> skins) {
         this.skins = skins;
         this.sittings = Gdx.app.getPreferences("Animation");
         this.curr = sittings.getInteger("Animation");
@@ -43,7 +50,6 @@ public class Putter {
             }
         }
     }
-
     public void update() {
         for(int i = 0; i < skins.size(); i++) {
             skins.get(i).update();
@@ -57,6 +63,13 @@ public class Putter {
         for(int i = 0; i < skins.size(); i++) {
             skins.get(i).render(spriteBatch);
         }
+    }
+    public void reset() {
+        skins = new ArrayList<Button>();
+        for(Button b : baseSkins) {
+            skins.add(b);
+        }
+        Load(rectangle, skins);
     }
     public int getAnimation(){
         return curr;

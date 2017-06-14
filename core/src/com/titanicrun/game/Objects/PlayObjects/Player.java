@@ -13,7 +13,8 @@ import com.titanicrun.game.TitanicClass;
  * Created by Никита on 28.01.2016.
  */
 public class Player extends BaseObject {
-    private Animation dieAnim;
+    private Vector2 basePos;
+    private Animation dieAnim, notDie;
     private float speed, limit;
     private boolean toDie, toDown;
     public Player(GameScreen gameScreen, Animation animation, Animation dieAnim) {
@@ -21,6 +22,8 @@ public class Player extends BaseObject {
                 TitanicClass.ScreenWidth / 2 - animation.getTexture().getWidth() / 2,
                 TitanicClass.ScreenHeight));
         this.speed = 6f;
+        this.basePos = new Vector2(position.x, position.y);
+        this.notDie = animation;
         this.limit = speed*1.8f;
         this.dieAnim = dieAnim;
         this.toDie = false;
@@ -61,5 +64,11 @@ public class Player extends BaseObject {
     @Override
     public void render(SpriteBatch spriteBatch) {
         spriteBatch.draw(animation.getTexture(),position.x,position.y);
+    }
+    public void reset() {
+        toDown = true;
+        toDie = false;
+        animation = notDie;
+        position.y = basePos.y;
     }
 }

@@ -50,4 +50,8 @@ public class SizeChangeObject extends BaseObject {
         spriteBatch.draw(animation.getTexture(), position.x, position.y,
                 (animation.getTexture().getWidth() / 100.f) * size, (animation.getTexture().getHeight() / 100.0f) * size);
     }
+    public void reset() {
+        size = 100;
+        end = false;
+    }
 }

@@ -3,102 +3,93 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\User\.gradle\wrapper\dists\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.9.1\efc80b7e8a239404fdcb9816c9d3bad168e148c2\gdx-box2d-1.9.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="efc80b7e8a239404fdcb9816c9d3bad168e148c2">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\pre-dexed\debug\gdx-box2d-1.9.1_356b91fa88160ba42b4e845f18e27ce0cf425446.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Documents\GitHub\TitanicRun\core\build\libs\core-1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a4466af8ed534e0997fde175148f44ab31e600a2">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\pre-dexed\debug\core-1.0_6d50b3034be8bdb454dfa334356d15b4eaf747d8.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Documents\GitHub\TitanicRun\android\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="672df4cffc75ee222dc1969161e1fa5ceaa8ed8a">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_678c2106c2a12d03657ea058b0a2e7a2d925c5cf\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\User\.gradle\wrapper\dists\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.9.1\984e5fb95e17b03ae5884205f8b886930ef4867\gdx-freetype-1.9.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0984e5fb95e17b03ae5884205f8b886930ef4867">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\pre-dexed\debug\gdx-freetype-1.9.1_0a999fc148d212a075d1ccb946941e2ae2aa23a0.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Documents\GitHub\TitanicRun\android\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_a008a20a4c70000e063d36967328e256a2020bb3\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\User\.gradle\wrapper\dists\caches\modules-2\files-2.1\net.java.jinput\jinput\2.0.5\39c7796b469a600f72380316f6b1f11db6c2c7c4\jinput-2.0.5.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="39c7796b469a600f72380316f6b1f11db6c2c7c4">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\pre-dexed\debug\jinput-2.0.5_ef83691beb4addf28ef3429128573c45386834ef.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\User\.gradle\wrapper\dists\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl\2.9.2\a9d80fe5935c7a9149f6584d9777cfd471f65489\lwjgl-2.9.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a9d80fe5935c7a9149f6584d9777cfd471f65489">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\pre-dexed\debug\lwjgl-2.9.2_21a081cde01e79edfeefc3bdf897663550cb4b6e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\User\.gradle\wrapper\dists\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.1\18554775a4fb747d360da5838298aafbb49bf13a\gdx-backend-android-1.9.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="18554775a4fb747d360da5838298aafbb49bf13a">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.9.1_e407f8da3eedd7bfba01ef016c1a554cafc0d818.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\User\.gradle\wrapper\dists\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.1\41e844a4849872fdb9c33f3f2790e356f907f491\gdx-1.9.1.jar"
+        jar="C:\Users\Никита\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.1\41e844a4849872fdb9c33f3f2790e356f907f491\gdx-1.9.1.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="41e844a4849872fdb9c33f3f2790e356f907f491">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\pre-dexed\debug\gdx-1.9.1_d49ca9a6e327335798a9dc41781eea8c9d99dd3a.jar" />
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\pre-dexed\debug\gdx-1.9.1_512636f3533f85322934ff41fdef1d8a3197cd0f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Documents\GitHub\TitanicRun\core\build\libs\core-1.0.jar"
+        jar="C:\Users\Никита\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.9.1\984e5fb95e17b03ae5884205f8b886930ef4867\gdx-freetype-1.9.1.jar"
         jumboMode="false"
         optimize="true"
-        revision="25.0.0"
-        sha1="ef116c769215fadcd7c6216df12f3c3db08356bc">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\pre-dexed\debug\core-1.0_6d50b3034be8bdb454dfa334356d15b4eaf747d8.jar" />
+        revision="25.0.2"
+        sha1="0984e5fb95e17b03ae5884205f8b886930ef4867">
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\pre-dexed\debug\gdx-freetype-1.9.1_360703679b505443dffa11bc7d2e2558f84c10c4.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\User\.gradle\wrapper\dists\caches\modules-2\files-2.1\net.java.jutils\jutils\1.0.0\e12fe1fda814bd348c1579329c86943d2cd3c6a6\jutils-1.0.0.jar"
+        jar="C:\Users\Никита\.gradle\caches\modules-2\files-2.1\net.java.jutils\jutils\1.0.0\e12fe1fda814bd348c1579329c86943d2cd3c6a6\jutils-1.0.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="e12fe1fda814bd348c1579329c86943d2cd3c6a6">
-        <dex dex="C:\Documents\GitHub\TitanicRun\android\build\intermediates\pre-dexed\debug\jutils-1.0.0_0719a7bed463c90d5d60204ee7cd25a482d0f0a8.jar" />
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\pre-dexed\debug\jutils-1.0.0_d94270ca75de163acc16b8c8d8bcfa33658d5bf0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Никита\.gradle\caches\modules-2\files-2.1\net.java.jinput\jinput\2.0.5\39c7796b469a600f72380316f6b1f11db6c2c7c4\jinput-2.0.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="39c7796b469a600f72380316f6b1f11db6c2c7c4">
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\pre-dexed\debug\jinput-2.0.5_59935f3ad998419096fc8c89c833b6db7eb3c74e.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Game Projects\TitanicRun\android\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_0df7b54e052f3132ef2c5ac4701b611890409e3d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Game Projects\TitanicRun\android\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9a29f37bf6b80076eee2e244cb13fc6a9bc1d05c">
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_c39939534675c103773d931eac157a206a796b70\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Никита\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.1\18554775a4fb747d360da5838298aafbb49bf13a\gdx-backend-android-1.9.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="18554775a4fb747d360da5838298aafbb49bf13a">
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.9.1_988660266a344bf10929ce145023d9bf5ba025ca.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Никита\.gradle\caches\modules-2\files-2.1\org.lwjgl.lwjgl\lwjgl\2.9.2\a9d80fe5935c7a9149f6584d9777cfd471f65489\lwjgl-2.9.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a9d80fe5935c7a9149f6584d9777cfd471f65489">
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\pre-dexed\debug\lwjgl-2.9.2_901c81cc8eb6733341194fc8d3660b752462e3b5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Никита\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.9.1\efc80b7e8a239404fdcb9816c9d3bad168e148c2\gdx-box2d-1.9.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efc80b7e8a239404fdcb9816c9d3bad168e148c2">
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\pre-dexed\debug\gdx-box2d-1.9.1_761d89f32745cf7d9d6c8117f251ec37d76c92b3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Game Projects\TitanicRun\core\build\libs\core-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7a037751f93dc3bc8dd616a9064de5877c0dd7b1">
+        <dex dex="D:\Game Projects\TitanicRun\android\build\intermediates\pre-dexed\debug\core-1.0_881c383e93ba9290c001cb98950603e3a608b627.jar" />
     </item>
 
 </items>

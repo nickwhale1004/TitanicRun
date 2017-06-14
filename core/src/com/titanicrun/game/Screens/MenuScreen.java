@@ -10,75 +10,63 @@ import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Objects.SystemObjects.Button;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.PlayObjects.Water;
-import com.titanicrun.game.Objects.SystemObjects.IncreasingButton;
+import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
+import com.titanicrun.game.Objects.SystemObjects.SettingsButton;
 import com.titanicrun.game.TitanicClass;
 
 /**
  * Created by Никита on 03.02.2016.
  */
 public class MenuScreen extends Screen {
-    private Screen screen;
-    private Button settingsButton;
-    private IncreasingButton playButton, skinButton;
+    private String screen;
+    private SettingsButton settingsButton;
+    private Button playButton, skinButton;
     private Water waterUp, waterMid, waterDown, ship;
     private Texture back;
     private byte process; // 0 -wait, 1 - toScreen, 2 - outScreen
     private  MoveObject slider;
-    private Preferences sittings;
-    private Balance balance;
-    public MenuScreen(GameScreenManager gameScreenManager) {
-        super(gameScreenManager);
+    public MenuScreen(GameScreenManager gameScreenManager, String name) {
+        super(gameScreenManager, name);
         Load();
-    }
-    public MenuScreen(GameScreenManager gameScreenManager, Balance balance) {
-        super(gameScreenManager);
-        Load();
-        this.balance = balance;
     }
     public void Load() {
-        Animation animation = anim("buttons/play.png");
-        this.back = new Texture("backs/night.png");
-        this.playButton = new IncreasingButton(animation,
-                anim("buttons/playTuched.png"), new Vector2(TitanicClass.ScreenWidth/2-animation.getTexture().getWidth()/2,
-                TitanicClass.ScreenHeight/2-animation.getTexture().getHeight()/2));
-        this.skinButton = new IncreasingButton(anim("buttons/skin.png"), anim("buttons/skinTuched.png"),
-                new Vector2(playButton.position.x, playButton.position.y - anim("buttons/skin.png").getTexture().getHeight()-40));
-        this.settingsButton = new Button (anim("buttons/settings.png"), anim("buttons/settings.png"),
+        Animation animation = GameTexturesLoader.get("buttons/play.png");
+        this.back =  GameTexturesLoader.get("backs/night.png").getTexture();
+        this.playButton = new Button(animation,
+                 GameTexturesLoader.get("buttons/playTuched.png"), new Vector2(TitanicClass.ScreenWidth/2-animation.getTexture().getWidth()/2,
+                TitanicClass.ScreenHeight/2-animation.getTexture().getHeight()/2),0);
+        this.skinButton = new Button( GameTexturesLoader.get("buttons/skin.png"),  GameTexturesLoader.get("buttons/skinTuched.png"),
+                new Vector2(playButton.position.x, playButton.position.y -  GameTexturesLoader.get("buttons/skin.png").getTexture().getHeight()-40),0);
+        this.settingsButton = new SettingsButton ( GameTexturesLoader.get("buttons/settings.png"),
                 new Vector2(TitanicClass.ScreenWidth - 74, TitanicClass.ScreenHeight - 74));
         float speed = 0.15f;
-        this.waterUp = new Water(null,anim("menu/waterMenu.png"), new Vector2(0,-0.5f*TitanicClass.ScreenHeight/10),
+        this.waterUp = new Water(null, GameTexturesLoader.get("menu/waterMenu.png"), new Vector2(0,-0.5f*TitanicClass.ScreenHeight/10),
                 0, speed, speed);
-        this.waterMid = new Water(null,anim("menu/waterMenu2.png"), new Vector2(0,-0.5f*2*TitanicClass.ScreenHeight/10),
+        this.waterMid = new Water(null, GameTexturesLoader.get("menu/waterMenu2.png"), new Vector2(0,-0.5f*2*TitanicClass.ScreenHeight/10),
                 -0.5f*TitanicClass.ScreenHeight/10-10, speed*2.5f, 2.5f*speed);
-        this.waterDown = new Water(null, anim("menu/waterMenu3.png"), new Vector2(0,-0.5f*4*TitanicClass.ScreenHeight/10),
+        this.waterDown = new Water(null,  GameTexturesLoader.get("menu/waterMenu3.png"), new Vector2(0,-0.5f*4*TitanicClass.ScreenHeight/10),
                 -0.5f*2*TitanicClass.ScreenHeight/10-10, speed*3f, speed*3f);
-        Animation shipAnim = anim("menu/ship.png");
+        Animation shipAnim =  GameTexturesLoader.get("menu/ship.png");
         this.ship = new Water(null, shipAnim, new Vector2(TitanicClass.ScreenWidth/2-shipAnim.getTexture().getWidth()/2,
                 (TitanicClass.ScreenHeight/2-shipAnim.getTexture().getWidth()/2)*0.9f),
                 (TitanicClass.ScreenHeight/2-shipAnim.getTexture().getWidth()/2),speed,speed);
         this.process = 0;
-        this.slider = new MoveObject(anim("backs/runner.png"), new Vector2(TitanicClass.ScreenWidth, 0),
+        this.slider = new MoveObject( GameTexturesLoader.get("backs/runner.png"), new Vector2(TitanicClass.ScreenWidth, 0),
                 new Vector2(0,0),20);
-        this.sittings = Gdx.app.getPreferences("Balance");
-        this.balance = new Balance(sittings.getInteger("Balance"),
-                new Vector2(TitanicClass.ScreenWidth-5-TitanicClass.scoreABC[0].getWidth()*String.valueOf(balance).length(),
-                        TitanicClass.ScreenHeight-5-TitanicClass.scoreABC[0].getHeight()-5));
-        this.balance.setBalance(sittings.getInteger("Balance"));
     }
     @Override
     public void update() {
         if (process == 0) {
             if (playButton.isPressed()) {
-                screen = new GameScreen(gameScreenManager, balance);
+                screen = "GameScreen";
                 process = 1;
             }
             if(skinButton.isPressed()) {
-                balance.drawPosition = new Vector2(105,TitanicClass.ScreenHeight - TitanicClass.scoreABC[0].getHeight()/2 - 10);
-                screen = new SkinScreen(gameScreenManager, balance);
+                screen = "SkinScreen";
                 process = 1;
             }
             if (settingsButton.isPressed()) {
-                screen = new SettingsScreen(gameScreenManager);
+                screen = "SettingScreen";
                 process = 1;
             }
         } else if (process == 1) {
@@ -89,7 +77,7 @@ public class MenuScreen extends Screen {
             }
         } else if (process == 2) {
             slider.update();
-            screen.update();
+            gameScreenManager.getScreen(screen).update();
             if (slider.end) {
                 gameScreenManager.setScreen(screen);
             }
@@ -108,7 +96,7 @@ public class MenuScreen extends Screen {
     @Override
     public void render(SpriteBatch spriteBatch) {
         if(process == 2) {
-            screen.render(spriteBatch);
+            gameScreenManager.getScreen(screen).render(spriteBatch);
         }
         else {
             spriteBatch.draw(back, 0, 0);
@@ -121,5 +109,15 @@ public class MenuScreen extends Screen {
             settingsButton.render(spriteBatch);
         }
         slider.render(spriteBatch);
+    }
+
+    @Override
+    public void reset() {
+        process = 0;
+        playButton.reset();
+        skinButton.reset();
+        settingsButton.reset();
+        slider.reset();
+        slider.change(new Vector2(0,0));
     }
 }

@@ -17,8 +17,8 @@ public class SplashScreen extends Screen {
     private MovingSizeObject texttt;
     MoveObject back1, player11, player12, back2, back3, back4, player4, man4, pic41, pic42;
     int process; //0 - 1screen, 1 - 2screen,2 - 3screen, 3 - 4screen
-    public SplashScreen(GameScreenManager gameScreenManager) {
-        super(gameScreenManager);
+    public SplashScreen(GameScreenManager gameScreenManager, String name) {
+        super(gameScreenManager, name);
         this.process = 0;
         Animation back1Anim = anim("splashes/1back.png");
         Animation player11Anim = anim("splashes/1char1.png");
@@ -58,7 +58,7 @@ public class SplashScreen extends Screen {
         this.pic42 = new MoveObject(pic42Anim,
                 new Vector2(-pic42Anim.getTexture().getWidth() + TitanicClass.ScreenWidth, 0),
                 new Vector2(0, 0), 2);
-        texttt = new MovingSizeObject(new Vector2(30,50), anim("splashes/touchtoplay.png"), 100, 140, 1.5f);
+        texttt = new MovingSizeObject(new Vector2(30,50), anim("splashes/continue.png"), 100, 140, 1.5f);
     }
 
     @Override
@@ -105,7 +105,7 @@ public class SplashScreen extends Screen {
             texttt.update();
             if(pic42.end) {
                 if(Gdx.input.justTouched()) {
-                    gameScreenManager.addScreen(new EducationScreen(gameScreenManager));
+                    gameScreenManager.setScreen("EducationScreen");
                 }
             }
         }
@@ -146,5 +146,10 @@ public class SplashScreen extends Screen {
                 texttt.render(spriteBatch);
             }
         }
+    }
+
+    @Override
+    public void reset() {
+
     }
 }

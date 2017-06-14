@@ -59,4 +59,7 @@ public class MovingSizeObject extends BaseObject{
     public void render(SpriteBatch spriteBatch) {
         obj.render(spriteBatch);
     }
+    public void reset() {
+        obj.reset();
+    }
 }
