@@ -56,11 +56,12 @@ public class GameScreen extends Screen {
         playerAnimations = new Array<PlayerAnimation>();
         for(int i = 1; i <= 9; i++)
             playerAnimations.add(new PlayerAnimation(new Animation(new Texture[]{
-                    GameTexturesLoader.get("player"+i).getTexture(),
-                    GameTexturesLoader.get("player2"+i).getTexture(),
-                    GameTexturesLoader.get("player3"+i).getTexture(),
-                    GameTexturesLoader.get("player2"+i).getTexture()},5),
-                    GameTexturesLoader.get("playerFront"+i), GameTexturesLoader.get("playerPreview"+i)));
+                    GameTexturesLoader.get("players/"+i+"player.png").getTexture(),
+                    GameTexturesLoader.get("players/"+i+"player2.png").getTexture(),
+                    GameTexturesLoader.get("players/"+i+"player3.png").getTexture(),
+                    GameTexturesLoader.get("players/"+i+"player2.png").getTexture()},5),
+                    GameTexturesLoader.get("players/"+i+"playerFront.png"),
+                    GameTexturesLoader.get("players/"+i+"playerPreview.png")));
         Preferences sittings = Gdx.app.getPreferences("Animation");
         int playerIndex = sittings.getInteger("Animation");
         player = new Player(this, playerAnimations.get(playerIndex).run, playerAnimations.get(playerIndex).fly);

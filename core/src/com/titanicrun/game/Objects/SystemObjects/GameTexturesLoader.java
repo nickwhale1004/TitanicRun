@@ -13,65 +13,83 @@ import java.util.Map;
  */
 
 public class GameTexturesLoader {
+    static ArrayList<String> dictionaryString;
     static Map<String,Animation> dictionary ;
+    static int n = 0;
+    static int index = 0;
     public GameTexturesLoader() {
+        dictionaryString = new ArrayList<String>();
         dictionary = new HashMap<String, Animation>();
-        dictionary.put("backs/deathBack.png", anim("backs/deathBack.png"));
-        dictionary.put("numbers/gameover.png", anim("numbers/gameover.png"));
-        dictionary.put("numbers/of.png", anim("numbers/of.png"));
-        dictionary.put("buttons/menu.png", anim("buttons/menu.png"));
-        dictionary.put("buttons/menuTuched.png", anim("buttons/menuTuched.png"));
-        dictionary.put("buttons/play.png", anim("buttons/play.png"));
-        dictionary.put("backs/night.png", anim("backs/night.png"));
-        dictionary.put("buttons/playTuched.png", anim("buttons/playTuched.png"));
-        dictionary.put("buttons/skin.png", anim("buttons/skin.png"));
-        dictionary.put("buttons/skinTuched.png", anim("buttons/skinTuched.png"));
-        dictionary.put("buttons/settings.png", anim("buttons/settings.png"));
-        dictionary.put("menu/waterMenu.png", anim("menu/waterMenu.png"));
-        dictionary.put("menu/waterMenu2.png", anim("menu/waterMenu2.png"));
-        dictionary.put("menu/waterMenu3.png", anim("menu/waterMenu3.png"));
-        dictionary.put("menu/ship.png", anim("menu/ship.png"));
-        dictionary.put("backs/runner.png", anim("backs/runner.png"));
+        dictionaryString.add("backs/deathBack.png");
+        dictionaryString.add("numbers/gameover.png");
+        dictionaryString.add("numbers/of.png");
+        dictionaryString.add("buttons/menu.png");
+        dictionaryString.add("buttons/menuTuched.png");
+        dictionaryString.add("buttons/play.png");
+        dictionaryString.add("backs/night.png");
+        dictionaryString.add("buttons/playTuched.png");
+        dictionaryString.add("buttons/skin.png");
+        dictionaryString.add("buttons/skinTuched.png");
+        dictionaryString.add("buttons/settings.png");
+        dictionaryString.add("menu/waterMenu.png");
+        dictionaryString.add("menu/waterMenu2.png");
+        dictionaryString.add("menu/waterMenu3.png");
+        dictionaryString.add("menu/ship.png");
+        dictionaryString.add("backs/runner.png");
         /////
-        dictionary.put("backs/shadow.png", anim("backs/shadow.png"));
-        dictionary.put("backs/night.png", anim("backs/night.png"));
-        dictionary.put("backs/pauseLine.png", anim("backs/pauseLine.png"));
+        dictionaryString.add("backs/shadow.png");
+        dictionaryString.add("backs/night.png");
+        dictionaryString.add("backs/pauseLine.png");
         for(int i = 1; i <= 9; i++) {
-            dictionary.put("player"+i, anim("players/"+i+"player.png"));
-            dictionary.put("player2"+i,anim("players/"+i+"player2.png"));
-            dictionary.put("player3"+i,anim("players/"+i+"player3.png"));
-            dictionary.put("playerFront"+i, anim("players/"+i+"playerFront.png"));
-            dictionary.put("playerPreview"+i, anim("players/"+i+"playerPreview.png"));
+            dictionaryString.add("players/"+i+"player.png");
+            dictionaryString.add("players/"+i+"player2.png");
+            dictionaryString.add("players/"+i+"player3.png");
+            dictionaryString.add("players/"+i+"playerFront.png");
+            dictionaryString.add("players/"+i+"playerPreview.png");
         }
-        dictionary.put("object.png", anim("object.png"));
+        dictionaryString.add("object.png");
         for(int i = 1; i<=2; i++) {
-            dictionary.put("backs/"+i+"backUsuall.png", anim("backs/"+i+"backUsuall.png"));
-            dictionary.put("backs/"+i+"backPrev.png", anim("backs/"+i+"backPrev.png"));
+            dictionaryString.add("backs/"+i+"backUsuall.png");
+            dictionaryString.add("backs/"+i+"backPrev.png");
         }
-        dictionary.put("water.png", anim("water.png"));
-        dictionary.put("water2.png", anim("water2.png"));
-        dictionary.put("water3.png", anim("water3.png"));
+        //8
+        dictionaryString.add("water.png");
+        dictionaryString.add("water2.png");
+        dictionaryString.add("water3.png");
         for(int i = 1; i < 8; i++) {
-            dictionary.put("fallObj/fall"+i+".png", anim("fallObj/fall"+i+".png"));
+            dictionaryString.add("fallObj/fall"+i+".png");
         }
-        dictionary.put("fallObj/fallMan1.png", anim("fallObj/fallMan1.png"));
+        dictionaryString.add("fallObj/fallMan1.png");
         //////
-        dictionary.put("sllBack.png", anim("sllBack.png"));
-        dictionary.put("backs/skin.png", anim("backs/skin.png"));
-        dictionary.put("backs/skinUp.png", anim("backs/skinUp.png"));
-        dictionary.put("buttons/select.png", anim("buttons/select.png"));
-        dictionary.put("buttons/selectTuched.png", anim("buttons/selectTuched.png"));
-        dictionary.put("buttons/menuSmall.png", anim("buttons/menuSmall.png"));
-        dictionary.put("buttons/menuSmallTuched.png", anim("buttons/menuSmallTuched.png"));
-        dictionary.put("buttons/buy.png", anim("buttons/buy.png"));
-        dictionary.put("buttons/buyTuched.png", anim("buttons/buyTuched.png"));
+        dictionaryString.add("sllBack.png");
+        dictionaryString.add("backs/skin.png");
+        dictionaryString.add("backs/skinUp.png");
+        dictionaryString.add("buttons/select.png");
+        dictionaryString.add("buttons/selectTuched.png");
+        dictionaryString.add("buttons/menuSmall.png");
+        dictionaryString.add("buttons/menuSmallTuched.png");
+        dictionaryString.add("buttons/buy.png");
+        dictionaryString.add("buttons/buyTuched.png");
         for(int i = 1; i <= 9; i++) {
-            dictionary.put("players/"+i+"playerSkin.png", anim("players/"+i+"playerSkin.png"));
+            dictionaryString.add("players/"+i+"playerSkin.png");
         }
-        dictionary.put("sll.png", anim("sll.png"));
-        dictionary.put("players/unknow.png", anim("players/unknow.png"));
-        dictionary.put("selected.png", anim("selected.png"));
-        dictionary.put("preview.png", anim("preview.png"));
+        dictionaryString.add("sll.png");
+        dictionaryString.add("players/unknow.png");
+        dictionaryString.add("selected.png");
+        dictionaryString.add("preview.png");
+        n =dictionaryString.size() / 11;
+    }
+    public void update() {
+        for(int i = 0; i < n; i++) {
+            dictionary.put(dictionaryString.get(index), anim(dictionaryString.get(index)));
+            index++;
+        }
+    }
+    public void specialUpdate() {
+        while(index < dictionaryString.size()-1) {
+            dictionary.put(dictionaryString.get(index), anim(dictionaryString.get(index)));
+            index++;
+        }
     }
     public static Animation get(String s) {
        return dictionary.get(s);

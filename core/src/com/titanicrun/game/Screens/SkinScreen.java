@@ -103,11 +103,12 @@ public class SkinScreen extends Screen {
         this.playerAnimations = new ArrayList<PlayerAnimation>();
         for(int i = 1; i <= countOfPerson; i++)
             playerAnimations.add(new PlayerAnimation(new Animation(new Texture[]{
-                GameTexturesLoader.get("player"+i).getTexture(),
-                GameTexturesLoader.get("player2"+i).getTexture(),
-                GameTexturesLoader.get("player3"+i).getTexture(),
-                GameTexturesLoader.get("player2"+i).getTexture()},5),
-                GameTexturesLoader.get("playerFront"+i), GameTexturesLoader.get("playerPreview"+i)));
+                    GameTexturesLoader.get("players/"+i+"player.png").getTexture(),
+                    GameTexturesLoader.get("players/"+i+"player2.png").getTexture(),
+                    GameTexturesLoader.get("players/"+i+"player3.png").getTexture(),
+                    GameTexturesLoader.get("players/"+i+"player2.png").getTexture()},5),
+                    GameTexturesLoader.get("players/"+i+"playerFront.png"),
+                    GameTexturesLoader.get("players/"+i+"playerPreview.png")));
         //И Н И Ц И А Л И З А Ц И Я  З А Б Л О К И Р О В А Н Н Ы Х  П Е Р С О Н А Ж Е Й  И  ИХ  М Е Т О К
         lockedIDs = new HashMap<Integer, Integer>();
         lockedMarks = new Array<Mark>();
