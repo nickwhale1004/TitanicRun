@@ -54,7 +54,7 @@ public class EducationScreen extends GameScreen {
             goTop.update();
             if(Gdx.input.isTouched()) {
                 player.update();
-                backFirstLvl.update();
+                backLvl.get(lvl).update();
             }
             if (player.position.y >= TitanicClass.ScreenHeight - player.animation.getTexture().getHeight()) {
                 process = 11;
@@ -63,7 +63,7 @@ public class EducationScreen extends GameScreen {
 
         } else if(process == 11)  {
             goTop.update();
-            backFirstLvl.update();
+            backLvl.get(lvl).update();
             player.update();
             if (goTop.end) {
                 process = 2;

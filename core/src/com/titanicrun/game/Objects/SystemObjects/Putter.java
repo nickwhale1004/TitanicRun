@@ -55,7 +55,7 @@ public class Putter {
     public void update() {
         for(int i = 0; i < skins.size(); i++) {
             skins.get(i).update();
-            if(skins.get(i).isPressed() && (TitanicClass.getMouse().getY() <= TitanicClass.ScreenHeight/2) ) {
+            if(skins.get(i).isPressed() && (TitanicClass.getMouse().getY() <= TitanicClass.ScreenHeight/2+40) ) {
                 curr = i;
             }
         }

@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
 import com.titanicrun.game.Objects.PlayObjects.GameScore;
+import com.titanicrun.game.Objects.PlayObjects.SuperShark;
 import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Objects.PlayObjects.BackgroundCreator;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
@@ -23,9 +24,12 @@ import com.titanicrun.game.Objects.PlayObjects.Water;
 import com.titanicrun.game.TitanicClass;
 import com.titanicrun.game.Objects.SystemObjects.Text;
 
+import java.util.ArrayList;
+
 public class GameScreen extends Screen {
     public GameScore gameScore;
     public Player player;
+    public SuperShark shark;
     public int score;
     public Text scoreText;
     private Texture pauseLine;
@@ -35,11 +39,12 @@ public class GameScreen extends Screen {
     public Shadow shadow;
     public Texture night;
     public EnemiesCreator enemiesCreator;
-    public BackgroundCreator backFirstLvl, backSecondLvl;
+    public ArrayList<BackgroundCreator> backLvl;
     public DeathScreen deathScreen;
     public Array<PlayerAnimation> playerAnimations;
     public FallObjectsCreator fallObj;
     public boolean pause;
+    public int lvl;
 
     public GameScreen(GameScreenManager gameScreenManager, Balance balance, String name) {
         super(gameScreenManager, name);
@@ -48,8 +53,10 @@ public class GameScreen extends Screen {
         Load();
     }
     public void Load() {
+        lvl = 0;
         gameScore = new GameScore(this);
         pause = true;
+        shark = new SuperShark(anim("shark.png"), anim("sharkReverse.png"));
         shadow = new Shadow(this, GameTexturesLoader.get("backs/shadow.png"));
         night = GameTexturesLoader.get("backs/night.png").getTexture();
         pauseLine = GameTexturesLoader.get("backs/pauseLine.png").getTexture();
@@ -67,8 +74,11 @@ public class GameScreen extends Screen {
         player = new Player(this, playerAnimations.get(playerIndex).run, playerAnimations.get(playerIndex).fly);
         enemiesCreator = new EnemiesCreator(this, GameTexturesLoader.get("object.png"),60);
         score = 0;
-        backFirstLvl = new BackgroundCreator(this, GameTexturesLoader.get("backs/1backUsuall.png"), GameTexturesLoader.get("backs/1backPrev.png"),false);
-        backSecondLvl = new BackgroundCreator(this, GameTexturesLoader.get("backs/2backUsuall.png"), GameTexturesLoader.get("backs/2backPrev.png"),true);
+        backLvl = new ArrayList<BackgroundCreator>();
+        backLvl.add(new BackgroundCreator(this, GameTexturesLoader.get("backs/1backUsuall.png"), GameTexturesLoader.get("backs/1backPreview.png"),false));
+        for(int i = 2; i < 10; i++) {
+            backLvl.add(new BackgroundCreator(this, GameTexturesLoader.get("backs/"+i+"backUsuall.png"), GameTexturesLoader.get("backs/"+i+"backPreview.png"), true));
+        }
         Animation waterAnim = new Animation(new Texture[]{
                 GameTexturesLoader.get("water.png").getTexture(),
                 GameTexturesLoader.get("water2.png").getTexture(),
@@ -86,13 +96,13 @@ public class GameScreen extends Screen {
         fallObj = new FallObjectsCreator(this,animations, 600);
         player.animation.update();
         water.update();
-
-        backFirstLvl.update();
+        backLvl.get(lvl).update();
         scoreText = new Text(new Vector2(20, TitanicClass.ScreenHeight - 12), score+"", Color.WHITE);
     }
     @Override
     public void update() {
         if(!pause) {
+            shark.update();
             gameScreenManager.removeScreen("Pause");
             gameScreenManager.removeScreen("Death");
             if(Gdx.input.justTouched()) {
@@ -115,14 +125,16 @@ public class GameScreen extends Screen {
         else {
             if (Gdx.input.justTouched()) {
                 pause = false;
-                Gdx.app.log(pause+"","pause");
-                backFirstLvl.pause = false;
+                backLvl.get(lvl).pause = false;
                 //playBGM.waterSound.play();
             }
         }
-        backFirstLvl.update();
-        if(score >= 90 && score <=190)
-            backSecondLvl.update();
+        if(lvl != 0) {
+            backLvl.get(lvl-1).update();
+        }
+        backLvl.get(lvl).update();
+            if (score >= lvl*100+90 && lvl != 8)
+                lvl++;
         player.animation.update();
         water.update();
         gameScore.update();
@@ -133,14 +145,16 @@ public class GameScreen extends Screen {
     @Override
     public void render(SpriteBatch spriteBatch) {
         spriteBatch.draw(night, 0, 0);
-        backFirstLvl.render(spriteBatch);
-        backSecondLvl.render(spriteBatch);
+        if(lvl != 0)
+            backLvl.get(lvl-1).render(spriteBatch);
+        backLvl.get(lvl).render(spriteBatch);
         spriteBatch.draw(pauseLine, 0, 0);
         player.render(spriteBatch);
         enemiesCreator.render(spriteBatch);
         fallObj.render(spriteBatch);
+        shark.render(spriteBatch);
         water.render(spriteBatch);
-        if(score>50)
+        if(score>900)
             shadow.render(spriteBatch);
         //score.render(spriteBatch);
         scoreText.render(spriteBatch);
@@ -149,8 +163,9 @@ public class GameScreen extends Screen {
 
     @Override
     public void reset() {
-        backFirstLvl.reset();
-        backSecondLvl.reset();
+        for(int i = 0; i < 9; i++) {
+            backLvl.get(i).reset();
+        }
         scoreText.reset();
         score = 0;
         pause = true;

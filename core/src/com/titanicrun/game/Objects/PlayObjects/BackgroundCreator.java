@@ -1,5 +1,6 @@
 package com.titanicrun.game.Objects.PlayObjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.BaseObject;
@@ -31,12 +32,10 @@ public class BackgroundCreator extends Creator {
             this.process = 0;
         else
             this.process = 1;
-        pause = true;
 
     }
 
     public void update() {
-        if(!pause)
             time++;
         if (time >= interval) {
             tick();

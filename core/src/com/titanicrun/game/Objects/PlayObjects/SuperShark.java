@@ -23,8 +23,8 @@ public class SuperShark extends BaseObject{
     private Random generator;
     private Animation animBack;
 
-    public SuperShark(Animation animation, Animation animationBack, Vector2 position) {
-        super(animation, position);
+    public SuperShark(Animation animation, Animation animationBack) {
+        super(animation, new Vector2(0,0));
         this.generator = new Random(System.currentTimeMillis());
         this.vector = generator.nextBoolean();
         this.moveTo = true;
@@ -37,7 +37,7 @@ public class SuperShark extends BaseObject{
         } else {
             position.x = -150;
         }
-        this.timeToSwim = (int)(generator.nextDouble()*100);
+        this.timeToSwim = (int)(generator.nextDouble()*10000);
         this.time = 0;
         this.process = 0;
     }
@@ -69,7 +69,7 @@ public class SuperShark extends BaseObject{
                         position.x = -150;
                     }
                     process = 0;
-                    timeToSwim = (int) (generator.nextDouble() * 100);
+                    timeToSwim = (int) (generator.nextDouble() * 10000);
                     toPosY = (int)(generator.nextDouble() * 50);
                     if (generator.nextBoolean()) {
                         position.y = (int) (toPosY - 50);
@@ -98,7 +98,7 @@ public class SuperShark extends BaseObject{
                         position.x = -150;
                     }
                     process = 0;
-                    timeToSwim = (int) (generator.nextDouble() * 100);
+                    timeToSwim = (int) (generator.nextDouble() * 10000);
                     toPosY = (int)(generator.nextDouble() * 50);
                     if (generator.nextBoolean()) {
                         position.y = (int) (toPosY - 50);
@@ -122,7 +122,7 @@ public class SuperShark extends BaseObject{
     public void Die () {
         time = 0;
         process = 0;
-        timeToSwim = (int)(generator.nextDouble()*100);
+        timeToSwim = (int)(generator.nextDouble()*10000);
         position.x = TitanicClass.ScreenWidth;
 
         toPosY = (int)(generator.nextDouble() * 50);

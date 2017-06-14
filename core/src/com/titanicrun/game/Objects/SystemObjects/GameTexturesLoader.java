@@ -49,9 +49,9 @@ public class GameTexturesLoader {
             dictionaryString.add("players/"+i+"playerPreview.png");
         }
         dictionaryString.add("object.png");
-        for(int i = 1; i<=2; i++) {
+        for(int i = 1; i<=9; i++) {
             dictionaryString.add("backs/"+i+"backUsuall.png");
-            dictionaryString.add("backs/"+i+"backPrev.png");
+            dictionaryString.add("backs/"+i+"backPreview.png");
         }
         //8
         dictionaryString.add("water.png");
