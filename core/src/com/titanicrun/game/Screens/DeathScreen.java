@@ -112,10 +112,10 @@ public class DeathScreen extends Screen {
                     process = 2;
                 }
             }
+            gameScreen.pause = true;
             gameScreenManager.getScreen(screen).update();
         }
         else if(process == 2) {
-            gameScreen.pause = true;
             gameScreenManager.setScreen(screen);
         }
     }

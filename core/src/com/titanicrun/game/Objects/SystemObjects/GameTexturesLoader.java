@@ -1,5 +1,6 @@
 package com.titanicrun.game.Objects.SystemObjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
@@ -86,7 +87,7 @@ public class GameTexturesLoader {
         }
     }
     public void specialUpdate() {
-        while(index < dictionaryString.size()-1) {
+        while(index < dictionaryString.size()) {
             dictionary.put(dictionaryString.get(index), anim(dictionaryString.get(index)));
             index++;
         }

@@ -28,13 +28,12 @@ public class TitanicClass extends ApplicationAdapter {
 	public static final int ScreenHeight = 800;
 	public static final int ScreenWidth = 480;
 	private static OrthographicCamera camera;
-	private boolean flag = true;
 	public GameScreenManager gameScreenManager;
 	@Override
 	public void create () {
 		//ABC
-		for(int i = 0; i < 10; i++) {
-			scoreABC[i] = new Texture("numbers/"+i+".png");
+		for (int i = 0; i < 10; i++) {
+			scoreABC[i] = new Texture("numbers/" + i + ".png");
 		}
 		scoreABC[10] = new Texture("numbers/space.png");
 		gameScreenManager = new GameScreenManager();
@@ -43,10 +42,9 @@ public class TitanicClass extends ApplicationAdapter {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, ScreenWidth, ScreenHeight);
 	}
-
 	@Override
 	public void render () {
-        Gdx.gl.glClearColor(0,0,2,1);
+        Gdx.gl.glClearColor(0,0,0,0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update();
 		spriteBatch.setProjectionMatrix(camera.combined);
