@@ -6,6 +6,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.Preferences;
 import com.titanicrun.game.Objects.SystemObjects.Button;
+import com.titanicrun.game.Screens.GameScreenManager;
+import com.titanicrun.game.TitanicClass;
 
 import java.util.ArrayList;
 
@@ -53,7 +55,7 @@ public class Putter {
     public void update() {
         for(int i = 0; i < skins.size(); i++) {
             skins.get(i).update();
-            if(skins.get(i).isPressed()) {
+            if(skins.get(i).isPressed() && (TitanicClass.getMouse().getY() <= TitanicClass.ScreenHeight/2) ) {
                 curr = i;
             }
         }

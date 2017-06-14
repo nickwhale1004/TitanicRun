@@ -282,6 +282,7 @@ public class SkinScreen extends Screen {
         buy.reset();
         select.reset();
         slider.change(new Vector2(0,0));
+        gameScreenManager.getScreen("GameScreen").reset();
     }
 
 }
