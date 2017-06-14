@@ -13,7 +13,7 @@ import com.titanicrun.game.TitanicClass;
  * Created by Никита on 15.04.2017.
  */
 public class SplashScreen extends Screen {
-
+    private EducationScreen educationScreen;
     private MovingSizeObject texttt;
     MoveObject back1, player11, player12, back2, back3, back4, player4, man4, pic41, pic42;
     int process; //0 - 1screen, 1 - 2screen,2 - 3screen, 3 - 4screen
@@ -105,7 +105,8 @@ public class SplashScreen extends Screen {
             texttt.update();
             if(pic42.end) {
                 if(Gdx.input.justTouched()) {
-                    gameScreenManager.setScreen("EducationScreen");
+                    educationScreen = new EducationScreen(gameScreenManager,  "Education");
+                    gameScreenManager.addScreen(educationScreen);
                 }
             }
         }
@@ -150,6 +151,16 @@ public class SplashScreen extends Screen {
 
     @Override
     public void reset() {
-
+        process = 0;
+        back1.reset();
+        player11.reset();
+        player12.reset();
+        back2.reset();
+        back3.reset();
+        back4.reset();
+        player4.reset();
+        man4.reset();
+        pic41.reset();
+        pic42.reset();
     }
 }

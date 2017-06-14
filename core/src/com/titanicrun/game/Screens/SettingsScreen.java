@@ -27,6 +27,7 @@ public class SettingsScreen extends  Screen {
     private Button menuButton;
     private Button soundsButton;
     private Button musicButton;
+    public SplashScreen splashScreen;
 
     public SettingsScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
@@ -106,7 +107,8 @@ public class SettingsScreen extends  Screen {
         if (historyButton.isPressed()) {
             process = 1;
             screen = "SplashScreen";
-            gameScreenManager.setScreen(screen);
+            splashScreen = new SplashScreen(gameScreenManager, "Death");
+            gameScreenManager.addScreen(splashScreen);
         }
         if (menuButton.isPressed()) {
             process = 2;
