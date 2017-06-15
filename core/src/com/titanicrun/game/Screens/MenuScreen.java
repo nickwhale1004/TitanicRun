@@ -53,6 +53,7 @@ public class MenuScreen extends Screen {
         this.process = 0;
         this.slider = new MoveObject( GameTexturesLoader.get("backs/runner.png"), new Vector2(TitanicClass.ScreenWidth, 0),
                 new Vector2(0,0),20);
+
     }
     @Override
     public void update() {
@@ -79,6 +80,7 @@ public class MenuScreen extends Screen {
             slider.update();
             gameScreenManager.getScreen(screen).update();
             if (slider.end) {
+
                 gameScreenManager.setScreen(screen);
             }
         }

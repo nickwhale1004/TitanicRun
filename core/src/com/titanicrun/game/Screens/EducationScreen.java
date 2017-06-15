@@ -17,7 +17,7 @@ public class EducationScreen extends GameScreen {
     protected MovingSizeObject touchToPlay, goTop, pressPause, catchFall;
     private MoveObject goodLuck, pauseField;
     public EducationScreen(GameScreenManager gameScreenManager, String name) {
-        super(gameScreenManager, new Balance(10000), name);
+        super(gameScreenManager, new Balance(Gdx.app.getPreferences("Balance").getInteger("Balance")), name);
         Load();
     }
     @Override

@@ -39,7 +39,7 @@ public class SkinScreen extends Screen {
     private Putter tableSkin;
     private Scroller scroll;
     private Texture scrollBack, skinBack, skinUpBack;
-    private Preferences animSittings, lockSittings, prices;
+    private Preferences animSittings, lockSittings, prices, balanceSitting;
     private Button select, menu, buy;
     private ArrayList<PlayerAnimation> playerAnimations;
     //private ArrayList<Integer> prices;
@@ -60,8 +60,8 @@ public class SkinScreen extends Screen {
         this.process = 0;
         //----------------------------------------------------//
         //Н А С Т Р О Й К И
-        Preferences sittings = Gdx.app.getPreferences("Balance");
-        this.playBalance = new Balance(sittings.getInteger("Balance"));
+        this.balanceSitting = Gdx.app.getPreferences("Balance");
+        this.playBalance = new Balance(balanceSitting.getInteger("Balance"));
         this.animSittings = Gdx.app.getPreferences("Animation");
         this.lockSittings = Gdx.app.getPreferences("Locked");
         this.font = new BitmapFont();
@@ -175,8 +175,8 @@ public class SkinScreen extends Screen {
                 }
             }
             if (menu.isPressed()) {
-                Gdx.app.getPreferences("Balance").putInteger("Balance", playBalance.getBalance());
-                Gdx.app.getPreferences("Balance").flush();
+                balanceSitting.putInteger("Balance", playBalance.getBalance());
+                balanceSitting.flush();
                 process = 1;
             }
             if(messResult) {
