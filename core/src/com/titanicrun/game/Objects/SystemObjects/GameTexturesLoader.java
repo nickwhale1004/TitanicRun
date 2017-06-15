@@ -23,6 +23,8 @@ public class GameTexturesLoader {
         dictionary = new HashMap<String, Animation>();
         dictionaryString.add("backs/deathBack.png");
         dictionaryString.add("numbers/gameover.png");
+        dictionaryString.add("shark.png");
+        dictionaryString.add("sharkReverse.png");
         dictionaryString.add("numbers/of.png");
         dictionaryString.add("buttons/menu.png");
         dictionaryString.add("buttons/menuTuched.png");

@@ -1,6 +1,8 @@
 package com.titanicrun.game.Objects.PlayObjects;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.BaseObject;
@@ -18,10 +20,12 @@ public class GameScore extends BaseObject {
     public boolean objectFalled;
     public boolean isFinished;
     MoveObject moveableText;
+    private GlyphLayout layout;
 
 
     public GameScore(GameScreen gameScreen) {
         this.gameScreen = gameScreen;
+        layout = new GlyphLayout();
         ballanceText = new Text(new Vector2(0, 0), Integer.toString(0), new Color(0.95f, 0.92f, 0.03f, 1));
         failingObjectCatched = false;
         objectFalled = false;
@@ -32,7 +36,8 @@ public class GameScore extends BaseObject {
     public void update() {
         if (!failingObjectCatched) {
             ballanceText.textValue = Integer.toString(gameScreen.playBallance.getBalance());
-            ballanceText.position.x = TitanicClass.ScreenWidth - ballanceText.textValue.length() * 29f - 5;
+            layout.setText(ballanceText.font, ballanceText.textValue);
+            ballanceText.position.x = TitanicClass.ScreenWidth - layout.width - 15;
             ballanceText.position.y = TitanicClass.ScreenHeight - 12;
             moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
         }

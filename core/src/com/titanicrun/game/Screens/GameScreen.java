@@ -56,7 +56,7 @@ public class GameScreen extends Screen {
         lvl = 0;
         gameScore = new GameScore(this);
         pause = true;
-        shark = new SuperShark(anim("shark.png"), anim("sharkReverse.png"));
+        shark = new SuperShark(GameTexturesLoader.get("shark.png"), GameTexturesLoader.get("sharkReverse.png"));
         shadow = new Shadow(this, GameTexturesLoader.get("backs/shadow.png"));
         night = GameTexturesLoader.get("backs/night.png").getTexture();
         pauseLine = GameTexturesLoader.get("backs/pauseLine.png").getTexture();
@@ -175,7 +175,8 @@ public class GameScreen extends Screen {
         int playerIndex = sittings.getInteger("Animation");
         player = new Player(this, playerAnimations.get(playerIndex).run, playerAnimations.get(playerIndex).fly);
         Preferences sittingss = Gdx.app.getPreferences("Balance");
-        playBallance= new Balance(sittingss.getInteger("Balance"));    }
+        playBallance = new Balance(sittingss.getInteger("Balance"));
+    }
 
     public void Die() {
         //playBGM.dispose();
