@@ -35,23 +35,23 @@ public class SuperShark extends BaseObject{
             position.x = TitanicClass.ScreenWidth;
 
         } else {
-            position.x = -150;
+            position.x = -animation.getTexture().getWidth();
         }
         this.timeToSwim = (int)(generator.nextDouble()*10000);
-        this.time = 0;
+        this.time =0;
         this.process = 0;
     }
     @Override
     public void update() {
         if (process == 0) {
             time++;
-            if (time == timeToSwim) {
+            if (time >= timeToSwim) {
                 process = 1;
             }
         } else {
             time = 0;
             if (vector) {
-                if (position.x >= -100) {
+                if (position.x >= -animation.getTexture().getWidth()) {
                     position.x -= 5;
                     if (moveTo) {
                         position.y += (toPosY - position.y) / 50;
@@ -66,15 +66,15 @@ public class SuperShark extends BaseObject{
                     if (vector) {
                         position.x = TitanicClass.ScreenWidth;
                     } else {
-                        position.x = -150;
+                        position.x = -animation.getTexture().getWidth();
                     }
                     process = 0;
                     timeToSwim = (int) (generator.nextDouble() * 10000);
                     toPosY = (int)(generator.nextDouble() * 50);
                     if (generator.nextBoolean()) {
-                        position.y = (int) (toPosY - 50);
+                        position.y = toPosY - 50;
                     } else {
-                        position.y = (int) (toPosY + 50);
+                        position.y = toPosY + 50;
                     }
                     predPos = (int)position.y;
                     moveTo = true;
@@ -95,15 +95,15 @@ public class SuperShark extends BaseObject{
                     if (vector) {
                         position.x = TitanicClass.ScreenWidth;
                     } else {
-                        position.x = -150;
+                        position.x = -animation.getTexture().getWidth();
                     }
                     process = 0;
                     timeToSwim = (int) (generator.nextDouble() * 10000);
                     toPosY = (int)(generator.nextDouble() * 50);
                     if (generator.nextBoolean()) {
-                        position.y = (int) (toPosY - 50);
+                        position.y = toPosY - 50;
                     } else {
-                        position.y = (int) (toPosY + 50);
+                        position.y = toPosY + 50;
                     }
                     predPos = (int)position.y;
                     moveTo = true;
@@ -119,17 +119,20 @@ public class SuperShark extends BaseObject{
             spriteBatch.draw(animBack.getTexture(), position.x, position.y);
         }
     }
-    public void Die () {
+    public void reset () {
         time = 0;
         process = 0;
         timeToSwim = (int)(generator.nextDouble()*10000);
-        position.x = TitanicClass.ScreenWidth;
-
+        if (vector) {
+            position.x = TitanicClass.ScreenWidth;
+        } else {
+            position.x = -animation.getTexture().getWidth();
+        }
         toPosY = (int)(generator.nextDouble() * 50);
         if (generator.nextBoolean()) {
-            position.y = (int) (toPosY - 50);
+            position.y = toPosY - 50;
         } else {
-            position.y = (int) (toPosY + 50);
+            position.y = toPosY + 50;
         }
         predPos = (int)position.y;
         moveTo = true;
