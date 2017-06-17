@@ -5,6 +5,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.TitanicClass;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
@@ -35,31 +36,31 @@ public class SettingsScreen extends  Screen {
         prefsMusic = Gdx.app.getPreferences("Music");
         soundsTurn = prefsSound.getBoolean("Sound");
         musicTurn = prefsMusic.getBoolean("Music");
-        slider = new MoveObject(anim("backs/runner.png"), new Vector2(TitanicClass.ScreenWidth, 0),
+        slider = new MoveObject(GameTexturesLoader.get("backs/runner.png"), new Vector2(TitanicClass.ScreenWidth, 0),
                 new Vector2(0,0),20);
-        background = new Texture("backs/background.png");
+        background = GameTexturesLoader.get("backs/background.png").getTexture();
         historyButton = new Button(
-                anim("buttons/historyButton.png"), anim("buttons/historyButton.png"),
+                GameTexturesLoader.get("buttons/historyButton.png"), GameTexturesLoader.get("buttons/historyButton.png"),
                 new Vector2(TitanicClass.ScreenWidth/2 - 100, TitanicClass.ScreenHeight/2 - 45),0);
-        menuButton = new Button(anim("buttons/menuSmall.png"), anim("buttons/menuSmallTuched.png"),
+        menuButton = new Button(GameTexturesLoader.get("buttons/menuSmall.png"), GameTexturesLoader.get("buttons/menuSmallTuched.png"),
                 new Vector2(TitanicClass.ScreenWidth/2 - 100,
                         TitanicClass.ScreenHeight/2 - 150),0);
         if (soundsTurn) {
             soundsButton = new Button(
-                    anim("buttons/sounds1.png"), anim("buttons/sounds1.png"),
+                    GameTexturesLoader.get("buttons/sounds1.png"), GameTexturesLoader.get("buttons/sounds1.png"),
                     new Vector2(TitanicClass.ScreenWidth/2 - 110, TitanicClass.ScreenHeight/2 + 70),0);
         } else {
             soundsButton = new Button(
-                    anim("buttons/sounds3.png"), anim("buttons/sounds3.png"),
+                    GameTexturesLoader.get("buttons/sounds3.png"), GameTexturesLoader.get("buttons/sounds3.png"),
                     new Vector2(TitanicClass.ScreenWidth/2 - 110, TitanicClass.ScreenHeight/2 + 70),0);
         }
         if (musicTurn) {
             musicButton = new Button(
-                    anim("buttons/sounds2.png"), anim("buttons/sounds2.png"),
+                    GameTexturesLoader.get("buttons/sounds2.png"), GameTexturesLoader.get("buttons/sounds2.png"),
                     new Vector2(TitanicClass.ScreenWidth/2 + 10, TitanicClass.ScreenHeight/2 + 70),0);
         } else {
             musicButton = new Button(
-                    anim("buttons/sounds4.png"), anim("buttons/sounds4.png"),
+                    GameTexturesLoader.get("buttons/sounds4.png"), GameTexturesLoader.get("buttons/sounds4.png"),
                     new Vector2(TitanicClass.ScreenWidth/2 + 10, TitanicClass.ScreenHeight/2 + 70),0);
         }
     }
@@ -74,12 +75,12 @@ public class SettingsScreen extends  Screen {
             soundsTurn = !soundsTurn;
             if (soundsTurn) {
                 soundsButton = new Button(
-                        anim("buttons/sounds1.png"), anim("buttons/sounds1.png"),
+                        GameTexturesLoader.get("buttons/sounds1.png"), GameTexturesLoader.get("buttons/sounds1.png"),
                         new Vector2(TitanicClass.ScreenWidth/2 - 110, TitanicClass.ScreenHeight/2 + 70),0);
                 soundsButton.update();
             } else {
                 soundsButton = new Button(
-                        anim("buttons/sounds3.png"), anim("buttons/sounds3.png"),
+                        GameTexturesLoader.get("buttons/sounds3.png"), GameTexturesLoader.get("buttons/sounds3.png"),
                         new Vector2(TitanicClass.ScreenWidth/2 - 110, TitanicClass.ScreenHeight/2 + 70),0);
                 soundsButton.update();
             }
@@ -91,12 +92,12 @@ public class SettingsScreen extends  Screen {
             musicTurn = !musicTurn;
             if (musicTurn) {
                 musicButton = new Button(
-                        anim("buttons/sounds2.png"), anim("buttons/sounds2.png"),
+                        GameTexturesLoader.get("buttons/sounds2.png"), GameTexturesLoader.get("buttons/sounds2.png"),
                         new Vector2(TitanicClass.ScreenWidth/2 + 10, TitanicClass.ScreenHeight/2 + 70),0);
                 musicButton.update();
             } else {
                 musicButton = new Button(
-                        anim("buttons/sounds4.png"), anim("buttons/sounds4.png"),
+                        GameTexturesLoader.get("buttons/sounds4.png"), GameTexturesLoader.get("buttons/sounds4.png"),
                         new Vector2(TitanicClass.ScreenWidth/2 + 10, TitanicClass.ScreenHeight/2 + 70),0);
                 musicButton.update();
             }
@@ -107,8 +108,8 @@ public class SettingsScreen extends  Screen {
         if (historyButton.isPressed()) {
             process = 1;
             screen = "SplashScreen";
-            splashScreen = new SplashScreen(gameScreenManager, "Death");
-            gameScreenManager.addScreen(splashScreen);
+            process = 3;
+            slider.change(new Vector2(-slider.getTexture().getWidth(), 0));
         }
         if (menuButton.isPressed()) {
             process = 2;
@@ -122,9 +123,14 @@ public class SettingsScreen extends  Screen {
             }
         }
         if (process == 3) {
-            slider.update();
-            gameScreenManager.getScreen(screen).update();
-            if (slider.end) {
+            if(screen == "MenuScreen") {
+                slider.update();
+                gameScreenManager.getScreen(screen).update();
+                if (slider.end) {
+                    gameScreenManager.setScreen(screen);
+                }
+            }
+            else {
                 gameScreenManager.setScreen(screen);
             }
         }

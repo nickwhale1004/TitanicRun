@@ -11,10 +11,12 @@ import com.titanicrun.game.Objects.PlayObjects.Animation;
  */
 public class SizeChangeObject extends BaseObject {
     public boolean end, isToBeBig;
-    public float size, toSize, speed;
+    public float size, toSize, speed, baseSize, baseToSize;
     public SizeChangeObject(Vector2 position, Animation animation, float size) {
         super(animation, position);
         this.size = size;
+        this.baseSize = size;
+        this.baseToSize = size;
         end = true;
     }
     @Override
@@ -38,6 +40,7 @@ public class SizeChangeObject extends BaseObject {
     }
     public void changeTo(float toSize, float speed) {
         this.end = false;
+        this.baseToSize = toSize;
         this.speed = speed;
         this.toSize = toSize;
         if(toSize > size)
@@ -51,7 +54,12 @@ public class SizeChangeObject extends BaseObject {
                 (animation.getTexture().getWidth() / 100.f) * size, (animation.getTexture().getHeight() / 100.0f) * size);
     }
     public void reset() {
-        size = 100;
+        size = baseSize;
+        toSize = baseToSize;
         end = false;
+        if(toSize > size)
+            isToBeBig=true;
+        else
+            isToBeBig=false;
     }
 }

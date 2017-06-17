@@ -37,14 +37,14 @@ public abstract class MessageScreen extends Screen {
         this.backMove = new MoveObject(anim(backTexture), new Vector2(TitanicClass.ScreenWidth,
                 TitanicClass.ScreenHeight / 2 - backTexture.getHeight() / 2),
                 new Vector2(TitanicClass.ScreenWidth / 2 - backTexture.getWidth() / 2,
-                        TitanicClass.ScreenHeight / 2 - backTexture.getHeight() / 2), 10);
+                        TitanicClass.ScreenHeight / 2 - backTexture.getHeight() / 2), 20);
 
         this.yesMove = new MoveObject(okButton,
                 new Vector2(TitanicClass.ScreenWidth / 2 - buttonAnim.getTexture().getWidth() - 5,
-                        TitanicClass.ScreenHeight / 2 - buttonAnim.getTexture().getHeight() - 5), 10);
+                        TitanicClass.ScreenHeight / 2 - buttonAnim.getTexture().getHeight() - 5), 20);
         this.noMove =new MoveObject(cansleButton,
                 new Vector2(TitanicClass.ScreenWidth / 2 + 5,
-                         TitanicClass.ScreenHeight / 2 - buttonAnim.getTexture().getHeight() - 5),10);
+                         TitanicClass.ScreenHeight / 2 - buttonAnim.getTexture().getHeight() - 5),20);
         this.process = 0;
     }
 

@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.badlogic.gdx.graphics.Texture;
+import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.TitanicClass;
 
 /**
@@ -19,16 +20,16 @@ public class PauseScreen extends Screen {
     public PauseScreen(GameScreenManager gameScreenManager, GameScreen gameScreen, String name) {
         super(gameScreenManager, name);
         this.gameScreen = gameScreen;
-        this.pauseTexture = new Texture("numbers/pause.png");
-        this.big3 = new Texture("numbers/big3.png");
-        this.big2 = new Texture("numbers/big2.png");
-        this.big1 = new Texture("numbers/big1.png");
+        this.pauseTexture = GameTexturesLoader.get("numbers/pause.png").getTexture();
+        this.big3 = GameTexturesLoader.get("numbers/big3.png").getTexture();
+        this.big2 = GameTexturesLoader.get("numbers/big2.png").getTexture();
+        this.big1 = GameTexturesLoader.get("numbers/big1.png").getTexture();
         this.pauseText = new MoveObject(new Animation(new Texture[]{pauseTexture},1),
                 new Vector2(-TitanicClass.ScreenWidth,
                         TitanicClass.ScreenHeight/2 - pauseTexture.getHeight()/2),
                 new Vector2(TitanicClass.ScreenWidth/2- pauseTexture.getWidth()/2,
                         TitanicClass.ScreenHeight/2 - pauseTexture.getHeight()/2), 10);
-        this.pause = new MoveObject(new Animation(new Texture[]{new Texture("backs/pause.png")},1),
+        this.pause = new MoveObject(GameTexturesLoader.get("backs/pause.png"),
                 new Vector2(-TitanicClass.ScreenWidth,0), new Vector2(0,0), 10);
         this.c3 = new MoveObject(new Animation(new Texture[]{big3},1),
                 new Vector2(TitanicClass.ScreenWidth/2 - big3.getWidth()/2, TitanicClass.ScreenHeight),
@@ -42,10 +43,10 @@ public class PauseScreen extends Screen {
                 new Vector2(TitanicClass.ScreenWidth/2 - big1.getWidth()/2, TitanicClass.ScreenHeight),
                 new Vector2(TitanicClass.ScreenWidth/2 - big1.getWidth()/2, TitanicClass.ScreenHeight/2 -
                         big1.getHeight()/2), 8);
-        this.run = new MoveObject(anim("numbers/run.png"),
-                new Vector2(TitanicClass.ScreenWidth/2 - anim("numbers/run.png").getTexture().getWidth()/2, TitanicClass.ScreenHeight),
-                new Vector2(TitanicClass.ScreenWidth/2 - anim("numbers/run.png").getTexture().getWidth()/2,
-                TitanicClass.ScreenHeight/2-anim("numbers/run.png").getTexture().getHeight()/2),8);
+        this.run = new MoveObject(GameTexturesLoader.get("numbers/run.png"),
+                new Vector2(TitanicClass.ScreenWidth/2 - GameTexturesLoader.get("numbers/run.png").getTexture().getWidth()/2, TitanicClass.ScreenHeight),
+                new Vector2(TitanicClass.ScreenWidth/2 - GameTexturesLoader.get("numbers/run.png").getTexture().getWidth()/2,
+                TitanicClass.ScreenHeight/2-GameTexturesLoader.get("numbers/run.png").getTexture().getHeight()/2),8);
     }
 
     @Override

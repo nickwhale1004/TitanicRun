@@ -167,6 +167,7 @@ public class GameScreen extends Screen {
             backLvl.get(i).reset();
         }
         shark.reset();
+        lvl = 0;
         scoreText.reset();
         score = 0;
         pause = true;

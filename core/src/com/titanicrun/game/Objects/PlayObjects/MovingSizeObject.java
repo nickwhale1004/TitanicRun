@@ -61,5 +61,8 @@ public class MovingSizeObject extends BaseObject{
     }
     public void reset() {
         obj.reset();
+        process = 0;
+        obj.changeTo(minSize,speed);
+        end=false;
     }
 }

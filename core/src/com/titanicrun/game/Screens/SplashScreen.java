@@ -6,30 +6,34 @@ import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.BaseObject;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
+import com.titanicrun.game.Objects.PlayObjects.MoveObjectGroup;
 import com.titanicrun.game.Objects.PlayObjects.MovingSizeObject;
+import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.TitanicClass;
 
 /**
  * Created by Никита on 15.04.2017.
  */
 public class SplashScreen extends Screen {
+    private Screen screen;
     private EducationScreen educationScreen;
     private MovingSizeObject texttt;
+    MoveObjectGroup group1, group2, group3, group4;
     MoveObject back1, player11, player12, back2, back3, back4, player4, man4, pic41, pic42;
-    int process; //0 - 1screen, 1 - 2screen,2 - 3screen, 3 - 4screen
+    int process; //0 - 1screen, 1 - 2screen,2 - 3screen, 3 - 4screen 4-end
     public SplashScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
         this.process = 0;
-        Animation back1Anim = anim("splashes/1back.png");
-        Animation player11Anim = anim("splashes/1char1.png");
-        Animation player12Anim = anim("splashes/1char2.png");
-        Animation back2Anim = anim("splashes/2.png");
-        Animation back3Anim = anim("splashes/32.png");
-        Animation back4Anim = anim("splashes/4back.png");
-        Animation player4Anim = anim("splashes/4char.png");
-        Animation man4Anim = anim("splashes/4man.png");
-        Animation pic41Anim = anim("splashes/4pic1.png");
-        Animation pic42Anim = anim("splashes/4pic2.png");
+        Animation back1Anim = GameTexturesLoader.get("splashes/1back.png");
+        Animation player11Anim = GameTexturesLoader.get("splashes/1char1.png");
+        Animation player12Anim = GameTexturesLoader.get("splashes/1char2.png");
+        Animation back2Anim = GameTexturesLoader.get("splashes/2.png");
+        Animation back3Anim = GameTexturesLoader.get("splashes/32.png");
+        Animation back4Anim = GameTexturesLoader.get("splashes/4back.png");
+        Animation player4Anim = GameTexturesLoader.get("splashes/4char.png");
+        Animation man4Anim = GameTexturesLoader.get("splashes/4man.png");
+        Animation pic41Anim = GameTexturesLoader.get("splashes/4pic1.png");
+        Animation pic42Anim = GameTexturesLoader.get("splashes/4pic2.png");
         this.back1 = new MoveObject(back1Anim,
                 new Vector2(-back1Anim.getTexture().getWidth() + TitanicClass.ScreenWidth, 0),
                 new Vector2(0, 0), 2);
@@ -58,7 +62,21 @@ public class SplashScreen extends Screen {
         this.pic42 = new MoveObject(pic42Anim,
                 new Vector2(-pic42Anim.getTexture().getWidth() + TitanicClass.ScreenWidth, 0),
                 new Vector2(0, 0), 2);
-        texttt = new MovingSizeObject(new Vector2(30,50), anim("splashes/continue.png"), 100, 140, 1.5f);
+        texttt = new MovingSizeObject(new Vector2(30,50), GameTexturesLoader.get("splashes/continue.png"), 100, 140, 1.5f);
+        group1 = new MoveObjectGroup();
+        group1.add(back1);
+        group1.add(player11);
+        group1.add(player12);
+        group2 = new MoveObjectGroup();
+        group2.add(back2);
+        group3 = new MoveObjectGroup();
+        group3.add(back3);
+        group4 = new MoveObjectGroup();
+        group4.add(back4);
+        group4.add(player4);
+        group4.add(pic41);
+        group4.add(pic42);
+        group4.add(man4);
     }
 
     @Override
@@ -69,30 +87,38 @@ public class SplashScreen extends Screen {
             if (player11.end) {
                 player12.update();
                 if(Gdx.input.justTouched()) {
+                    group1.moveOn(new Vector2(0, 800), 20);
                     process = 1;
                 }
             }
             texttt.update();
         }
         else if(process == 1) {
+            back1.update();
+            player11.update();
+            player12.update();
             back2.update();
             if(back2.end) {
                 if(Gdx.input.justTouched()) {
+                    group2.moveOn(new Vector2(0, 800), 20);
                     process = 2;
                 }
             }
             texttt.update();
         }
         else if(process == 2) {
+            back2.update();
             back3.update();
             if(back3.end) {
                 if(Gdx.input.justTouched()) {
                     process = 3;
+                    group3.moveOn(new Vector2(0, 800), 20);
                 }
             }
             texttt.update();
         }
         else if(process == 3) {
+            back3.update();
             back4.update();;
             player4.update();
             if(back4.end) {
@@ -105,9 +131,21 @@ public class SplashScreen extends Screen {
             texttt.update();
             if(pic42.end) {
                 if(Gdx.input.justTouched()) {
-                    educationScreen = new EducationScreen(gameScreenManager,  "Education");
-                    gameScreenManager.addScreen(educationScreen);
+                    group4.moveOn(new Vector2(0, 800), 20);
+                    screen = gameScreenManager.getScreen("EducationScreen");
+                    process = 4;
                 }
+            }
+        }
+        else if (process == 4) {
+            screen.update();
+            back4.update();
+            player4.update();
+            man4.update();
+            pic41.update();
+            pic42.update();
+            if (man4.end) {
+                gameScreenManager.setScreen("EducationScreen");
             }
         }
     }
@@ -130,12 +168,15 @@ public class SplashScreen extends Screen {
             if (back2.end) {
                 texttt.render(spriteBatch);
             }
+            back1.render(spriteBatch);
+            player12.render(spriteBatch);
         }
         else if (process == 2) {
             back3.render(spriteBatch);
             if (back3.end) {
                 texttt.render(spriteBatch);
             }
+            back2.render(spriteBatch);
         }
         else if (process == 3) {
             back4.render(spriteBatch);
@@ -146,6 +187,15 @@ public class SplashScreen extends Screen {
             if (pic42.end) {
                 texttt.render(spriteBatch);
             }
+            back3.render(spriteBatch);
+        }
+        else if(process == 4) {
+            screen.render(spriteBatch);
+            back4.render(spriteBatch);
+            man4.render(spriteBatch);
+            player4.render(spriteBatch);
+            pic41.render(spriteBatch);
+            pic42.render(spriteBatch);
         }
     }
 
@@ -162,5 +212,6 @@ public class SplashScreen extends Screen {
         man4.reset();
         pic41.reset();
         pic42.reset();
+        texttt.reset();
     }
 }
