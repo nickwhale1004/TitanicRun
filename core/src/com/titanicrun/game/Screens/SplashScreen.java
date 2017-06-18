@@ -23,10 +23,14 @@ public class SplashScreen extends Screen {
     private MovingSizeObject texttt;
     MoveObjectGroup group1, group2, group3, group4;
     MoveObject back1, player11, player12, back2, back3, back4, player4, man4, pic41, pic42;
-    int process; //0 - 1screen, 1 - 2screen,2 - 3screen, 3 - 4screen 4-end
+    public int process; //0 - 1screen, 1 - 2screen,2 - 3screen, 3 - 4screen 4-end
     public SplashScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
-        this.process = -1;
+        if ((Gdx.app.getPreferences("Score").getInteger("Score") > 0) || (Gdx.app.getPreferences("Balance").getInteger("Balance") != 0)) {
+            this.process = -1;
+        } else {
+            this.process = 0;
+        }
         Animation back1Anim = GameTexturesLoader.get("splashes/1back.png");
         Animation player11Anim = GameTexturesLoader.get("splashes/1char1.png");
         Animation player12Anim = GameTexturesLoader.get("splashes/1char2.png");

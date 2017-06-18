@@ -63,7 +63,7 @@ public class LoadingScreen extends Screen {
         }
         else if (process == 2){
             back2.update();
-            if (Gdx.app.getPreferences("Score").getInteger("Score") > 0) {
+            if ((Gdx.app.getPreferences("Score").getInteger("Score") > 0) || (Gdx.app.getPreferences("Balance").getInteger("Balance") != 0)) {
                 gameScreenManager.getScreen("MenuScreen").update();
                 if (back0.end) {
                     gameScreenManager.setScreen("MenuScreen");
@@ -80,7 +80,7 @@ public class LoadingScreen extends Screen {
     @Override
     public void render(SpriteBatch spriteBatch) {
         if(process == 2) {
-            if (Gdx.app.getPreferences("Score").getInteger("Score") > 0) {
+            if ((Gdx.app.getPreferences("Score").getInteger("Score") > 0) || (Gdx.app.getPreferences("Balance").getInteger("Balance") != 0)) {
                 gameScreenManager.getScreen("MenuScreen").render(spriteBatch);
             } else {
                 gameScreenManager.getScreen("SplashScreen").render(spriteBatch);
