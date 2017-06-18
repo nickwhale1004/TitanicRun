@@ -128,7 +128,6 @@ public class GameScreen extends Screen {
             }
             if(Gdx.input.isKeyPressed(Input.Keys.P)) {
                 pause = true;
-                // playBGM.waterSound.pause();
                 gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
             }
             player.update();

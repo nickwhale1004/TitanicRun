@@ -14,9 +14,6 @@ import java.util.Map;
 public class AudioPlayerInt implements ApplicationListener {
 
     public Map<String, Music> dictionary;
-    //public Music playBGM;
-    public Music waterSound;
-    Sound boomSound;
 
     @Override
     public void create() {
@@ -35,8 +32,6 @@ public class AudioPlayerInt implements ApplicationListener {
         dictionary.get("Button").setVolume(2f);
         dictionary.put("getObject", Gdx.audio.newMusic(Gdx.files.internal("sound/getObject.wav")));
         dictionary.get("getObject").setVolume(0.1f);
-        //playBGM = Gdx.audio.newMusic(Gdx.files.internal("sound/gameplayTitanicRun.mp3"));
-        //waterSound = Gdx.audio.newMusic(Gdx.files.internal("sound/water.mp3"));
 
     }
 
@@ -50,15 +45,15 @@ public class AudioPlayerInt implements ApplicationListener {
     }
 
     public void playMusic(String sound) {
-        if (Gdx.app.getPreferences("Music").getBoolean("Music")) {
+        //if (Gdx.app.getPreferences("Music").getBoolean("Music")) {
             dictionary.get(sound).play();
-        }
+        //}
     }
 
     public void playSound(String sound) {
-        if (Gdx.app.getPreferences("Sound").getBoolean("Sound")) {
+        //if (Gdx.app.getPreferences("Sound").getBoolean("Sound")) {
             dictionary.get(sound).play();
-        }
+        //}
     }
 
     public void pauseAudio(String sound) {
@@ -77,9 +72,8 @@ public class AudioPlayerInt implements ApplicationListener {
 
     @Override
     public void dispose() {
-
-        dictionary.get("BGM").dispose();
-        waterSound.dispose();
-
+        for(String s : dictionary.keySet()) {
+            dictionary.get(s).dispose();
+        }
     }
 }
