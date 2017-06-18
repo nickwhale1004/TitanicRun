@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.BaseObject;
+import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Screens.GameScreen;
 import com.titanicrun.game.Screens.Screen;
 import com.titanicrun.game.TitanicClass;
@@ -15,8 +16,12 @@ import com.titanicrun.game.TitanicClass;
 
 public class FallObject extends BaseObject {
     public  boolean wasTuched;
+    private AudioPlayerInt playBGM;
+
     public FallObject(GameScreen gameScreen, Animation animation, int type) {
         super(gameScreen, animation, new Vector2(0, 0));
+        playBGM = new AudioPlayerInt();
+        playBGM.create();
         set(animation, type);
     }
 
@@ -26,6 +31,7 @@ public class FallObject extends BaseObject {
         position.y-=10;
         if(!wasTuched && Gdx.input.justTouched()) {
             if (TitanicClass.getMouse().overlaps(getBound())) {
+                playBGM.playSound("getObject");
                 wasTuched = true;
                 animation = Screen.anim("fallObj/+10.png");
                 gameScreen.gameScore.failingObjectCatched = true;
