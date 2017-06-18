@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.BaseObject;
+import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Screens.GameScreen;
 import com.titanicrun.game.TitanicClass;
 
@@ -17,6 +18,7 @@ public class Player extends BaseObject {
     private Animation dieAnim, notDie;
     private float speed, limit;
     private boolean toDie, toDown;
+    public AudioPlayerInt playBGM;
     public Player(GameScreen gameScreen, Animation animation, Animation dieAnim) {
         super(gameScreen, animation, new Vector2(
                 TitanicClass.ScreenWidth / 2 - animation.getTexture().getWidth() / 2,
@@ -28,6 +30,8 @@ public class Player extends BaseObject {
         this.dieAnim = dieAnim;
         this.toDie = false;
         this.toDown = true;
+        playBGM = new AudioPlayerInt();
+        playBGM.create();
     }
     @Override
     public void update() {
@@ -58,6 +62,8 @@ public class Player extends BaseObject {
         }
     }
     public void Die(){
+
+        playBGM.playSound("Death");
         toDie = true;
         animation = dieAnim;
     }

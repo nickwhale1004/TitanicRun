@@ -206,7 +206,6 @@ public class GameScreen extends Screen {
     }
 
     public void Die() {
-        playBGM.playSound("Death");
         music = false;
         playBGM.pauseAudio("BGM");
         playBGM.pauseAudio("Water");
