@@ -36,7 +36,6 @@ public class GameScreen extends Screen {
     public Text scoreText;
     private Texture pauseLine;
     public Water water;
-    public AudioPlayerInt playBGM;
     public Balance playBallance;
     public Shadow shadow;
     public Texture night;
@@ -94,9 +93,6 @@ public class GameScreen extends Screen {
                 GameTexturesLoader.get("water3.png").getTexture()},10);
         water = new Water(this, waterAnim,
                 new Vector2(0,-waterAnim.getTexture().getHeight()/4), 0, 1.5f, 0.5f);
-
-        playBGM = new AudioPlayerInt();
-        playBGM.create();
         Animation[] animations = new Animation[8];
         for(int i = 1; i < 8; i++) {
             animations[i-1] = GameTexturesLoader.get("fallObj/fall"+i+".png");
@@ -183,8 +179,8 @@ public class GameScreen extends Screen {
             touchToPlay.render(spriteBatch);
         }
         if (music) {
-            playBGM.playMusic("BGM");
-            playBGM.playMusic("Water");
+            TitanicClass.playBGM.playMusic("BGM");
+            TitanicClass.playBGM.playMusic("Water");
         }
     }
 
@@ -206,14 +202,14 @@ public class GameScreen extends Screen {
         int playerIndex = sittings.getInteger("Animation");
         player = new Player(this, playerAnimations.get(playerIndex).run, playerAnimations.get(playerIndex).fly);
         playBallance = new Balance(Gdx.app.getPreferences("Balance").getInteger("Balance"));
-        playBGM.pauseAudio("BGM");
-        playBGM.pauseAudio("Water");
+        TitanicClass.playBGM.pauseAudio("BGM");
+        TitanicClass.playBGM.pauseAudio("Water");
     }
 
     public void Die() {
         music = false;
-        playBGM.pauseAudio("BGM");
-        playBGM.pauseAudio("Water");
+        TitanicClass.playBGM.pauseAudio("BGM");
+        TitanicClass.playBGM.pauseAudio("Water");
         deathScreen = new DeathScreen(gameScreenManager,this, "Death");
         gameScreenManager.addScreen(deathScreen);
     }

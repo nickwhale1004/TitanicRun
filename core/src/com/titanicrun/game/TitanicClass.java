@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.Screens.EducationScreen;
@@ -24,6 +25,7 @@ import com.titanicrun.game.Screens.SplashScreen;
 
 public class TitanicClass extends ApplicationAdapter {
 	private SpriteBatch spriteBatch;
+    public static AudioPlayerInt playBGM;
 	public static Texture[] scoreABC = new Texture[11];
 	public static final int ScreenHeight = 800;
 	public static final int ScreenWidth = 480;
@@ -35,6 +37,8 @@ public class TitanicClass extends ApplicationAdapter {
 		for (int i = 0; i < 10; i++) {
 			scoreABC[i] = new Texture("numbers/" + i + ".png");
 		}
+		playBGM = new AudioPlayerInt();
+        playBGM.create();
 		scoreABC[10] = new Texture("numbers/space.png");
 		gameScreenManager = new GameScreenManager();
 		gameScreenManager.addScreen(new LoadingScreen(gameScreenManager, "LoadingScreen"));
