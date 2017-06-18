@@ -48,9 +48,12 @@ public class Player extends BaseObject {
             speed++;
             if (speed >= limit)
                 speed = limit;
-            if (Gdx.input.isTouched() || Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-                position.y += 15;
-                speed = 1f;
+            for (int i = 0; i < 2; i++) {
+                if (Gdx.input.isTouched(i) || Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+                    position.y += 15;
+                    speed = 1f;
+                    break;
+                }
             }
             position.y -= speed;
             if (position.y <= 0) {

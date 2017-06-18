@@ -114,10 +114,16 @@ public class GameScreen extends Screen {
             shark.update();
             gameScreenManager.removeScreen("Pause");
             gameScreenManager.removeScreen("Death");
-            if(Gdx.input.justTouched()) {
-                if (TitanicClass.getMouse().getY() >= TitanicClass.ScreenHeight - 125) {
-                    pause = true;
-                    gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
+            for (int i = 0; i < 2; i++) {
+                if (Gdx.input.isTouched(i)) {
+                    if ((TitanicClass.getMouse(i).getY() >= TitanicClass.ScreenHeight - 125) &&
+                            (TitanicClass.getMouse(i).getY() < TitanicClass.ScreenHeight) &&
+                            (TitanicClass.getMouse(i).getX() > 0) &&
+                            (TitanicClass.getMouse(i).getX() < TitanicClass.ScreenWidth)) {
+                        pause = true;
+                        gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
+                        break;
+                    }
                 }
             }
             if(Gdx.input.isKeyPressed(Input.Keys.P)) {

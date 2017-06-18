@@ -29,12 +29,15 @@ public class FallObject extends BaseObject {
     public void update() {
         animation.update();
         position.y-=10;
-        if(!wasTuched && Gdx.input.justTouched()) {
-            if (TitanicClass.getMouse().overlaps(getBound())) {
-                playBGM.playSound("getObject");
-                wasTuched = true;
-                animation = Screen.anim("fallObj/+10.png");
-                gameScreen.gameScore.failingObjectCatched = true;
+        for (int i = 0; i < 2; i++) {
+            if (!wasTuched && Gdx.input.isTouched(i)) {
+                if (TitanicClass.getMouse(i).overlaps(getBound())) {
+                    playBGM.playSound("getObject");
+                    wasTuched = true;
+                    animation = Screen.anim("fallObj/+10.png");
+                    gameScreen.gameScore.failingObjectCatched = true;
+                    break;
+                }
             }
         }
         if(!wasTuched && Gdx.input.isKeyPressed(Input.Keys.Z)) {

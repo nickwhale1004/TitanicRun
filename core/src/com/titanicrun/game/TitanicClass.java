@@ -59,4 +59,9 @@ public class TitanicClass extends ApplicationAdapter {
 		TitanicClass.camera.unproject(mousePosition);
 		return new Rectangle(mousePosition.x, mousePosition.y,1,1);
 	}
+	public static Rectangle getMouse(int n) {
+		Vector3 mousePosition = new Vector3(Gdx.input.getX(n), Gdx.input.getY(n),0);
+		TitanicClass.camera.unproject(mousePosition);
+		return new Rectangle(mousePosition.x, mousePosition.y,1,1);
+	}
 }
