@@ -29,6 +29,8 @@ public class AudioPlayerInt implements ApplicationListener {
         dictionary.get("Water").setVolume(0.1f);
         dictionary.put("Death", Gdx.audio.newMusic(Gdx.files.internal("sound/death.mp3")));
         dictionary.get("Death").setVolume(2f);
+        dictionary.put("DeathWater", Gdx.audio.newMusic(Gdx.files.internal("sound/deathWater.mp3")));
+        dictionary.get("DeathWater").setVolume(2f);
         dictionary.put("Button", Gdx.audio.newMusic(Gdx.files.internal("sound/button.mp3")));
         dictionary.get("Button").setVolume(2f);
         //playBGM = Gdx.audio.newMusic(Gdx.files.internal("sound/gameplayTitanicRun.mp3"));

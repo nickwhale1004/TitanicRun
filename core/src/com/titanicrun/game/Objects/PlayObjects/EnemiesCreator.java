@@ -117,6 +117,7 @@ public class EnemiesCreator extends Creator {
         public void update() {
             animation.update();
             if(gameScreen.player.getBound().overlaps(getBound())) {
+                gameScreen.player.dieFromObj = true;
                 gameScreen.player.Die();
                 gameScreen.Die();
             }

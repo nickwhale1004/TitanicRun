@@ -18,12 +18,15 @@ public class Player extends BaseObject {
     private Animation dieAnim, notDie;
     private float speed, limit;
     private boolean toDie, toDown;
+    public boolean dieFromObj;
     public AudioPlayerInt playBGM;
+
     public Player(GameScreen gameScreen, Animation animation, Animation dieAnim) {
         super(gameScreen, animation, new Vector2(
                 TitanicClass.ScreenWidth / 2 - animation.getTexture().getWidth() / 2,
                 TitanicClass.ScreenHeight));
         this.speed = 6f;
+        this.dieFromObj = false;
         this.basePos = new Vector2(position.x, position.y);
         this.notDie = animation;
         this.limit = speed*1.8f;
@@ -62,9 +65,13 @@ public class Player extends BaseObject {
         }
     }
     public void Die(){
-
-        playBGM.playSound("Death");
+        if (!dieFromObj) {
+            playBGM.playSound("Death");
+        } else {
+            playBGM.playSound("DeathWater");
+        }
         toDie = true;
+        dieFromObj = false;
         animation = dieAnim;
     }
     @Override
