@@ -40,10 +40,9 @@ public class SplashScreen extends Screen {
         Animation back1PrevAnim = GameTexturesLoader.get("splashes/1backPrev.png");
         this.settingsScreen = gameScreenManager.getScreen("SettingScreen");
         this.settingsScreen.update();
-        this.back1Sizable = new SizeChangeObject(new Vector2(TitanicClass.ScreenWidth/2
-                    -back1PrevAnim.getTexture().getWidth()/2,
-                TitanicClass.ScreenHeight/2
-                        -back1PrevAnim.getTexture().getHeight()/2), back1PrevAnim, 0, true);
+        this.back1Sizable = new SizeChangeObject(new Vector2(TitanicClass.ScreenWidth/2,
+                TitanicClass.ScreenHeight/2), back1PrevAnim, 0f);
+        back1Sizable.speed = 5f;
         this.back1Sizable.changeTo(100, 2);
         this.back1 = new MoveObject(back1Anim,
                 new Vector2(-back1Anim.getTexture().getWidth() + TitanicClass.ScreenWidth, 0),
@@ -94,6 +93,8 @@ public class SplashScreen extends Screen {
     public void update() {
         if (process == -1) {
             back1Sizable.update();
+            back1Sizable.position.x = TitanicClass.ScreenWidth/2-(back1Sizable.animation.getTexture().getWidth()/100f)*back1Sizable.size/2f;
+            back1Sizable.position.y = TitanicClass.ScreenHeight/2-(back1Sizable.animation.getTexture().getHeight()/100f)*back1Sizable.size/2f;
             if(back1Sizable.end) {
                 process = 0;
             }
