@@ -35,4 +35,5 @@ public abstract class BaseObject {
     }
     public abstract void update();
     public abstract void render(SpriteBatch spriteBatch);
+    public abstract void reset();
 }

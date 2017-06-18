@@ -80,4 +80,9 @@ public class GameScore extends BaseObject {
     public void render(SpriteBatch spriteBatch) {
         moveableText.render(spriteBatch);
     }
+
+    @Override
+    public void reset() {
+
+    }
 }

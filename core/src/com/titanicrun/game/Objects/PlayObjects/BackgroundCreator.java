@@ -128,6 +128,12 @@ public class BackgroundCreator extends Creator {
         public void render(SpriteBatch spriteBatch) {
             spriteBatch.draw(animation.getTexture(),posX, position.y);
         }
+
+        @Override
+        public void reset() {
+
+        }
+
         public void reset(Vector2 position) {
             this.position = position;
             this.toPosX = 0;

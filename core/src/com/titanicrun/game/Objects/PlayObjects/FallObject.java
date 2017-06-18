@@ -43,6 +43,11 @@ public class FallObject extends BaseObject {
         spriteBatch.draw(animation.getTexture(), position.x, position.y);
     }
 
+    @Override
+    public void reset() {
+
+    }
+
     public void set(Animation animation, int type) {
         this.animation = animation;
         this.wasTuched = false;

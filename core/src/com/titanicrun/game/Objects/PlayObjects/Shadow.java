@@ -53,4 +53,9 @@ package com.titanicrun.game.Objects.PlayObjects;
         if(draw)
             spriteBatch.draw(animation.getTexture(), position.x, position.y);
     }
-}
+
+        @Override
+        public void reset() {
+
+        }
+    }

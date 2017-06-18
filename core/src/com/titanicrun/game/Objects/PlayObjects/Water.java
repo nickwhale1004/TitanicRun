@@ -46,4 +46,9 @@ public class Water extends BaseObject {
     public void render(SpriteBatch spriteBatch) {
         spriteBatch.draw(animation.getTexture(),position.x,position.y);
     }
+
+    @Override
+    public void reset() {
+
+    }
 }

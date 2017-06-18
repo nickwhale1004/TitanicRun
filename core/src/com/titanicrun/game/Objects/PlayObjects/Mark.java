@@ -39,4 +39,9 @@ public class Mark extends BaseObject {
             spriteBatch.draw(animation.getTexture(), position.x, position.y);
         }
     }
+
+    @Override
+    public void reset() {
+
+    }
 }

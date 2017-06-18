@@ -23,7 +23,7 @@ public class SplashScreen extends Screen {
     int process; //0 - 1screen, 1 - 2screen,2 - 3screen, 3 - 4screen 4-end
     public SplashScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
-        this.process = 0;
+        this.process = -1;
         Animation back1Anim = GameTexturesLoader.get("splashes/1back.png");
         Animation player11Anim = GameTexturesLoader.get("splashes/1char1.png");
         Animation player12Anim = GameTexturesLoader.get("splashes/1char2.png");
@@ -81,6 +81,9 @@ public class SplashScreen extends Screen {
 
     @Override
     public void update() {
+        if (process == -1) {
+
+        }
         if(process == 0) {
             back1.update();
             player11.update();

@@ -183,5 +183,10 @@ public class EnemiesCreator extends Creator {
             else
                 spriteBatch.draw(waring, position.x, position.y);
         }
+
+        @Override
+        public void reset() {
+
+        }
     }
 }
