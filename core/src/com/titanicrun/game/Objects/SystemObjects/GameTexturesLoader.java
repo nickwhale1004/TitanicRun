@@ -92,6 +92,7 @@ public class GameTexturesLoader {
         dictionaryString.add("splashes/4pic1.png");
         dictionaryString.add("splashes/4pic2.png");
         dictionaryString.add("splashes/touchtoplay.png");
+        dictionaryString.add("splashes/touchtoplay2.png");
         dictionaryString.add("splashes/pressscreen.png");
         dictionaryString.add("splashes/goodluck.png");
         dictionaryString.add("backs/pauseField.png");

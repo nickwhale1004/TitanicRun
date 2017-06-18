@@ -24,6 +24,7 @@ public class EducationScreen extends GameScreen {
     @Override
     public void Load() {
         super.Load();
+        this.beginGame = false;
         Animation goodLAnim = GameTexturesLoader.get("splashes/goodluck.png");
         Animation pauseAnim = GameTexturesLoader.get("backs/pauseField.png");
         goodLuck = new MoveObject(goodLAnim,

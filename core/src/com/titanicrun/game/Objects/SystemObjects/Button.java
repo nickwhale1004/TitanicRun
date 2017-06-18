@@ -23,10 +23,13 @@ public class Button extends BaseObject {
     private Rectangle mouse = new Rectangle();
     private Rectangle myBound;
     private boolean pressed;
+    private AudioPlayerInt playBGM;
 
     public Button(Animation animation, Animation tuched, Vector2 position, int type) {
         super(animation, position);
         this.type = type;
+        this.playBGM = new AudioPlayerInt();
+        playBGM.create();
         this.myBound = new Rectangle();
         if(type == 1) {
             this.tuched = tuched;
@@ -136,6 +139,9 @@ public class Button extends BaseObject {
     }
     @Override
     public void render(SpriteBatch spriteBatch) {
+        if (wasPressed) {
+            playBGM.playSound("Button");
+        }
         if(type == 1) {
             spriteBatch.draw(current.getTexture(), position.x, position.y);
         }

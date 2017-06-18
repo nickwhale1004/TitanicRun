@@ -18,7 +18,6 @@ public abstract class Screen {
         this.name = name;
         camera = new OrthographicCamera();
     }
-
     public abstract void update();
     public abstract void render(SpriteBatch spriteBatch);
     public abstract void reset();

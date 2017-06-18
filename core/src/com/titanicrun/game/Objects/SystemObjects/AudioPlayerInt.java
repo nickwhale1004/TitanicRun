@@ -5,26 +5,34 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by geniu on 23.04.2016.
  */
 public class AudioPlayerInt implements ApplicationListener {
 
-    public Music playBGM;
+    public Map<String, Music> dictionary;
+    //public Music playBGM;
     public Music waterSound;
     Sound boomSound;
 
     @Override
     public void create() {
-
-        playBGM = Gdx.audio.newMusic(Gdx.files.internal("sound/gameplayTitanicRun.mp3"));
-        waterSound = Gdx.audio.newMusic(Gdx.files.internal("sound/water.mp3"));
-        playBGM.setLooping(true);
-        playBGM.setVolume(1f);
-        waterSound.setLooping(true);
-        waterSound.setVolume(1f);
-        waterSound.play();
-        playBGM.play();
+        dictionary = new HashMap<String, Music>();
+        dictionary.put("BGM", Gdx.audio.newMusic(Gdx.files.internal("sound/gameplayTitanicRun.mp3")));
+        dictionary.get("BGM").setLooping(true);
+        dictionary.get("BGM").setVolume(0.1f);
+        dictionary.put("Water", Gdx.audio.newMusic(Gdx.files.internal("sound/water.mp3")));
+        dictionary.get("Water").setLooping(true);
+        dictionary.get("Water").setVolume(0.1f);
+        dictionary.put("Death", Gdx.audio.newMusic(Gdx.files.internal("sound/death.mp3")));
+        dictionary.get("Death").setVolume(2f);
+        dictionary.put("Button", Gdx.audio.newMusic(Gdx.files.internal("sound/button.mp3")));
+        dictionary.get("Button").setVolume(2f);
+        //playBGM = Gdx.audio.newMusic(Gdx.files.internal("sound/gameplayTitanicRun.mp3"));
+        //waterSound = Gdx.audio.newMusic(Gdx.files.internal("sound/water.mp3"));
 
     }
 
@@ -35,7 +43,22 @@ public class AudioPlayerInt implements ApplicationListener {
 
     @Override
     public void render() {
+    }
 
+    public void playMusic(String sound) {
+        if (Gdx.app.getPreferences("Music").getBoolean("Music")) {
+            dictionary.get(sound).play();
+        }
+    }
+
+    public void playSound(String sound) {
+        if (Gdx.app.getPreferences("Sound").getBoolean("Sound")) {
+            dictionary.get(sound).play();
+        }
+    }
+
+    public void pauseAudio(String sound) {
+        dictionary.get(sound).stop();
     }
 
     @Override
@@ -51,7 +74,7 @@ public class AudioPlayerInt implements ApplicationListener {
     @Override
     public void dispose() {
 
-        playBGM.dispose();
+        dictionary.get("BGM").dispose();
         waterSound.dispose();
 
     }

@@ -63,17 +63,29 @@ public class LoadingScreen extends Screen {
         }
         else if (process == 2){
             back2.update();
-            gameScreenManager.getScreen("MenuScreen").update();
-            if(back0.end) {
-                gameScreenManager.setScreen("MenuScreen");
+            if (Gdx.app.getPreferences("Score").getInteger("Score") > 0) {
+                gameScreenManager.getScreen("MenuScreen").update();
+                if (back0.end) {
+                    gameScreenManager.setScreen("MenuScreen");
+                }
+            } else {
+                gameScreenManager.getScreen("SplashScreen").update();
+                if (back0.end) {
+                    gameScreenManager.setScreen("SplashScreen");
+                }
             }
         }
     }
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-        if(process == 2)
-            gameScreenManager.getScreen("MenuScreen").render(spriteBatch);
+        if(process == 2) {
+            if (Gdx.app.getPreferences("Score").getInteger("Score") > 0) {
+                gameScreenManager.getScreen("MenuScreen").render(spriteBatch);
+            } else {
+                gameScreenManager.getScreen("SplashScreen").render(spriteBatch);
+            }
+        }
         back0.render(spriteBatch);
         back2.render(spriteBatch);
         back1.render(spriteBatch);

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
+import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Objects.SystemObjects.Button;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
@@ -15,6 +16,8 @@ import com.titanicrun.game.TitanicClass;
  * Created by Никита on 30.01.2016.
  */
 public class DeathScreen extends Screen {
+
+    public AudioPlayerInt playBGM;
     private Button menu;
     private GameScreen gameScreen;
     private MoveObject back, gameOver, score, of, max, moveButton;
@@ -27,6 +30,8 @@ public class DeathScreen extends Screen {
         super(gameScreenManager, name);
         this.gameScreen = gameScreen;
         this.sittings = Gdx.app.getPreferences("Score");
+        this.playBGM = new AudioPlayerInt();
+        playBGM.create();
         this.record = sittings.getInteger("Score");
         if(gameScreen.score> record) {
             sittings.putInteger("Score", gameScreen.score);
@@ -73,6 +78,7 @@ public class DeathScreen extends Screen {
     @Override
     public void update() {
         if(process == 0) {
+
             back.update();
             of.update();
             if (back.end) {
@@ -89,12 +95,15 @@ public class DeathScreen extends Screen {
                     moveButton.reverse();
                     process = 1;
                     if(menu.isPressed()){
+
+                        gameScreen.music = true;
                         gameScreen.reset();
                         screen = "MenuScreen";
                     }
                     else{
                         gameScreen.reset();
                         gameScreen.pause = true;
+                        gameScreen.music = true;
                         screen = "GameScreen";
                     }
                 }
