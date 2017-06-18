@@ -8,7 +8,9 @@ import com.titanicrun.game.Objects.PlayObjects.Animation;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.PlayObjects.MoveObjectGroup;
 import com.titanicrun.game.Objects.PlayObjects.MovingSizeObject;
+import com.titanicrun.game.Objects.PlayObjects.SizeChangeObject;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
+import com.titanicrun.game.Objects.SystemObjects.SettingsButton;
 import com.titanicrun.game.TitanicClass;
 
 /**
@@ -16,7 +18,8 @@ import com.titanicrun.game.TitanicClass;
  */
 public class SplashScreen extends Screen {
     private Screen screen;
-    private EducationScreen educationScreen;
+    private Screen settingsScreen;
+    private SizeChangeObject back1Sizable;
     private MovingSizeObject texttt;
     MoveObjectGroup group1, group2, group3, group4;
     MoveObject back1, player11, player12, back2, back3, back4, player4, man4, pic41, pic42;
@@ -34,6 +37,14 @@ public class SplashScreen extends Screen {
         Animation man4Anim = GameTexturesLoader.get("splashes/4man.png");
         Animation pic41Anim = GameTexturesLoader.get("splashes/4pic1.png");
         Animation pic42Anim = GameTexturesLoader.get("splashes/4pic2.png");
+        Animation back1PrevAnim = GameTexturesLoader.get("splashes/1backPrev.png");
+        this.settingsScreen = gameScreenManager.getScreen("SettingScreen");
+        this.settingsScreen.update();
+        this.back1Sizable = new SizeChangeObject(new Vector2(TitanicClass.ScreenWidth/2
+                    -back1PrevAnim.getTexture().getWidth()/2,
+                TitanicClass.ScreenHeight/2
+                        -back1PrevAnim.getTexture().getHeight()/2), back1PrevAnim, 0, true);
+        this.back1Sizable.changeTo(100, 2);
         this.back1 = new MoveObject(back1Anim,
                 new Vector2(-back1Anim.getTexture().getWidth() + TitanicClass.ScreenWidth, 0),
                 new Vector2(0, 0), 2);
@@ -82,9 +93,12 @@ public class SplashScreen extends Screen {
     @Override
     public void update() {
         if (process == -1) {
-
+            back1Sizable.update();
+            if(back1Sizable.end) {
+                process = 0;
+            }
         }
-        if(process == 0) {
+        else if(process == 0) {
             back1.update();
             player11.update();
             if (player11.end) {
@@ -155,7 +169,11 @@ public class SplashScreen extends Screen {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-        if(process == 0) {
+        if(process == -1) {
+            settingsScreen.render(spriteBatch);
+            back1Sizable.render(spriteBatch);
+        }
+        else if(process == 0) {
             back1.render(spriteBatch);
             if (player11.end) {
                 player12.render(spriteBatch);
@@ -206,6 +224,7 @@ public class SplashScreen extends Screen {
     public void reset() {
         process = 0;
         back1.reset();
+        settingsScreen.reset();
         player11.reset();
         player12.reset();
         back2.reset();

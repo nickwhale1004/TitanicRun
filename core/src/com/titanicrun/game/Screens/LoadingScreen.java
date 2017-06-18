@@ -46,9 +46,9 @@ public class LoadingScreen extends Screen {
                 gtl.specialUpdate();
                 Preferences sittings = Gdx.app.getPreferences("Balance");
                 Balance balance= new Balance(sittings.getInteger("Balance"));
+                gameScreenManager.addScreen(new SettingsScreen(gameScreenManager, "SettingScreen"));
                 gameScreenManager.addScreen(new SplashScreen(gameScreenManager,"SplashScreen"));
                 gameScreenManager.addScreen(new GameScreen(gameScreenManager, balance,"GameScreen"));
-                gameScreenManager.addScreen(new SettingsScreen(gameScreenManager, "SettingScreen"));
                 gameScreenManager.addScreen(new SkinScreen(gameScreenManager, "SkinScreen"));
                 gameScreenManager.addScreen(new EducationScreen(gameScreenManager, "EducationScreen"));
                 gameScreenManager.addScreen(new MenuScreen(gameScreenManager, "MenuScreen"));

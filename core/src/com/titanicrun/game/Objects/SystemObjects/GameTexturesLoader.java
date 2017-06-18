@@ -112,6 +112,7 @@ public class GameTexturesLoader {
         dictionaryString.add("buttons/sounds3.png");
         dictionaryString.add("buttons/sounds2.png");
         dictionaryString.add("buttons/sounds4.png");
+        dictionaryString.add("splashes/1backPrev.png");
         n = dictionaryString.size() / 11;
     }
     public void update() {

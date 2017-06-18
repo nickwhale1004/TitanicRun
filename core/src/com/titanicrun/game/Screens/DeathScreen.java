@@ -78,7 +78,6 @@ public class DeathScreen extends Screen {
     @Override
     public void update() {
         if(process == 0) {
-
             back.update();
             of.update();
             if (back.end) {

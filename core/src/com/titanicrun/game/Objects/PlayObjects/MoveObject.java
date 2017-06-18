@@ -105,6 +105,8 @@ public class MoveObject extends BaseObject {
         return animation.getTexture();
     }
     public void reset() {
+        if(obj != null)
+            obj.reset();
         end = false;
         position.x = basePos.x;
         position.y = basePos.y;
