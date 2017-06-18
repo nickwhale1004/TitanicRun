@@ -24,7 +24,7 @@ public class EducationScreen extends GameScreen {
     @Override
     public void Load() {
         super.Load();
-        this.beginGame = false;
+        beginGame = false;
         Animation goodLAnim = GameTexturesLoader.get("splashes/goodluck.png");
         Animation pauseAnim = GameTexturesLoader.get("backs/pauseField.png");
         goodLuck = new MoveObject(goodLAnim,
@@ -34,11 +34,11 @@ public class EducationScreen extends GameScreen {
         pauseField = new MoveObject(pauseAnim,
                 new Vector2(0, TitanicClass.ScreenHeight),
                 new Vector2(0, TitanicClass.ScreenHeight - pauseAnim.getTexture().getHeight()), 3);
-        touchToPlay= new MovingSizeObject(new Vector2(50,100), GameTexturesLoader.get("splashes/touchtoplay.png"), 100, 140, 2f);
+        touchToPlay= new MovingSizeObject(new Vector2(200,100), GameTexturesLoader.get("splashes/touchtoplay.png"), 100, 140, 2f);
         process = 0;
-        goTop = new MovingSizeObject(new Vector2(50,100), GameTexturesLoader.get("splashes/pressscreen.png"), 100, 140, 2f);
-        pressPause = new MovingSizeObject(new Vector2(50,100), GameTexturesLoader.get("splashes/presspause.png"), 100, 140, 2f);
-        catchFall = new MovingSizeObject(new Vector2(50,100), GameTexturesLoader.get("splashes/catchit.png"), 100, 140, 2f);
+        goTop = new MovingSizeObject(new Vector2(200,100), GameTexturesLoader.get("splashes/pressscreen.png"), 100, 140, 2f);
+        pressPause = new MovingSizeObject(new Vector2(200,100), GameTexturesLoader.get("splashes/presspause.png"), 100, 140, 2f);
+        catchFall = new MovingSizeObject(new Vector2(200,100), GameTexturesLoader.get("splashes/catchit.png"), 100, 140, 2f);
     }
     @Override
     public void update() {
@@ -143,6 +143,7 @@ public class EducationScreen extends GameScreen {
     public void reset() {
         super.reset();
         fallObj.isFirst=true;
+        beginGame = false;
         process = 0;
         pauseField.reset();
         touchToPlay.reset();

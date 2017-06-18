@@ -72,7 +72,7 @@ public class SplashScreen extends Screen {
         this.pic42 = new MoveObject(pic42Anim,
                 new Vector2(-pic42Anim.getTexture().getWidth() + TitanicClass.ScreenWidth, 0),
                 new Vector2(0, 0), 2);
-        texttt = new MovingSizeObject(new Vector2(30,50), GameTexturesLoader.get("splashes/continue.png"), 100, 140, 1.5f);
+        texttt = new MovingSizeObject(new Vector2(200,100), GameTexturesLoader.get("splashes/continue.png"), 100, 140, 1.5f);
         group1 = new MoveObjectGroup();
         group1.add(back1);
         group1.add(player11);
@@ -93,8 +93,10 @@ public class SplashScreen extends Screen {
     public void update() {
         if (process == -1) {
             back1Sizable.update();
-            back1Sizable.position.x = TitanicClass.ScreenWidth/2-(back1Sizable.animation.getTexture().getWidth()/100f)*back1Sizable.size/2f;
-            back1Sizable.position.y = TitanicClass.ScreenHeight/2-(back1Sizable.animation.getTexture().getHeight()/100f)*back1Sizable.size/2f;
+            back1Sizable.position.x =
+                    TitanicClass.ScreenWidth/2-(back1Sizable.animation.getTexture().getWidth()/100f)*back1Sizable.size/2f;
+            back1Sizable.position.y =
+                    TitanicClass.ScreenHeight/2-(back1Sizable.animation.getTexture().getHeight()/100f)*back1Sizable.size/2f;
             if(back1Sizable.end) {
                 process = 0;
             }

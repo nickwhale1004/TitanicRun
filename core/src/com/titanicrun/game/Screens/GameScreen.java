@@ -61,7 +61,7 @@ public class GameScreen extends Screen {
         lvl = 0;
         music = true;
         beginGame = true;
-        touchToPlay= new MovingSizeObject(new Vector2(50,100), GameTexturesLoader.get("splashes/touchtoplay2.png"), 100, 140, 1.5f);
+        touchToPlay= new MovingSizeObject(new Vector2(200,100), GameTexturesLoader.get("splashes/touchtoplay2.png"), 100, 140, 1.5f);
         //touchToPlay = new MoveObject(GameTexturesLoader.get("splashes/touchtoplay2.png"),new Vector2(50,100), new Vector2(50,100), 1f);
         gameScore = new GameScore(this);
         pause = true;
