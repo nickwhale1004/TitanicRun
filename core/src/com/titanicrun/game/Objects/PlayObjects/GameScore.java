@@ -60,15 +60,12 @@ public class GameScore extends BaseObject {
                 moveableText = new MoveObject(ballanceText, moveableText.position, 5);
             }
             //Д В И Ж Е Н И Е  В Л Е В О
-            if (isFinished && moveableText.position.x >
-                    (TitanicClass.ScreenWidth - Integer.toString(gameScreen.playBallance.getBalance()).length()*29f - 5)) {
-                moveableText.change(new Vector2(TitanicClass.ScreenWidth -
-                        Integer.toString(gameScreen.playBallance.getBalance()).length()*29f - 5 ,ballanceText.position.y));
+            if (isFinished && moveableText.position.x > (TitanicClass.ScreenWidth - layout.width - 15)) {
+                moveableText.change(new Vector2(TitanicClass.ScreenWidth - layout.width - 15 ,ballanceText.position.y));
                 moveableText.update();
             }
             //О Б Н У Л Е Н И Е  П Е Р Е М Е Н Н Ы Х
-            if (isFinished && moveableText.position.x == (TitanicClass.ScreenWidth -
-                    Integer.toString(gameScreen.playBallance.getBalance()).length()*29f - 5)) {
+            if (isFinished && moveableText.position.x == (TitanicClass.ScreenWidth - layout.width - 15)) {
                 failingObjectCatched = false;
                 isFinished = false;
                 objectFalled = false;
