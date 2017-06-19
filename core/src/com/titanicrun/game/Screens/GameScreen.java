@@ -208,6 +208,8 @@ public class GameScreen extends Screen {
     public void Die() {
         music = false;
         Gdx.app.getPreferences("Balance").putInteger("Balance", playBallance.getBalance());
+        Gdx.app.log("Balance", playBallance.getBalance()+"");
+        Gdx.app.getPreferences("Balance").flush();
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
         TitanicClass.kostylScore = score;
