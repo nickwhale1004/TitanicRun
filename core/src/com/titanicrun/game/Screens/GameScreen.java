@@ -201,6 +201,7 @@ public class GameScreen extends Screen {
         player = new Player(this, playerAnimations.get(playerIndex).run, playerAnimations.get(playerIndex).fly);
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
+        music = true;
     }
 
     public void Die() {

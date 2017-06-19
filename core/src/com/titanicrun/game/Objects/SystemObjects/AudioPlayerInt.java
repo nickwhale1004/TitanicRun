@@ -45,15 +45,15 @@ public class AudioPlayerInt implements ApplicationListener {
     }
 
     public void playMusic(String sound) {
-        //if (Gdx.app.getPreferences("Music").getBoolean("Music")) {
+        if (Gdx.app.getPreferences("Music").getBoolean("Music")) {
             dictionary.get(sound).play();
-        //}
+        }
     }
 
     public void playSound(String sound) {
-        //if (Gdx.app.getPreferences("Sound").getBoolean("Sound")) {
+        if (Gdx.app.getPreferences("Sound").getBoolean("Sound")) {
             dictionary.get(sound).play();
-        //}
+        }
     }
 
     public void pauseAudio(String sound) {

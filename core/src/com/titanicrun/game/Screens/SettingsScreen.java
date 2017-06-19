@@ -32,6 +32,10 @@ public class SettingsScreen extends  Screen {
 
     public SettingsScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
+        if (!((Gdx.app.getPreferences("Score").getInteger("Score") > 0) || (Gdx.app.getPreferences("Balance").getInteger("Balance") != 0))) {
+            Gdx.app.getPreferences("Sound").putBoolean("Sound", true);
+            Gdx.app.getPreferences("Music").putBoolean("Music", true);
+        }
         prefsSound = Gdx.app.getPreferences("Sound");
         prefsMusic = Gdx.app.getPreferences("Music");
         soundsTurn = prefsSound.getBoolean("Sound");

@@ -143,7 +143,7 @@ public class SplashScreen extends Screen {
         }
         else if(process == 3) {
             back3.update();
-            back4.update();;
+            back4.update();
             player4.update();
             if(back4.end) {
                 man4.speed.x = 1.1f;
