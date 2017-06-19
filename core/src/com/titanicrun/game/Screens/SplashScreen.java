@@ -229,7 +229,7 @@ public class SplashScreen extends Screen {
 
     @Override
     public void reset() {
-        process = 0;
+        process = -1;
         back1.reset();
         settingsScreen.reset();
         player11.reset();

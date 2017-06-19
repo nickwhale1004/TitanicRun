@@ -148,6 +148,7 @@ public class DeathScreen extends Screen {
 
     @Override
     public void reset() {
+        screen = "GameScreen";
         process = -1;
         TitanicClass.kostylScore = 0;
         back.reset();

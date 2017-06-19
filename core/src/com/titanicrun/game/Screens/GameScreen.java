@@ -131,7 +131,6 @@ public class GameScreen extends Screen {
             fallObj.update();
         }
         else {
-
             if (Gdx.input.justTouched()) {
                 touchToPlay.die();
                 pause = false;
@@ -208,6 +207,7 @@ public class GameScreen extends Screen {
 
     public void Die() {
         music = false;
+        Gdx.app.getPreferences("Balance").putInteger("Balance", playBallance.getBalance());
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
         TitanicClass.kostylScore = score;

@@ -160,6 +160,7 @@ public class Button extends BaseObject {
         return  myBound;
     }
     public void reset() {
+        this.obj.reset();
         this.wasPressed = false;
         this.pressed = false;
     }
