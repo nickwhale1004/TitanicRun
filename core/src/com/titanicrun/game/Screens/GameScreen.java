@@ -52,7 +52,6 @@ public class GameScreen extends Screen {
     public GameScreen(GameScreenManager gameScreenManager, Balance balance, String name) {
         super(gameScreenManager, name);
         this.playBallance = balance;
-        balance.getBalance();
         Load();
     }
     public void Load() {
@@ -200,7 +199,6 @@ public class GameScreen extends Screen {
         Preferences sittings = Gdx.app.getPreferences("Animation");
         int playerIndex = sittings.getInteger("Animation");
         player = new Player(this, playerAnimations.get(playerIndex).run, playerAnimations.get(playerIndex).fly);
-        playBallance = new Balance(Gdx.app.getPreferences("Balance").getInteger("Balance"));
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
     }
