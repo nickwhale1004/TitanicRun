@@ -29,6 +29,9 @@ public class GameScreenManager {
         currenScreen.reset();
         currenScreen = screens.get(name);
     }
+    public void setNonResetScreen(String name) {
+        currenScreen = screens.get(name);
+    }
     public Screen getScreen(String name) {
         return screens.get(name);
     }

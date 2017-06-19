@@ -17,7 +17,7 @@ android {
         instrumentTest.setRoot('tests')
     }
     defaultConfig {
-        applicationId ='ccom.titanicrun.game'
+        applicationId ='xcom.titanicrun.game'
     }
     productFlavors {
     }

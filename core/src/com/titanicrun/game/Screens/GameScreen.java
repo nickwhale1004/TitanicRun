@@ -41,7 +41,6 @@ public class GameScreen extends Screen {
     public Texture night;
     public EnemiesCreator enemiesCreator;
     public ArrayList<BackgroundCreator> backLvl;
-    public DeathScreen deathScreen;
     public Array<PlayerAnimation> playerAnimations;
     public FallObjectsCreator fallObj;
     public boolean pause;
@@ -189,6 +188,7 @@ public class GameScreen extends Screen {
         for(int i = 0; i < 9; i++) {
             backLvl.get(i).reset();
         }
+        music =true;
         shark.reset();
         touchToPlay.reset();
         lvl = 0;
@@ -210,7 +210,7 @@ public class GameScreen extends Screen {
         music = false;
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
-        deathScreen = new DeathScreen(gameScreenManager,this, "Death");
-        gameScreenManager.addScreen(deathScreen);
+        TitanicClass.kostylScore = score;
+        gameScreenManager.setNonResetScreen("DeathScreen");
     }
 }

@@ -1,5 +1,6 @@
 package com.titanicrun.game.Objects.PlayObjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.BaseObject;
@@ -34,7 +35,6 @@ public class MoveObject extends BaseObject {
     public MoveObject(BaseObject obj, Vector2 toPosition, int speed) {//
         super(obj.animation, obj.position);
         this.obj = obj;
-        this.fromPosition = obj.position;
         inicializate(toPosition,new Vector2(speed, speed));
 
     }
@@ -105,8 +105,9 @@ public class MoveObject extends BaseObject {
         return animation.getTexture();
     }
     public void reset() {
-        if(obj != null)
+        if(obj != null) {
             obj.reset();
+        }
         end = false;
         position.x = basePos.x;
         position.y = basePos.y;

@@ -49,6 +49,7 @@ public class LoadingScreen extends Screen {
                 gameScreenManager.addScreen(new SettingsScreen(gameScreenManager, "SettingScreen"));
                 gameScreenManager.addScreen(new SplashScreen(gameScreenManager,"SplashScreen"));
                 gameScreenManager.addScreen(new GameScreen(gameScreenManager, balance,"GameScreen"));
+                gameScreenManager.addScreen(new DeathScreen(gameScreenManager, "DeathScreen"));
                 gameScreenManager.addScreen(new SkinScreen(gameScreenManager, "SkinScreen"));
                 gameScreenManager.addScreen(new EducationScreen(gameScreenManager, "EducationScreen"));
                 gameScreenManager.addScreen(new MenuScreen(gameScreenManager, "MenuScreen"));

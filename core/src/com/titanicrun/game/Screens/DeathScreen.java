@@ -19,29 +19,24 @@ public class DeathScreen extends Screen {
 
     public AudioPlayerInt playBGM;
     private Button menu;
-    private GameScreen gameScreen;
     private MoveObject back, gameOver, score, of, max, moveButton;
     private String screen;
     private byte process; //0 - left, 1 - right, 2 - play, 3 - menu
     private int record;
     private Preferences sittings;
 
-    public DeathScreen(GameScreenManager gameScreenManager, GameScreen gameScreen, String name) {
+    public DeathScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
-        this.gameScreen = gameScreen;
         this.sittings = Gdx.app.getPreferences("Score");
         this.playBGM = new AudioPlayerInt();
         playBGM.create();
         this.record = sittings.getInteger("Score");
-        if(gameScreen.score> record) {
-            sittings.putInteger("Score", gameScreen.score);
-            record = gameScreen.score;
+        if(TitanicClass.kostylScore> record) {
+            sittings.putInteger("Score", TitanicClass.kostylScore);
+            record = TitanicClass.kostylScore;
         }
         this.sittings.flush();
-        this.sittings = Gdx.app.getPreferences("Balance");
-        this.sittings.putInteger("Balance", gameScreen.playBallance.getBalance());       // понаписывыл хуйни и рад
-        this.sittings.flush();
-        this.process = 0;
+        this.process = -1;
         this.back = new MoveObject(GameTexturesLoader.get("backs/deathBack.png"), new Vector2(TitanicClass.ScreenWidth, 0),
                 new Vector2(0, 0), 20);
         this.gameOver = new MoveObject(GameTexturesLoader.get("numbers/gameover.png"),
@@ -60,13 +55,13 @@ public class DeathScreen extends Screen {
                         TitanicClass.ScreenHeight / 2 - TitanicClass.scoreABC[0].getHeight() - 10), record + ""),
                 new Vector2(TitanicClass.ScreenWidth / 2 + GameTexturesLoader.get("numbers/of.png").getTexture().getWidth(),
                         TitanicClass.ScreenHeight / 2 - TitanicClass.scoreABC[0].getHeight() - 10), 7);
-        String score = gameScreen.score + "";
+        String score = TitanicClass.kostylScore + "";
         this.score = new MoveObject(new TextDraw(
                 new Vector2(-score.length() * TitanicClass.scoreABC[0].getWidth(),                                //from
                         TitanicClass.ScreenHeight / 2 - TitanicClass.scoreABC[0].getHeight() - 10), score),
                 new Vector2(TitanicClass.ScreenWidth / 2 - score.length() * TitanicClass.scoreABC[0].getWidth() - 50,    //to
                         TitanicClass.ScreenHeight / 2 - TitanicClass.scoreABC[0].getHeight() - 10), 7);
-        this.screen = gameScreen.name;
+        this.screen = "GameScreen";
         Animation buttonAnim = GameTexturesLoader.get("buttons/menu.png");
         this.menu = new Button (buttonAnim, GameTexturesLoader.get("buttons/menuTuched.png"), new Vector2(
                 TitanicClass.ScreenWidth / 2 - buttonAnim.getTexture().getWidth() / 2, - buttonAnim.getTexture().getHeight()),0);
@@ -77,6 +72,24 @@ public class DeathScreen extends Screen {
 
     @Override
     public void update() {
+        if(process == -1) {
+            String score = TitanicClass.kostylScore + "";
+            this.score = new MoveObject(new TextDraw(
+                    new Vector2(-score.length() * TitanicClass.scoreABC[0].getWidth(),                                //from
+                            TitanicClass.ScreenHeight / 2 - TitanicClass.scoreABC[0].getHeight() - 10), score),
+                    new Vector2(TitanicClass.ScreenWidth / 2 - score.length() * TitanicClass.scoreABC[0].getWidth() - 50,    //to
+                            TitanicClass.ScreenHeight / 2 - TitanicClass.scoreABC[0].getHeight() - 10), 7);
+            if(TitanicClass.kostylScore > record) {
+                sittings.putInteger("Score", TitanicClass.kostylScore);
+                record = TitanicClass.kostylScore;
+            }
+            this.max = new MoveObject(new TextDraw(
+                    new Vector2(TitanicClass.ScreenWidth,
+                            TitanicClass.ScreenHeight / 2 - TitanicClass.scoreABC[0].getHeight() - 10), record + ""),
+                    new Vector2(TitanicClass.ScreenWidth / 2 + GameTexturesLoader.get("numbers/of.png").getTexture().getWidth(),
+                            TitanicClass.ScreenHeight / 2 - TitanicClass.scoreABC[0].getHeight() - 10), 7);
+            process = 0;
+        }
         if(process == 0) {
             back.update();
             of.update();
@@ -87,6 +100,7 @@ public class DeathScreen extends Screen {
                 moveButton.update();
                 if ((Gdx.input.justTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) || menu.isPressed()) {
                     back.reverse();
+                    gameScreenManager.getScreen("GameScreen").reset();
                     of.reverse();
                     gameOver.reverse();
                     score.reverse();
@@ -94,15 +108,9 @@ public class DeathScreen extends Screen {
                     moveButton.reverse();
                     process = 1;
                     if(menu.isPressed()){
-
-                        gameScreen.music = true;
-                        gameScreen.reset();
                         screen = "MenuScreen";
                     }
                     else{
-                        gameScreen.reset();
-                        gameScreen.pause = true;
-                        gameScreen.music = true;
                         screen = "GameScreen";
                     }
                 }
@@ -120,7 +128,6 @@ public class DeathScreen extends Screen {
                     process = 2;
                 }
             }
-            gameScreen.pause = true;
             gameScreenManager.getScreen(screen).update();
         }
         else if(process == 2) {
@@ -141,8 +148,10 @@ public class DeathScreen extends Screen {
 
     @Override
     public void reset() {
+        process = -1;
+        TitanicClass.kostylScore = 0;
         back.reset();
-        menu.reset();
+        moveButton.reset();
         of.reset();
         gameOver.reset();
         score.reset();
