@@ -23,10 +23,12 @@ public class Button extends BaseObject {
     private Rectangle mouse = new Rectangle();
     private Rectangle myBound;
     private boolean pressed;
+    private boolean musicPlayed;
 
     public Button(Animation animation, Animation tuched, Vector2 position, int type) {
         super(animation, position);
         this.type = type;
+        this.musicPlayed = false;
         this.myBound = new Rectangle();
         if(type == 1) {
             this.tuched = tuched;
@@ -136,8 +138,12 @@ public class Button extends BaseObject {
     }
     @Override
     public void render(SpriteBatch spriteBatch) {
-        if (wasPressed) {
+        if (wasPressed && !musicPlayed) {
             TitanicClass.playBGM.playSound("Button");
+            musicPlayed = true;
+        }
+        if (!wasPressed) {
+            musicPlayed = false;
         }
         if(type == 1) {
             spriteBatch.draw(current.getTexture(), position.x, position.y);
@@ -162,6 +168,7 @@ public class Button extends BaseObject {
     public void reset() {
         this.obj.reset();
         this.wasPressed = false;
+        this.musicPlayed = false;
         this.pressed = false;
     }
 }
