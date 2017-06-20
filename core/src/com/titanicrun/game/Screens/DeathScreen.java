@@ -73,7 +73,7 @@ public class DeathScreen extends Screen {
         layout.setText(textScore.font, textScore.textValue);
         textScore.position.x = - layout.width;
         textScore.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
-        this.score = new MoveObject(textScore, new Vector2 (constOf - layout.width + 10, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
+        this.score = new MoveObject(textScore, new Vector2 (constOf - layout.width + 5, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
 
         this.textRecord = new Text(new Vector2(0,0), record + "", new Color(1f, 1f, 1f, 1f));
         this.textRecord.parameter.size = 75;
@@ -100,9 +100,7 @@ public class DeathScreen extends Screen {
             //score.obj = textScore;
             textScore.position.x = - layout.width;
             textScore.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
-            score = new MoveObject(textScore, new Vector2 (constOf - layout.width + 10, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
-            /*score.fromPosition = new Vector2(score.position);
-            score.toPosition = new Vector2(constOf - layout.width + 10, TitanicClass.ScreenHeight / 2 - layout.height + 50);*/
+            score = new MoveObject(textScore, new Vector2 (constOf - layout.width + 5, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
             if(TitanicClass.kostylScore > record) {
                 sittings.putInteger("Score", TitanicClass.kostylScore);
                 record = TitanicClass.kostylScore;
@@ -164,12 +162,6 @@ public class DeathScreen extends Screen {
         gameScreenManager.getScreen(screen).render(spriteBatch);
         back.render(spriteBatch);
         menu.render(spriteBatch);
-        /*
-        if (process == 0 && back.end) {
-            textGameOver.render(spriteBatch);
-            textScore.render(spriteBatch);
-        }
-        */
         of.render(spriteBatch);
         gameOver.render(spriteBatch);
         score.render(spriteBatch);
