@@ -15,7 +15,7 @@ public class MoveObject extends BaseObject {
     public boolean end;
     public Vector2 toPosition;
     public Vector2 speed;
-    private Vector2 fromPosition;
+    public Vector2 fromPosition;
     private TextDraw textDraw;
     public BaseObject obj;
 

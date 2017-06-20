@@ -10,11 +10,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
 import com.titanicrun.game.Objects.PlayObjects.GameScore;
-import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.PlayObjects.MovingSizeObject;
-import com.titanicrun.game.Objects.PlayObjects.SizeChangeObject;
-import com.titanicrun.game.Objects.PlayObjects.SuperShark;
-import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
+import com.titanicrun.game.Objects.PlayObjects.NormalShark;
 import com.titanicrun.game.Objects.PlayObjects.BackgroundCreator;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Objects.PlayObjects.EnemiesCreator;
@@ -32,7 +29,7 @@ import java.util.ArrayList;
 public class GameScreen extends Screen {
     public GameScore gameScore;
     public Player player;
-    public SuperShark shark;
+    public NormalShark shark;
     public int score;
     public Text scoreText;
     private Texture pauseLine;
@@ -64,7 +61,7 @@ public class GameScreen extends Screen {
         gameScore = new GameScore(this);
         pause = true;
 
-        shark = new SuperShark(GameTexturesLoader.get("shark.png"), GameTexturesLoader.get("sharkReverse.png"));
+        shark = new NormalShark(GameTexturesLoader.get("shark.png"), GameTexturesLoader.get("sharkReverse.png"));
 
         shadow = new Shadow(this, GameTexturesLoader.get("backs/shadow.png"));
         night = GameTexturesLoader.get("backs/night.png").getTexture();
@@ -108,7 +105,8 @@ public class GameScreen extends Screen {
     @Override
     public void update() {
         if(!pause) {
-            shark.update();
+            if(!beginGame)
+                shark.update();
             gameScreenManager.removeScreen("Pause");
             gameScreenManager.removeScreen("Death");
             for (int i = 0; i < 2; i++) {

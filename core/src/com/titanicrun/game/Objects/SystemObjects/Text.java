@@ -15,8 +15,8 @@ import com.titanicrun.game.Objects.BaseObject;
 public class Text extends BaseObject {
     public String textValue, sartText;
     public BitmapFont font;
-    FreeTypeFontGenerator generator;
-    FreeTypeFontGenerator.FreeTypeFontParameter parameter;
+    public FreeTypeFontGenerator generator;
+    public FreeTypeFontGenerator.FreeTypeFontParameter parameter;
     public Text (Vector2 position, String startText, Color color) {
         this.position = position;
         textValue = startText+"";
