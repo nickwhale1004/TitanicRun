@@ -32,7 +32,7 @@ public class FallObject extends BaseObject {
         for (int i = 0; i < 2; i++) {
             if (!wasTuched && Gdx.input.isTouched(i)) {
                 if (TitanicClass.getMouse(i).overlaps(getBound())) {
-                    playBGM.playSound("getObject");
+                    playBGM.playSound("getObject")    ;
                     wasTuched = true;
                     animation = Screen.anim("fallObj/+10.png");
                     gameScreen.gameScore.failingObjectCatched = true;
