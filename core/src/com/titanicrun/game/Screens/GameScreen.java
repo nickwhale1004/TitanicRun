@@ -12,6 +12,7 @@ import com.titanicrun.game.Objects.PlayObjects.Animation;
 import com.titanicrun.game.Objects.PlayObjects.GameScore;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.PlayObjects.MovingSizeObject;
+import com.titanicrun.game.Objects.PlayObjects.SizeChangeObject;
 import com.titanicrun.game.Objects.PlayObjects.SuperShark;
 import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Objects.PlayObjects.BackgroundCreator;
@@ -62,7 +63,9 @@ public class GameScreen extends Screen {
         //touchToPlay = new MoveObject(GameTexturesLoader.get("splashes/touchtoplay2.png"),new Vector2(50,100), new Vector2(50,100), 1f);
         gameScore = new GameScore(this);
         pause = true;
+
         shark = new SuperShark(GameTexturesLoader.get("shark.png"), GameTexturesLoader.get("sharkReverse.png"));
+
         shadow = new Shadow(this, GameTexturesLoader.get("backs/shadow.png"));
         night = GameTexturesLoader.get("backs/night.png").getTexture();
         pauseLine = GameTexturesLoader.get("backs/pauseLine.png").getTexture();

@@ -29,10 +29,6 @@ public class LoadingScreen extends Screen {
 
     @Override
     public void update() {
-        Gdx.app.getPreferences("Score").putInteger("Score", 0);
-        Gdx.app.getPreferences("Balance").putInteger("Balance", 0);
-        Gdx.app.getPreferences("Music").putBoolean("Music", false);
-        Gdx.app.getPreferences("Sound").putBoolean("Sound", false);
         back0.update();
         back1.update();
         if(process == 0) {

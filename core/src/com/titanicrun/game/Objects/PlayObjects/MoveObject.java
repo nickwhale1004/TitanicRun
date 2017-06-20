@@ -13,7 +13,7 @@ import com.titanicrun.game.Objects.SystemObjects.TextDraw;
 public class MoveObject extends BaseObject {
     private Vector2 basePos, baseToPos, baseSpeed;
     public boolean end;
-    protected Vector2 toPosition;
+    public Vector2 toPosition;
     public Vector2 speed;
     private Vector2 fromPosition;
     private TextDraw textDraw;

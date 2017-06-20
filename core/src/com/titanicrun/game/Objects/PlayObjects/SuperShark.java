@@ -1,5 +1,6 @@
 package com.titanicrun.game.Objects.PlayObjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -22,12 +23,14 @@ public class SuperShark extends BaseObject{
     private int timeToSwim;
     private Random generator;
     private Animation animBack;
+    private boolean wasTouched;
 
     public SuperShark(Animation animation, Animation animationBack) {
         super(animation, new Vector2(0,0));
         this.generator = new Random(System.currentTimeMillis());
         this.vector = generator.nextBoolean();
         this.moveTo = true;
+        this.wasTouched = false;
         this.predPos = (int)position.y;
         this.toPosY = (int)(generator.nextDouble() * 50);
         this.animBack = animationBack;
@@ -37,80 +40,93 @@ public class SuperShark extends BaseObject{
         } else {
             position.x = -animation.getTexture().getWidth();
         }
-        this.timeToSwim = (int)(generator.nextDouble()*10000);
+        this.timeToSwim = (int)(generator.nextDouble()*10);
         this.time =0;
         this.process = 0;
     }
     @Override
     public void update() {
-        if (process == 0) {
-            time++;
-            if (time >= timeToSwim) {
-                process = 1;
-            }
-        } else {
-            time = 0;
-            if (vector) {
-                if (position.x >= -animation.getTexture().getWidth()) {
-                    position.x -= 5;
-                    if (moveTo) {
-                        position.y += (toPosY - position.y) / 50;
-                    } else {
-                        position.y += (predPos - position.y) / 50;
-                    }
-                    if ((int)position.y == toPosY) {
-                        moveTo = false;
-                    }
-                } else {
-                    vector = generator.nextBoolean();
-                    if (vector) {
-                        position.x = TitanicClass.ScreenWidth;
-                    } else {
-                        position.x = -animation.getTexture().getWidth();
-                    }
-                    process = 0;
-                    timeToSwim = (int) (generator.nextDouble() * 10000);
-                    toPosY = (int)(generator.nextDouble() * 50);
-                    if (generator.nextBoolean()) {
-                        position.y = toPosY - 50;
-                    } else {
-                        position.y = toPosY + 50;
-                    }
-                    predPos = (int)position.y;
-                    moveTo = true;
+        if (!wasTouched) {
+            if (process == 0) {
+                time++;
+                if (time >= timeToSwim) {
+                    process = 1;
                 }
             } else {
-                if (position.x <= TitanicClass.ScreenWidth) {
-                    position.x += 5;
-                    if (moveTo) {
-                        position.y += (toPosY - position.y) / 50;
+                time = 0;
+                if (vector) {
+                    if (position.x >= -animation.getTexture().getWidth()) {
+                        position.x -= 5;
+                        if (moveTo) {
+                            position.y += (toPosY - position.y) / 50;
+                        } else {
+                            position.y += (predPos - position.y) / 50;
+                        }
+                        if ((int) position.y == toPosY) {
+                            moveTo = false;
+                        }
                     } else {
-                        position.y += (predPos - position.y) / 50;
-                    }
-                    if ((int)position.y == toPosY) {
-                        moveTo = false;
+                        vector = generator.nextBoolean();
+                        if (vector) {
+                            position.x = TitanicClass.ScreenWidth;
+                        } else {
+                            position.x = -animation.getTexture().getWidth();
+                        }
+                        process = 0;
+                        timeToSwim = (int) (generator.nextDouble() * 10);
+                        toPosY = (int) (generator.nextDouble() * 50);
+                        if (generator.nextBoolean()) {
+                            position.y = toPosY - 50;
+                        } else {
+                            position.y = toPosY + 50;
+                        }
+                        predPos = (int) position.y;
+                        moveTo = true;
                     }
                 } else {
-                    vector = generator.nextBoolean();
-                    if (vector) {
-                        position.x = TitanicClass.ScreenWidth;
+                    if (position.x <= TitanicClass.ScreenWidth) {
+                        position.x += 5;
+                        if (moveTo) {
+                            position.y += (toPosY - position.y) / 50;
+                        } else {
+                            position.y += (predPos - position.y) / 50;
+                        }
+                        if ((int) position.y == toPosY) {
+                            moveTo = false;
+                        }
                     } else {
-                        position.x = -animation.getTexture().getWidth();
+                        vector = generator.nextBoolean();
+                        if (vector) {
+                            position.x = TitanicClass.ScreenWidth;
+                        } else {
+                            position.x = -animation.getTexture().getWidth();
+                        }
+                        process = 0;
+                        timeToSwim = (int) (generator.nextDouble() * 10);
+                        toPosY = (int) (generator.nextDouble() * 50);
+                        if (generator.nextBoolean()) {
+                            position.y = toPosY - 50;
+                        } else {
+                            position.y = toPosY + 50;
+                        }
+                        predPos = (int) position.y;
+                        moveTo = true;
                     }
-                    process = 0;
-                    timeToSwim = (int) (generator.nextDouble() * 10000);
-                    toPosY = (int)(generator.nextDouble() * 50);
-                    if (generator.nextBoolean()) {
-                        position.y = toPosY - 50;
-                    } else {
-                        position.y = toPosY + 50;
-                    }
-                    predPos = (int)position.y;
-                    moveTo = true;
                 }
             }
         }
     }
+
+    public boolean isTouched () {
+        for (int i = 0; i < 2; i++) {
+            if (Gdx.input.isTouched() && this.getBound().overlaps(TitanicClass.getMouse(i))) {
+                wasTouched = true;
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public void render(SpriteBatch spriteBatch) {
         if (vector) {
@@ -121,8 +137,9 @@ public class SuperShark extends BaseObject{
     }
     public void reset () {
         time = 0;
+        wasTouched = false;
         process = 0;
-        timeToSwim = (int)(generator.nextDouble()*10000);
+        timeToSwim = (int)(generator.nextDouble()*10);
         if (vector) {
             position.x = TitanicClass.ScreenWidth;
         } else {
