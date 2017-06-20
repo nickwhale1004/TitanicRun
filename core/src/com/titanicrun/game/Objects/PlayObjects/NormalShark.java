@@ -22,14 +22,16 @@ public class NormalShark extends SizeChangeObject {
     private int upDownProcess; //0-up, 1-down
     private Animation animNorm, animBack;
     private boolean left;
+    public boolean touched;
     public NormalShark(Animation animation, Animation animBack) {
         super(new Vector2(-1000,100), new Animation(animation.getTextures(),1),100);
         this.animNorm = animation;
         this.animBack = animBack;
         this.process = 0;
+        this.touched = false;
         this.upDownProcess = 0;
         this.random = new Random(System.currentTimeMillis());
-        this.timer = 500+random.nextInt(400);
+       // this.timer = 500+random.nextInt(400);
     }
     public void tick() {
         boolean path = random.nextBoolean();
@@ -44,6 +46,8 @@ public class NormalShark extends SizeChangeObject {
             animation =animBack;
         }
         int y = random.nextInt(50);
+        size = 100;
+
         position.y = y;
         yMax = position.y+10;
         yMin = position.y-10;
@@ -115,8 +119,10 @@ public class NormalShark extends SizeChangeObject {
     }
     private boolean isTouched() {
         for (int i = 0; i < 2; i++)
-            if (Gdx.input.isTouched() && this.getBound().overlaps(TitanicClass.getMouse(i)))
+            if (Gdx.input.isTouched() && this.getBound().overlaps(TitanicClass.getMouse(i))) {
+                touched = true;
                 return true;
+            }
         return false;
     }
     @Override
@@ -127,6 +133,7 @@ public class NormalShark extends SizeChangeObject {
     public void reset() {
         Gdx.app.log("reset", "");
         position.x = -1000;
+        touched = false;
         position.y= 100;
         upDownProcess = 0;
         process = 0;

@@ -45,7 +45,8 @@ public class GameScore extends BaseObject {
         if (gameScreen.fallObj.current.position.y == 0) {
             objectFalled = true;
         }
-        if(gameScreen.shark.position.y <= 0) {
+        if(gameScreen.shark.position.y <= 0 && gameScreen.shark.touched) {
+            gameScreen.shark.touched = false;
             objectFalled = true;
             failingObjectCatched = true;
         }
