@@ -81,7 +81,7 @@ public class DeathScreen extends Screen {
         layout.setText(textRecord.font, textRecord.textValue);
         textRecord.position.x = TitanicClass.ScreenWidth + layout.width;
         textRecord.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
-        this.max = new MoveObject(textRecord, new Vector2(TitanicClass.ScreenWidth / 2 - layout.width / 2 + 90, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
+        this.max = new MoveObject(textRecord, new Vector2(TitanicClass.ScreenWidth / 2 + 50, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
 
         this.screen = "GameScreen";
         Animation buttonAnim = GameTexturesLoader.get("buttons/menu.png");
@@ -95,6 +95,7 @@ public class DeathScreen extends Screen {
     @Override
     public void update() {
         if(process == -1) {
+            TitanicClass.kostylScore = 4444;
             textScore.textValue = TitanicClass.kostylScore + "";
             layout.setText(textScore.font, textScore.textValue);
             //score.obj = textScore;
@@ -108,8 +109,11 @@ public class DeathScreen extends Screen {
             this.sittings.flush();
             textRecord.textValue = record + "";
             layout.setText(textRecord.font, textRecord.textValue);
-            max.obj = textRecord;
-            max.toPosition = new Vector2(TitanicClass.ScreenWidth / 2 - layout.width / 2 + 90, TitanicClass.ScreenHeight / 2 - layout.height + 50);
+            //max.obj = textRecord;
+            textRecord.position.x = TitanicClass.ScreenWidth + layout.width;
+            textRecord.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
+            this.max = new MoveObject(textRecord, new Vector2(TitanicClass.ScreenWidth / 2 + 50, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
+            //max.toPosition = new Vector2(TitanicClass.ScreenWidth / 2 + layout.width / 2, TitanicClass.ScreenHeight / 2 - layout.height + 50);
             process = 0;
         }
         if(process == 0) {
