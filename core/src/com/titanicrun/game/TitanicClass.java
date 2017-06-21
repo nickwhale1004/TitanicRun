@@ -27,6 +27,7 @@ public class TitanicClass extends ApplicationAdapter {
 	private SpriteBatch spriteBatch;
     public static AudioPlayerInt playBGM;
 	public static int kostylScore;
+	public static boolean kostylIsEducation;
 	public static Texture[] scoreABC = new Texture[11];
 	public static final int ScreenHeight = 800;
 	public static final int ScreenWidth = 480;

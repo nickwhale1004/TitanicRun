@@ -57,7 +57,6 @@ public class GameScreen extends Screen {
         music = true;
         beginGame = true;
         touchToPlay= new MovingSizeObject(new Vector2(200,100), GameTexturesLoader.get("splashes/touchtoplay2.png"), 100, 140, 1.5f);
-        //touchToPlay = new MoveObject(GameTexturesLoader.get("splashes/touchtoplay2.png"),new Vector2(50,100), new Vector2(50,100), 1f);
         gameScore = new GameScore(this);
         pause = true;
 
@@ -108,7 +107,6 @@ public class GameScreen extends Screen {
             if(!beginGame)
                 shark.update();
             gameScreenManager.removeScreen("Pause");
-            gameScreenManager.removeScreen("Death");
             for (int i = 0; i < 2; i++) {
                 if (Gdx.input.isTouched(i)) {
                     if ((TitanicClass.getMouse(i).getY() >= TitanicClass.ScreenHeight - 125) &&
@@ -170,7 +168,6 @@ public class GameScreen extends Screen {
         water.render(spriteBatch);
         if(score>900)
             shadow.render(spriteBatch);
-        //score.render(spriteBatch);
         scoreText.render(spriteBatch);
         gameScore.render(spriteBatch);
         if (beginGame) {
@@ -187,7 +184,7 @@ public class GameScreen extends Screen {
         for(int i = 0; i < 9; i++) {
             backLvl.get(i).reset();
         }
-        music =true;
+        music = true;
         shark.reset();
         touchToPlay.reset();
         lvl = 0;
@@ -197,8 +194,7 @@ public class GameScreen extends Screen {
         beginGame = true;
         enemiesCreator.reset();
         fallObj.reset();
-        Preferences sittings = Gdx.app.getPreferences("Animation");
-        int playerIndex = sittings.getInteger("Animation");
+        int playerIndex = Gdx.app.getPreferences("Animation").getInteger("Animation");
         player = new Player(this, playerAnimations.get(playerIndex).run, playerAnimations.get(playerIndex).fly);
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
@@ -208,11 +204,14 @@ public class GameScreen extends Screen {
     public void Die() {
         music = false;
         Gdx.app.getPreferences("Balance").putInteger("Balance", playBallance.getBalance());
-        Gdx.app.log("Balance", playBallance.getBalance()+"");
         Gdx.app.getPreferences("Balance").flush();
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
         TitanicClass.kostylScore = score;
+        death();
+    }
+    public void death() {
+        TitanicClass.kostylIsEducation = false;
         gameScreenManager.setNonResetScreen("DeathScreen");
     }
 }

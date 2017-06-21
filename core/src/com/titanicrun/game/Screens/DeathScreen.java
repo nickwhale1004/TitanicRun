@@ -29,7 +29,6 @@ public class DeathScreen extends Screen {
     private Preferences sittings;
     private Text textGameOver, textScore, textOf, textRecord;
     private GlyphLayout layout;
-    private int constOf;
 
     public DeathScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
@@ -55,33 +54,19 @@ public class DeathScreen extends Screen {
         textGameOver.position.x = TitanicClass.ScreenWidth / 2 - layout.width / 2;
         textGameOver.position.y = TitanicClass.ScreenHeight + layout.height + 150;
         this.gameOver = new MoveObject(textGameOver, new Vector2(TitanicClass.ScreenWidth / 2 - layout.width / 2, TitanicClass.ScreenHeight / 2 - layout.height + 150), 13);
-
-        this.textOf = new Text(new Vector2(0, 0), " of ", new Color(1f, 1f, 1f, 1f));
-        this.textOf.parameter.size = 75;
-        this.textOf.font = this.textOf.generator.generateFont(textOf.parameter);
-        layout.setText(textOf.font, textOf.textValue);
-        textOf.position.x = (TitanicClass.ScreenWidth / 2 - layout.width / 2) * 3;
-        textOf.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
-        this.of = new MoveObject(textOf,
-                new Vector2(TitanicClass.ScreenWidth / 2 - layout.width / 2,
-                        TitanicClass.ScreenHeight / 2 - layout.height + 50), 20);
-        this.constOf = (int)(TitanicClass.ScreenWidth / 2 - layout.width / 2);
-
+        //textScore parameters set
         this.textScore = new Text (new Vector2(0, 0), TitanicClass.kostylScore + "", new Color(1f, 1f, 1f, 1f));
         this.textScore.parameter.size = 75;
         this.textScore.font = this.textScore.generator.generateFont(textScore.parameter);
-        layout.setText(textScore.font, textScore.textValue);
-        textScore.position.x = - layout.width;
-        textScore.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
-        this.score = new MoveObject(textScore, new Vector2 (constOf - layout.width + 5, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
-
+        //textOf parameters set
+        this.textOf = new Text(new Vector2(0, 0), " of ", new Color(1f, 1f, 1f, 1f));
+        this.textOf.parameter.size = 75;
+        this.textOf.font = this.textOf.generator.generateFont(textOf.parameter);
+        //textRecord parameters set
         this.textRecord = new Text(new Vector2(0,0), record + "", new Color(1f, 1f, 1f, 1f));
         this.textRecord.parameter.size = 75;
         this.textRecord.font = this.textRecord.generator.generateFont(textRecord.parameter);
-        layout.setText(textRecord.font, textRecord.textValue);
-        textRecord.position.x = TitanicClass.ScreenWidth + layout.width;
-        textRecord.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
-        this.max = new MoveObject(textRecord, new Vector2(TitanicClass.ScreenWidth / 2 + 50, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
+        updatePosition();
 
         this.screen = "GameScreen";
         Animation buttonAnim = GameTexturesLoader.get("buttons/menu.png");
@@ -92,28 +77,48 @@ public class DeathScreen extends Screen {
                         TitanicClass.ScreenHeight / 100 * 20), 10);
     }
 
+    private void updatePosition() {
+        textScore.textValue = TitanicClass.kostylScore + "";
+        textRecord.textValue = record + "";
+        layout.setText(textScore.font, textScore.textValue + textOf.textValue + textRecord.textValue);
+        while (layout.width > TitanicClass.ScreenWidth) {
+            textScore.parameter.size -= 10;
+            textOf.parameter.size -= 10;
+            textRecord.parameter.size -= 10;
+            textScore.font = textScore.generator.generateFont(textScore.parameter);
+            textOf.font = textOf.generator.generateFont(textOf.parameter);
+            textRecord.font = textRecord.generator.generateFont(textRecord.parameter);
+            layout.setText(textScore.font, textScore.textValue + textOf.textValue + textRecord.textValue);
+        }
+        textScore.position.x = - layout.width;
+        textScore.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
+        score = new MoveObject(textScore, new Vector2 (TitanicClass.ScreenWidth / 2 - layout.width / 2, TitanicClass.ScreenHeight / 2 - layout.height + 50),
+                (int)(TitanicClass.ScreenWidth / 2 - layout.width / 2 - textScore.position.x) / 30);
+
+        layout.setText(textOf.font, textOf.textValue);
+        textOf.position.x = (TitanicClass.ScreenWidth + layout.width);
+        textOf.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
+        layout.setText(textScore.font, textScore.textValue);
+        of = new MoveObject(textOf, new Vector2(score.toPosition.x + layout.width, TitanicClass.ScreenHeight / 2 - layout.height + 50),
+                (int)-(score.toPosition.x + layout.width - textOf.position.x) / 30);
+
+        layout.setText(textRecord.font, textRecord.textValue);
+        textRecord.position.x = TitanicClass.ScreenWidth + layout.width;
+        textRecord.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
+        layout.setText(textOf.font, textOf.textValue);
+        max = new MoveObject(textRecord, new Vector2(of.toPosition.x + layout.width, TitanicClass.ScreenHeight / 2 - layout.height + 50),
+                (int)-(of.toPosition.x + layout.width - textRecord.position.x)/30);
+    }
+
     @Override
     public void update() {
         if(process == -1) {
-            TitanicClass.kostylScore = 4444;
-            textScore.textValue = TitanicClass.kostylScore + "";
-            layout.setText(textScore.font, textScore.textValue);
-            //score.obj = textScore;
-            textScore.position.x = - layout.width;
-            textScore.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
-            score = new MoveObject(textScore, new Vector2 (constOf - layout.width + 5, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
             if(TitanicClass.kostylScore > record) {
                 sittings.putInteger("Score", TitanicClass.kostylScore);
                 record = TitanicClass.kostylScore;
             }
             this.sittings.flush();
-            textRecord.textValue = record + "";
-            layout.setText(textRecord.font, textRecord.textValue);
-            //max.obj = textRecord;
-            textRecord.position.x = TitanicClass.ScreenWidth + layout.width;
-            textRecord.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
-            this.max = new MoveObject(textRecord, new Vector2(TitanicClass.ScreenWidth / 2 + 50, TitanicClass.ScreenHeight / 2 - layout.height + 50), 7);
-            //max.toPosition = new Vector2(TitanicClass.ScreenWidth / 2 + layout.width / 2, TitanicClass.ScreenHeight / 2 - layout.height + 50);
+            updatePosition();
             process = 0;
         }
         if(process == 0) {
@@ -126,7 +131,11 @@ public class DeathScreen extends Screen {
                 moveButton.update();
                 if ((Gdx.input.justTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) || menu.isPressed()) {
                     back.reverse();
-                    gameScreenManager.getScreen("GameScreen").reset();
+                    if (TitanicClass.kostylIsEducation) {
+                        gameScreenManager.getScreen("EducationScreen").reset();
+                    } else {
+                        gameScreenManager.getScreen("GameScreen").reset();
+                    }
                     of.reverse();
                     gameOver.reverse();
                     score.reverse();
@@ -163,7 +172,10 @@ public class DeathScreen extends Screen {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-        gameScreenManager.getScreen(screen).render(spriteBatch);
+        if(TitanicClass.kostylIsEducation)
+            gameScreenManager.getScreen("EducationScreen").render(spriteBatch);
+        else
+            gameScreenManager.getScreen(screen).render(spriteBatch);
         back.render(spriteBatch);
         menu.render(spriteBatch);
         of.render(spriteBatch);
@@ -175,6 +187,12 @@ public class DeathScreen extends Screen {
     @Override
     public void reset() {
         screen = "GameScreen";
+        textScore.parameter.size = 75;
+        textOf.parameter.size = 75;
+        textRecord.parameter.size = 75;
+        textScore.font = textScore.generator.generateFont(textScore.parameter);
+        textOf.font = textOf.generator.generateFont(textOf.parameter);
+        textRecord.font = textRecord.generator.generateFont(textRecord.parameter);
         textGameOver.reset();
         textScore.reset();
         process = -1;

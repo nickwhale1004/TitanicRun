@@ -150,5 +150,11 @@ public class EducationScreen extends GameScreen {
         goTop.reset();
         pressPause.reset();
         catchFall.reset();
+        TitanicClass.kostylIsEducation = false;
+    }
+    @Override
+    public void death() {
+        TitanicClass.kostylIsEducation = true;
+        gameScreenManager.setNonResetScreen("DeathScreen");
     }
 }
