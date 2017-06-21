@@ -32,6 +32,7 @@ public class TitanicClass extends ApplicationAdapter {
 	public static final int ScreenHeight = 800;
 	public static final int ScreenWidth = 480;
 	private static OrthographicCamera camera;
+	public static boolean isPause;
 	public GameScreenManager gameScreenManager;
 	@Override
 	public void create () {
@@ -41,6 +42,7 @@ public class TitanicClass extends ApplicationAdapter {
 		}
 		playBGM = new AudioPlayerInt();
         playBGM.create();
+		isPause = false;
 		scoreABC[10] = new Texture("numbers/space.png");
 		gameScreenManager = new GameScreenManager();
 		gameScreenManager.addScreen(new LoadingScreen(gameScreenManager, "LoadingScreen"));
@@ -69,5 +71,13 @@ public class TitanicClass extends ApplicationAdapter {
 		Vector3 mousePosition = new Vector3(Gdx.input.getX(n), Gdx.input.getY(n),0);
 		TitanicClass.camera.unproject(mousePosition);
 		return new Rectangle(mousePosition.x, mousePosition.y,1,1);
+	}
+	@Override
+	public void pause() {
+		isPause = true;
+	}
+	@Override
+	public void resume() {
+		isPause = false;
 	}
 }

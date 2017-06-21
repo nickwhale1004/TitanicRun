@@ -101,6 +101,7 @@ public class GameScreen extends Screen {
         backLvl.get(lvl).update();
         scoreText = new Text(new Vector2(20, TitanicClass.ScreenHeight - 12), score+"", Color.WHITE);
     }
+
     @Override
     public void update() {
         if(!pause) {
@@ -108,11 +109,11 @@ public class GameScreen extends Screen {
                 shark.update();
             gameScreenManager.removeScreen("Pause");
             for (int i = 0; i < 2; i++) {
-                if (Gdx.input.isTouched(i)) {
-                    if ((TitanicClass.getMouse(i).getY() >= TitanicClass.ScreenHeight - 125) &&
+                if (Gdx.input.isTouched(i) || TitanicClass.isPause) {
+                    if (((TitanicClass.getMouse(i).getY() >= TitanicClass.ScreenHeight - 125) &&
                             (TitanicClass.getMouse(i).getY() < TitanicClass.ScreenHeight) &&
                             (TitanicClass.getMouse(i).getX() > 0) &&
-                            (TitanicClass.getMouse(i).getX() < TitanicClass.ScreenWidth)) {
+                            (TitanicClass.getMouse(i).getX() < TitanicClass.ScreenWidth)) || TitanicClass.isPause) {
                         pause = true;
                         gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
                         break;
