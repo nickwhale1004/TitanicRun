@@ -35,7 +35,7 @@ public class FallObjectsCreator extends Creator {
             time = 0;
             tick();
         }
-        if(!isFirst)
+        //if(!isFirst)
             current.update();
     }
 

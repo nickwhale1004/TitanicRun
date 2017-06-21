@@ -33,7 +33,8 @@ public class AudioPlayerInt implements ApplicationListener {
         dictionary.get("Button").setVolume(2f);
         dictionary.put("getObject", Gdx.audio.newMusic(Gdx.files.internal("sound/getObject.wav")));
         dictionary.get("getObject").setVolume(0.1f);
-
+        dictionary.put("getShark", Gdx.audio.newMusic(Gdx.files.internal("sound/getShark.wav")));
+        dictionary.get("getShark").setVolume(0.2f);
     }
 
     @Override

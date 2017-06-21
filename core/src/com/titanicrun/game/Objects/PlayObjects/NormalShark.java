@@ -1,6 +1,7 @@
 package com.titanicrun.game.Objects.PlayObjects;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.particles.influencers.RegionInfluencer;
 import com.badlogic.gdx.math.Vector2;
@@ -102,7 +103,6 @@ public class NormalShark extends SizeChangeObject {
             position.x = basePos.x -(animation.getTexture().getWidth()/100f*size-animation.getTexture().getWidth())/2f;
             if (end) {
                 animation = Screen.anim("fallObj/+10.png");
-                TitanicClass.playBGM.playSound("getObject");
                 position.y = basePos.y;
                 position.x = basePos.x;
                 size = 100;
@@ -120,7 +120,10 @@ public class NormalShark extends SizeChangeObject {
     }
     private boolean isTouched() {
         for (int i = 0; i < 2; i++)
-            if (Gdx.input.isTouched() && this.getBound().overlaps(TitanicClass.getMouse(i))) {
+            if (Gdx.input.isTouched(i) && getBound().overlaps(TitanicClass.getMouse(i)) || Gdx.input.isKeyPressed(Input.Keys.S)) {
+                if (!touched) {
+                    TitanicClass.playBGM.playSound("getShark");
+                }
                 touched = true;
                 return true;
             }
