@@ -40,7 +40,7 @@ public class Putter {
         for(int i = 1; i <= k; i++) {
             for(int j = 0; j < n; j++) {
                 skins.get(s).position = new Vector2(rectangle.getX() + j * (skins.get(0).animation.getTexture().getWidth() + 20),
-                        rectangle.getWidth() - i * (skins.get(0).animation.getTexture().getHeight() + 20)-35);
+                        rectangle.getY() - i * (skins.get(0).animation.getTexture().getHeight() + 20)+15);
                 s++;
             }
         }

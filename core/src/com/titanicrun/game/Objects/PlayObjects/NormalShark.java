@@ -32,7 +32,7 @@ public class NormalShark extends SizeChangeObject {
         this.touched = false;
         this.upDownProcess = 0;
         this.random = new Random(System.currentTimeMillis());
-       // this.timer = 500+random.nextInt(400);
+        this.timer = 500+random.nextInt(400);
     }
     public void tick() {
         boolean path = random.nextBoolean();

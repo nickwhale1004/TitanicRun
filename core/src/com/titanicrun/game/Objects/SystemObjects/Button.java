@@ -16,6 +16,7 @@ public class Button extends BaseObject {
     private int type;
     private int process; //0- normal, 11 - smaler, 1- bigger, 2- big, 3- normaler
     private SizeChangeObject obj;
+    public static Rectangle simulateTouch;
     private Animation baseAnimation;
     private Vector2 newPosition;
     private Animation tuched, current;
@@ -53,8 +54,11 @@ public class Button extends BaseObject {
     public void update() {
         if(type == 1) {
             current.update();
-            if (Gdx.input.isTouched()) {
+            if (Gdx.input.isTouched() || simulateTouch != null) {
                 mouse = TitanicClass.getMouse();
+                if(simulateTouch != null) {
+                    mouse = simulateTouch;
+                }
                 if (mouse.overlaps(getBound())) {
                     current = tuched;
                     wasPressed = true;

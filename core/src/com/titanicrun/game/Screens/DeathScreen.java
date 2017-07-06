@@ -85,11 +85,8 @@ public class DeathScreen extends Screen {
             textScore.parameter.size -= 10;
             textOf.parameter.size -= 10;
             textRecord.parameter.size -= 10;
-            textScore.font = textScore.generator.generateFont(textScore.parameter);
-            textOf.font = textOf.generator.generateFont(textOf.parameter);
-            textRecord.font = textRecord.generator.generateFont(textRecord.parameter);
-            layout.setText(textScore.font, textScore.textValue + textOf.textValue + textRecord.textValue);
         }
+        layout.setText(textScore.font, textScore.textValue + textOf.textValue + textRecord.textValue);
         textScore.position.x = - layout.width;
         textScore.position.y = TitanicClass.ScreenHeight / 2 - layout.height + 50;
         score = new MoveObject(textScore, new Vector2 (TitanicClass.ScreenWidth / 2 - layout.width / 2, TitanicClass.ScreenHeight / 2 - layout.height + 50),
@@ -116,8 +113,8 @@ public class DeathScreen extends Screen {
             if(TitanicClass.kostylScore > record) {
                 sittings.putInteger("Score", TitanicClass.kostylScore);
                 record = TitanicClass.kostylScore;
+                sittings.flush();
             }
-            this.sittings.flush();
             updatePosition();
             process = 0;
         }
@@ -144,6 +141,7 @@ public class DeathScreen extends Screen {
                     process = 1;
                     if(menu.isPressed()){
                         screen = "MenuScreen";
+                        TitanicClass.isPause = true;
                     }
                     else{
                         screen = "GameScreen";
@@ -166,6 +164,7 @@ public class DeathScreen extends Screen {
             gameScreenManager.getScreen(screen).update();
         }
         else if(process == 2) {
+            TitanicClass.isPause = false;
             gameScreenManager.setScreen(screen);
         }
     }
@@ -190,9 +189,9 @@ public class DeathScreen extends Screen {
         textScore.parameter.size = 75;
         textOf.parameter.size = 75;
         textRecord.parameter.size = 75;
-        textScore.font = textScore.generator.generateFont(textScore.parameter);
+       /*textScore.font = textScore.generator.generateFont(textScore.parameter);
         textOf.font = textOf.generator.generateFont(textOf.parameter);
-        textRecord.font = textRecord.generator.generateFont(textRecord.parameter);
+        textRecord.font = textRecord.generator.generateFont(textRecord.parameter);*/
         textGameOver.reset();
         textScore.reset();
         process = -1;

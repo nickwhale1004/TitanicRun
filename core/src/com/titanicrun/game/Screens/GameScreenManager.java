@@ -21,6 +21,10 @@ public class GameScreenManager {
         currenScreen = null;
     }
 
+    public Screen getCurrenScreen() {
+        return currenScreen;
+    }
+
     public void addScreen(Screen screen) {
         screens.put(screen.name, screen);
         currenScreen = screen;

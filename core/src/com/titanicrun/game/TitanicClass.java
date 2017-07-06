@@ -74,10 +74,18 @@ public class TitanicClass extends ApplicationAdapter {
 	}
 	@Override
 	public void pause() {
+		if(gameScreenManager.getCurrenScreen().name == "GameScreen" ||
+				gameScreenManager.getCurrenScreen().name == "EducationScreen") {
+			gameScreenManager.getCurrenScreen().update();
+		}
 		isPause = true;
 	}
 	@Override
 	public void resume() {
+		if(gameScreenManager.getCurrenScreen().name == "GameScreen"||
+				gameScreenManager.getCurrenScreen().name == "EducationScreen") {
+			gameScreenManager.getCurrenScreen().update();
+		}
 		isPause = false;
 	}
 }

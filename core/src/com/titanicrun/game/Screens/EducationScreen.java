@@ -14,9 +14,10 @@ import com.titanicrun.game.TitanicClass;
  * Created by Никита on 15.04.2017.
  */
 public class EducationScreen extends GameScreen {
-    int process; // 0 - begin game,1 - press to top, 2 - pause, 3 - fallobjcts
+    int process; // 0 - begin game,-1 - wait, 1 - press to top, 2 - pause, 3 - fallobjcts
     protected MovingSizeObject touchToPlay, goTop, pressPause, catchFall;
     private MoveObject goodLuck, pauseField;
+    private int time, timer;
     public EducationScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, new Balance(Gdx.app.getPreferences("Balance").getInteger("Balance")), name);
         Load();
@@ -24,6 +25,8 @@ public class EducationScreen extends GameScreen {
     @Override
     public void Load() {
         super.Load();
+        time = 0;
+        timer = 10;
         beginGame = false;
         Animation goodLAnim = GameTexturesLoader.get("splashes/goodluck.png");
         Animation pauseAnim = GameTexturesLoader.get("backs/pauseField.png");
@@ -50,9 +53,18 @@ public class EducationScreen extends GameScreen {
                 touchToPlay.die();
             }
             if (touchToPlay.end) {
-                    process = 1;
+                    process = -1;
             }
-        } else if (process == 1) {
+        }
+        else if (process == -1) {
+            super.update();
+            time++;
+            if(time == timer) {
+                time = 0;
+                process = 1;
+            }
+        }
+        else if (process == 1) {
             goTop.update();
             if(Gdx.input.isTouched()) {
                 player.update();

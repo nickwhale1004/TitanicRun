@@ -58,17 +58,19 @@ public class MenuScreen extends Screen {
     @Override
     public void update() {
         if (process == 0) {
-            if (playButton.isPressed()) {
-                screen = "GameScreen";
-                process = 1;
-            }
-            if(skinButton.isPressed()) {
-                screen = "SkinScreen";
-                process = 1;
-            }
-            if (settingsButton.isPressed()) {
-                screen = "SettingScreen";
-                process = 1;
+            if(!TitanicClass.isPause) {
+                if (playButton.isPressed()) {
+                    screen = "GameScreen";
+                    process = 1;
+                }
+                if (skinButton.isPressed()) {
+                    screen = "SkinScreen";
+                    process = 1;
+                }
+                if (settingsButton.isPressed()) {
+                    screen = "SettingScreen";
+                    process = 1;
+                }
             }
         } else if (process == 1) {
             slider.update();

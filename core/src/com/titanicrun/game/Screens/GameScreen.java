@@ -104,8 +104,8 @@ public class GameScreen extends Screen {
 
     @Override
     public void update() {
-        if(!pause) {
-            if(!beginGame)
+        if (!pause) {
+            if (!beginGame)
                 shark.update();
             gameScreenManager.removeScreen("Pause");
             for (int i = 0; i < 2; i++) {
@@ -120,7 +120,7 @@ public class GameScreen extends Screen {
                     }
                 }
             }
-            if(Gdx.input.isKeyPressed(Input.Keys.P)) {
+            if (Gdx.input.isKeyPressed(Input.Keys.P)) {
                 pause = true;
                 gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
             }
@@ -128,8 +128,7 @@ public class GameScreen extends Screen {
             enemiesCreator.update();
             shadow.update();
             fallObj.update();
-        }
-        else {
+        } else {
             if (Gdx.input.justTouched()) {
                 touchToPlay.die();
                 pause = false;
@@ -142,12 +141,12 @@ public class GameScreen extends Screen {
         if (beginGame) {
             touchToPlay.update();
         }
-        if(lvl != 0) {
-            backLvl.get(lvl-1).update();
+        if (lvl != 0) {
+            backLvl.get(lvl - 1).update();
         }
         backLvl.get(lvl).update();
-            if (score >= lvl*100+90 && lvl != 8)
-                lvl++;
+        if (score >= lvl * 100 + 90 && lvl != 8)
+            lvl++;
         player.animation.update();
         water.update();
         gameScore.update();
@@ -191,6 +190,7 @@ public class GameScreen extends Screen {
         lvl = 0;
         scoreText.reset();
         score = 0;
+        gameScore.reset();
         pause = true;
         beginGame = true;
         enemiesCreator.reset();

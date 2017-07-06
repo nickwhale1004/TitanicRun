@@ -24,6 +24,7 @@ public class GameScore extends BaseObject {
     private MoveObject moveableText;
     private GlyphLayout layout;
     private int process; //0-nothing, 1-just fallObj, 2-just shark
+    private boolean isFirst;
 
     public GameScore(GameScreen gameScreen) {
         this.gameScreen = gameScreen;
@@ -31,6 +32,7 @@ public class GameScore extends BaseObject {
         ballanceText = new Text(new Vector2(0, 0), Integer.toString(0), new Color(0.95f, 0.92f, 0.03f, 1));
         failingObjectCatched = false;
         objectFalled = false;
+        isFirst = true;
         sharkCathed = false;
         sharkFalled = false;
         isFinished = false;
@@ -53,8 +55,10 @@ public class GameScore extends BaseObject {
             layout.setText(ballanceText.font, ballanceText.textValue);
             ballanceText.position.x = TitanicClass.ScreenWidth - layout.width - 15;
             ballanceText.position.y = TitanicClass.ScreenHeight - 12;
-            moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
-
+            if(isFirst) {
+                moveableText = new MoveObject(ballanceText, ballanceText.position, 5);
+                isFirst = false;
+            }
             if (objectFalled && failingObjectCatched) {
                 process = 1;
             }
@@ -123,6 +127,6 @@ public class GameScore extends BaseObject {
 
     @Override
     public void reset() {
-
+        isFirst = false;
     }
 }

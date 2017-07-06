@@ -19,6 +19,7 @@ import com.titanicrun.game.Objects.SystemObjects.PlayerAnimation;
 import com.titanicrun.game.Objects.SystemObjects.Putter;
 import  com.badlogic.gdx.graphics.Texture;
 import com.titanicrun.game.Objects.SystemObjects.Scroller;
+import com.titanicrun.game.Objects.SystemObjects.TouchPanel;
 import com.titanicrun.game.Screens.Messages.BuyMessage;
 import com.titanicrun.game.Screens.Messages.CantBuyMessage;
 import com.titanicrun.game.TitanicClass;
@@ -37,7 +38,7 @@ public class SkinScreen extends Screen {
     FreeTypeFontGenerator generator;
     FreeTypeFontGenerator.FreeTypeFontParameter parameter, parameter2;
     private Putter tableSkin;
-    private Scroller scroll;
+    private TouchPanel scroll;
     private Texture scrollBack, skinBack, skinUpBack;
     private Preferences animSittings, lockSittings, prices, balanceSitting;
     private Button select, menu, buy;
@@ -94,11 +95,11 @@ public class SkinScreen extends Screen {
         ArrayList<Button> buttons = new ArrayList<Button>();
         for(int i = 1; i <= countOfPerson; i++)
             buttons.add(new Button(GameTexturesLoader.get("players/"+i+"playerSkin.png"), GameTexturesLoader.get("players/"+i+"playerSkin.png"), new Vector2(0, 0),1));
-        Rectangle rectangle = new Rectangle(53,TitanicClass.ScreenHeight/2, TitanicClass.ScreenWidth, TitanicClass.ScreenHeight/2);
+        Rectangle rectangle = new Rectangle(63,TitanicClass.ScreenHeight/2, TitanicClass.ScreenWidth+63, TitanicClass.ScreenHeight/2);
         //Т А Б Л И Ц А  ( P U T T E R )
         this.tableSkin = new Putter(rectangle,buttons);
         //S C R O L L E R
-        this.scroll = new Scroller(tableSkin, GameTexturesLoader.get("sll.png"), 30);
+        this.scroll = new TouchPanel(tableSkin/*, GameTexturesLoader.get("sll.png"), 30*/);
         //А Н И М А Ц И И  П Е Р С О Н А Ж Е Й
         this.playerAnimations = new ArrayList<PlayerAnimation>();
         for(int i = 1; i <= countOfPerson; i++)
@@ -152,7 +153,8 @@ public class SkinScreen extends Screen {
             selected.update();
             scroll.update();
             if(lockedIDs.get(scroll.items.getAnimation()) != 0 || scroll.items.getAnimation() == 0) {
-                select.update();
+                if(scroll.isPressed == 0)
+                    select.update();
                 if (select.isPressed()) {
                     if(lockedIDs.get(scroll.items.getAnimation()) != 0 || scroll.items.getAnimation() == 0) {
                         animSittings.putInteger("Animation", scroll.items.getAnimation());
@@ -162,7 +164,8 @@ public class SkinScreen extends Screen {
                 }
             }
             else {
-                buy.update();
+                if(scroll.isPressed == 0)
+                    buy.update();
                 if (buy.isPressed()) {
                     if (playBalance.getBalance() - prices.getInteger(Integer.toString(scroll.items.getAnimation())) >= 0) {
                         gameScreenManager.addScreen(new BuyMessage(gameScreenManager, this, "Buy"));
@@ -186,8 +189,8 @@ public class SkinScreen extends Screen {
                         new Mark(GameTexturesLoader.get("players/unknow.png"), tableSkin, -1, new Vector2(0, 0)));
                 messResult = false;
             }
-
-            menu.update();
+            if(scroll.isPressed == 0)
+                menu.update();
             back.update();
             front.update();
             preview.update();
@@ -232,8 +235,7 @@ public class SkinScreen extends Screen {
     public void render(SpriteBatch spriteBatch) {
         if (process != 2) {
             spriteBatch.draw(skinBack, 0, 0);
-
-            scroll.items.render(spriteBatch);
+            scroll.render(spriteBatch);
 
             for(Mark x : lockedMarks) {
                 x.render(spriteBatch);
@@ -243,8 +245,8 @@ public class SkinScreen extends Screen {
             selected.render(spriteBatch);
             spriteBatch.draw(skinUpBack, 0, 0);
             menu.render(spriteBatch);
-            spriteBatch.draw(scrollBack, scroll.position.x, 30);
-            scroll.render(spriteBatch);
+           // spriteBatch.draw(scrollBack, scroll.position.x, 30);
+           // scroll.render(spriteBatch);
             if(lockedIDs.get(scroll.items.getAnimation()) != 0 || scroll.items.getAnimation() == 0) {
                 select.render(spriteBatch);
                 spriteBatch.draw(front.getTexture(), 10 + menu.position.x + menu.animation.getTexture().getWidth() / 2 -

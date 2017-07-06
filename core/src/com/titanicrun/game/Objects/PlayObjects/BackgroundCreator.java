@@ -19,6 +19,7 @@ public class BackgroundCreator extends Creator {
     protected Background firstBack;
     private byte process; //0 - preview + usuall start, 1 - usuall + previw end, 2 - usuall end
     static private int toPosX;
+    private boolean isPreview;
     public boolean pause;
 
     public BackgroundCreator(GameScreen gameScreen, Animation animation, Animation preview, boolean isPreview) {
@@ -27,14 +28,13 @@ public class BackgroundCreator extends Creator {
         this.firstBack = new Background(gameScreen, animation, new Vector2(0,2*TitanicClass.ScreenHeight));
         this.secondBack = new Background(gameScreen, animation, new Vector2(0,3*TitanicClass.ScreenHeight));
         this.toPosX = 0;
+        this.isPreview = isPreview;
         this.currentGameScreen = gameScreen;
         if(isPreview)
             this.process = 0;
         else
             this.process = 1;
-
     }
-
     public void update() {
             time++;
         if (time >= interval) {
@@ -85,18 +85,24 @@ public class BackgroundCreator extends Creator {
         secondBack.render(spriteBatch);
     }
     public void reset() {
-        preview.reset(new Vector2(0,TitanicClass.ScreenHeight));
-        firstBack.reset(new Vector2(0,2*TitanicClass.ScreenHeight));
-        secondBack.reset(new Vector2(0,3*TitanicClass.ScreenHeight));
+     if(isPreview)
+        this.process = 0;
+     else
+        this.process = 1;
+        preview.reset();
+        firstBack.reset();
+        secondBack.reset();
         time = 0;
     }
 
     static class Background extends BaseObject {
+        public Vector2 basePos;
         public static int toPosX;
         public static float posX;
         public Background(GameScreen gameScreen, Animation animation, Vector2 position) {
             super(gameScreen, animation, position);
             posX = position.x;
+            basePos = new Vector2(position.x, position.y);
         }
 
         @Override
@@ -131,12 +137,9 @@ public class BackgroundCreator extends Creator {
 
         @Override
         public void reset() {
-
-        }
-
-        public void reset(Vector2 position) {
-            this.position = position;
-            this.toPosX = 0;
+            toPosX = 0;
+            position.x = basePos.x;
+            position.y = basePos.y;
         }
     }
 }
