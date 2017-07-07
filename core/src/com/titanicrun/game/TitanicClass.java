@@ -2,6 +2,7 @@ package com.titanicrun.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.LifecycleListener;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -89,3 +90,5 @@ public class TitanicClass extends ApplicationAdapter {
 		isPause = false;
 	}
 }
+
+

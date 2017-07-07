@@ -1,6 +1,7 @@
 package com.titanicrun.game.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -126,7 +127,8 @@ public class DeathScreen extends Screen {
                 score.update();
                 max.update();
                 moveButton.update();
-                if ((Gdx.input.justTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) || menu.isPressed()) {
+                if ((Gdx.input.justTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) || menu.isPressed() || Gdx.input.isKeyPressed(Input.Keys.BACK)) {
+                    Gdx.input.setCatchBackKey(true);
                     back.reverse();
                     if (TitanicClass.kostylIsEducation) {
                         gameScreenManager.getScreen("EducationScreen").reset();
@@ -139,7 +141,8 @@ public class DeathScreen extends Screen {
                     max.reverse();
                     moveButton.reverse();
                     process = 1;
-                    if(menu.isPressed()){
+                    if(menu.isPressed() || Gdx.input.isKeyPressed(Input.Keys.BACK)){
+                        Gdx.input.setCatchBackKey(true);
                         screen = "MenuScreen";
                         TitanicClass.isPause = true;
                     }

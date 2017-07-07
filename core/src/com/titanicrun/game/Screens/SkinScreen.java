@@ -177,7 +177,8 @@ public class SkinScreen extends Screen {
                     }
                 }
             }
-            if (menu.isPressed()) {
+            if (menu.isPressed() || (Gdx.input.isKeyPressed(Input.Keys.BACK) && !Gdx.input.isCatchBackKey())) {
+                Gdx.input.setCatchBackKey(true);
                 balanceSitting.putInteger("Balance", playBalance.getBalance());
                 balanceSitting.flush();
                 process = 1;

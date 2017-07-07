@@ -104,6 +104,11 @@ public class GameScreen extends Screen {
 
     @Override
     public void update() {
+        if (Gdx.input.isKeyPressed(Input.Keys.BACK)) {
+            Gdx.input.setCatchBackKey(true);
+            pause = true;
+            gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
+        }
         if (!pause) {
             if (!beginGame)
                 shark.update();
@@ -199,6 +204,8 @@ public class GameScreen extends Screen {
         player = new Player(this, playerAnimations.get(playerIndex).run, playerAnimations.get(playerIndex).fly);
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
+        Gdx.app.getPreferences("Balance").putInteger("Balance", playBallance.getBalance());
+        Gdx.app.getPreferences("Balance").flush();
         music = true;
     }
 

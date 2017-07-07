@@ -1,5 +1,7 @@
 package com.titanicrun.game.Screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -65,7 +67,8 @@ public abstract class MessageScreen extends Screen {
             else if (cansleButton.isPressed()) {
                 cansleButtonUpdate();
             }
-            if(okButton.isPressed() || cansleButton.isPressed()) {
+            if(okButton.isPressed() || cansleButton.isPressed() || Gdx.input.isKeyPressed(Input.Keys.BACK)) {
+                Gdx.input.setCatchBackKey(true);
                 process = 2;
                 backMove.change(new Vector2(-backTexture.getWidth(),
                         TitanicClass.ScreenHeight / 2 - backTexture.getHeight() / 2));
@@ -76,7 +79,8 @@ public abstract class MessageScreen extends Screen {
             }
         }
         else if(process == 2) {
-            gameScreenManager.getScreen(baseScreen).update();
+            //if (Gdx.input.isCatchBackKey())
+                gameScreenManager.getScreen(baseScreen).update();
             if(noMove.end) {
                 gameScreenManager.setScreen(baseScreen);
             }

@@ -1,5 +1,6 @@
 package com.titanicrun.game.Objects.SystemObjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -9,10 +10,6 @@ public class Balance {
     private static int balance;
     public Balance(int money) {
         balance = money;
-    }
-
-    public void setBalance(int savedBalance){
-        balance = savedBalance;
     }
 
     public void addPoint(int money) {

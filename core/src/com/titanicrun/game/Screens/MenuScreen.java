@@ -1,6 +1,7 @@
 package com.titanicrun.game.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -94,6 +95,10 @@ public class MenuScreen extends Screen {
             waterMid.update();
             waterUp.update();
             ship.update();
+        }
+        if(Gdx.input.isButtonPressed(Input.Buttons.BACK)) {
+            Gdx.input.setCatchBackKey(true);
+            Gdx.app.exit();
         }
     }
 

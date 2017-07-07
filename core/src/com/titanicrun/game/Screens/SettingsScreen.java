@@ -1,6 +1,7 @@
 package com.titanicrun.game.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -115,7 +116,8 @@ public class SettingsScreen extends  Screen {
             process = 3;
             slider.change(new Vector2(-slider.getTexture().getWidth(), 0));
         }
-        if (menuButton.isPressed()) {
+        if (menuButton.isPressed() || (Gdx.input.isKeyPressed(Input.Keys.BACK) && !Gdx.input.isCatchBackKey())) {
+            Gdx.input.setCatchBackKey(true);
             process = 2;
         }
         if (process == 2) {
