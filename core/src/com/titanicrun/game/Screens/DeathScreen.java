@@ -127,7 +127,7 @@ public class DeathScreen extends Screen {
                 score.update();
                 max.update();
                 moveButton.update();
-                if ((Gdx.input.justTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) || menu.isPressed() || Gdx.input.isKeyPressed(Input.Keys.BACK)) {
+                if ((Gdx.input.isTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) || menu.isPressed() || Gdx.input.isKeyPressed(Input.Keys.BACK)) {
                     Gdx.input.setCatchBackKey(true);
                     back.reverse();
                     if (TitanicClass.kostylIsEducation) {

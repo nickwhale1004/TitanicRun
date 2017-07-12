@@ -39,7 +39,7 @@ public class LoadingScreen extends Screen {
         else if (process == 1) {
             if (back2.position.x !=0) {
                 gtl.update();
-                back2.position.x += 28;
+                back2.position.x += 28/11;
             }
             else {
                 process = 2;

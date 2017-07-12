@@ -40,7 +40,8 @@ public class GameScreen extends Screen {
     public EnemiesCreator enemiesCreator;
     public ArrayList<BackgroundCreator> backLvl;
     public Array<PlayerAnimation> playerAnimations;
-    public FallObjectsCreator fallObj;
+    public ArrayList<FallObjectsCreator> fallObj;
+    private Preferences balanceSittings;
     public boolean pause;
     public boolean music;
     public int lvl;
@@ -49,10 +50,11 @@ public class GameScreen extends Screen {
 
     public GameScreen(GameScreenManager gameScreenManager, Balance balance, String name) {
         super(gameScreenManager, name);
-        this.playBallance = balance;
+        this.playBallance = new Balance(balance.getBalance());
         Load();
     }
     public void Load() {
+        balanceSittings = Gdx.app.getPreferences("Balance");
         lvl = 0;
         music = true;
         beginGame = true;
@@ -95,7 +97,20 @@ public class GameScreen extends Screen {
             animations[i-1] = GameTexturesLoader.get("fallObj/fall"+i+".png");
         }
         animations[7] = GameTexturesLoader.get("fallObj/fallMan1.png");
-        fallObj = new FallObjectsCreator(this,animations, 600);
+        fallObj = new ArrayList<FallObjectsCreator>();
+        fallObj.add(new FallObjectsCreator(this,animations, 600));
+        Animation[] animations2 = new Animation[9];
+        for(int i = 1; i < 5; i++) {
+            animations2[i-1] = GameTexturesLoader.get("fallObj/2fall"+i+".png");
+        }
+        for(int i = 5; i < 8; i++) {
+            animations2[i-1] = GameTexturesLoader.get("fallObj/fall"+i+".png");
+        }
+        animations2[7] = new Animation(new Texture[] {
+                GameTexturesLoader.get("fallObj/nigga1.png").getTexture(),
+        GameTexturesLoader.get("fallObj/nigga2.png").getTexture()},4);
+        animations2[8] = GameTexturesLoader.get("fallObj/spoon.png");
+        fallObj.add(new FallObjectsCreator(this,animations2, 600));
         player.animation.update();
         water.update();
         backLvl.get(lvl).update();
@@ -132,7 +147,10 @@ public class GameScreen extends Screen {
             player.update();
             enemiesCreator.update();
             shadow.update();
-            fallObj.update();
+            int t = lvl;
+            if(t>1)
+                t = 1;
+            fallObj.get(t).update();
         } else {
             if (Gdx.input.justTouched()) {
                 touchToPlay.die();
@@ -150,8 +168,9 @@ public class GameScreen extends Screen {
             backLvl.get(lvl - 1).update();
         }
         backLvl.get(lvl).update();
-        if (score >= lvl * 100 + 90 && lvl != 8)
+        if (score >= lvl * 100 + 90 && lvl != 8) {
             lvl++;
+        }
         player.animation.update();
         water.update();
         gameScore.update();
@@ -162,13 +181,18 @@ public class GameScreen extends Screen {
     @Override
     public void render(SpriteBatch spriteBatch) {
         spriteBatch.draw(night, 0, 0);
-        if(lvl != 0)
-            backLvl.get(lvl-1).render(spriteBatch);
+        if(lvl != 0) {
+            backLvl.get(lvl - 1).render(spriteBatch);
+        }
         backLvl.get(lvl).render(spriteBatch);
         spriteBatch.draw(pauseLine, 0, 0);
         player.render(spriteBatch);
         enemiesCreator.render(spriteBatch);
-        fallObj.render(spriteBatch);
+        int t = lvl;
+        if(t>1)
+            t = 1
+                    ;
+        fallObj.get(t).render(spriteBatch);
         shark.render(spriteBatch);
         water.render(spriteBatch);
         if(score>900)
@@ -189,6 +213,9 @@ public class GameScreen extends Screen {
         for(int i = 0; i < 9; i++) {
             backLvl.get(i).reset();
         }
+        for(int i = 0; i < 2; i++) {
+            fallObj.get(i).reset();
+        }
         music = true;
         shark.reset();
         touchToPlay.reset();
@@ -199,23 +226,21 @@ public class GameScreen extends Screen {
         pause = true;
         beginGame = true;
         enemiesCreator.reset();
-        fallObj.reset();
         int playerIndex = Gdx.app.getPreferences("Animation").getInteger("Animation");
         player = new Player(this, playerAnimations.get(playerIndex).run, playerAnimations.get(playerIndex).fly);
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
-        Gdx.app.getPreferences("Balance").putInteger("Balance", playBallance.getBalance());
-        Gdx.app.getPreferences("Balance").flush();
+        playBallance = new Balance(Gdx.app.getPreferences("Balance").getInteger("Balance"));
         music = true;
     }
 
     public void Die() {
         music = false;
-        Gdx.app.getPreferences("Balance").putInteger("Balance", playBallance.getBalance());
-        Gdx.app.getPreferences("Balance").flush();
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
         TitanicClass.kostylScore = score;
+        balanceSittings.putInteger("Balance", playBallance.getBalance());
+        balanceSittings.flush();
         death();
     }
     public void death() {

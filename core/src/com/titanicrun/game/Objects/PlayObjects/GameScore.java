@@ -40,7 +40,10 @@ public class GameScore extends BaseObject {
     }
     @Override
     public void update() {
-        if (gameScreen.fallObj.current.position.y == 0) {
+        int t = gameScreen.lvl;
+        if(t>1)
+            t = 1;
+        if (gameScreen.fallObj.get(t).current.position.y == 0) {
             objectFalled = true;
         }
         if (gameScreen.shark.position.y <= 0 && sharkCathed) {

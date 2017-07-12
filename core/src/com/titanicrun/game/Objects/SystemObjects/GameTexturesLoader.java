@@ -62,7 +62,13 @@ public class GameTexturesLoader {
         for (int i = 1; i < 8; i++) {
             dictionaryString.add("fallObj/fall" + i + ".png");
         }
+        for(int i = 1; i < 5; i++) {
+            dictionaryString.add("fallObj/2fall"+i+".png");
+        }
+        dictionaryString.add("fallObj/nigga1.png");
+        dictionaryString.add("fallObj/nigga2.png");
         dictionaryString.add("fallObj/fallMan1.png");
+        dictionaryString.add("fallObj/spoon.png");
         //////
         dictionaryString.add("sllBack.png");
         dictionaryString.add("backs/skin.png");
@@ -113,7 +119,7 @@ public class GameTexturesLoader {
         dictionaryString.add("buttons/sounds2.png");
         dictionaryString.add("buttons/sounds4.png");
         dictionaryString.add("splashes/1backPrev.png");
-        n = dictionaryString.size() / 11;
+        n = dictionaryString.size() / 121;
     }
     public void update() {
         for(int i = 0; i < n; i++) {

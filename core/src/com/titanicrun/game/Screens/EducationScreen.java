@@ -94,7 +94,7 @@ public class EducationScreen extends GameScreen {
             if (pause) {
                 pressPause.die();
                 pauseField.reverse();
-                fallObj.isFirst = false;
+                fallObj.get(lvl).isFirst = false;
                 process = 22;
             }
 
@@ -107,8 +107,8 @@ public class EducationScreen extends GameScreen {
         } else if (process == 3) {
             pauseField.update();
             player.animation.update();
-            fallObj.interval = 300;
-            fallObj.update();
+            fallObj.get(lvl).interval = 300;
+            fallObj.get(lvl).update();
             gameScore.update();
             catchFall.update();
             if (moneybefore < playBallance.getBalance()) {
@@ -132,7 +132,7 @@ public class EducationScreen extends GameScreen {
         else if (process == 44) {
             goodLuck.update();
             if(goodLuck.end) {
-                fallObj.interval = 600;
+                fallObj.get(lvl).interval = 600;
                 process = 5;
             }
         }
@@ -154,7 +154,7 @@ public class EducationScreen extends GameScreen {
     @Override
     public void reset() {
         super.reset();
-        fallObj.isFirst=true;
+        fallObj.get(lvl).isFirst=true;
         beginGame = false;
         process = 0;
         pauseField.reset();

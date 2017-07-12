@@ -84,12 +84,12 @@ public class SkinScreen extends Screen {
         this.skinUpBack = GameTexturesLoader.get("backs/skinUp.png").getTexture();
         //К Н О П К И
         this.select = new Button(GameTexturesLoader.get("buttons/select.png"), GameTexturesLoader.get("buttons/selectTuched.png"),
-                new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 45), 0);
+                new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 50), 0);
         this.menu = new Button(GameTexturesLoader.get("buttons/menuSmall.png"), GameTexturesLoader.get("buttons/menuSmallTuched.png"),
                 new Vector2(TitanicClass.ScreenWidth/2 - GameTexturesLoader.get("buttons/menu.png").getTexture().getWidth() - 23,
-                        TitanicClass.ScreenHeight/2 + 45),0);
+                        TitanicClass.ScreenHeight/2 + 50),0);
         this.buy = new Button(GameTexturesLoader.get("buttons/buy.png"), GameTexturesLoader.get("buttons/buyTuched.png"),
-                new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 45),0);
+                new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 50),0);
         //С П И С О К  К Н О П О К
         this.countOfPerson = 9;
         ArrayList<Button> buttons = new ArrayList<Button>();
@@ -238,6 +238,7 @@ public class SkinScreen extends Screen {
             spriteBatch.draw(skinBack, 0, 0);
             scroll.render(spriteBatch);
 
+
             for(Mark x : lockedMarks) {
                 x.render(spriteBatch);
             }
@@ -250,12 +251,12 @@ public class SkinScreen extends Screen {
            // scroll.render(spriteBatch);
             if(lockedIDs.get(scroll.items.getAnimation()) != 0 || scroll.items.getAnimation() == 0) {
                 select.render(spriteBatch);
-                spriteBatch.draw(front.getTexture(), 10 + menu.position.x + menu.animation.getTexture().getWidth() / 2 -
+                spriteBatch.draw(front.getTexture(), menu.position.x + menu.animation.getTexture().getWidth() / 2 -
                                 front.getTexture().getWidth() / 2,
-                        menu.position.y + menu.animation.getTexture().getHeight() + 85);
-                spriteBatch.draw(back.getTexture(), -10 + select.position.x + select.animation.getTexture().getWidth() / 2 -
+                        menu.position.y + menu.animation.getTexture().getHeight() + 60);
+                spriteBatch.draw(back.getTexture(), -5+select.position.x + select.animation.getTexture().getWidth() / 2 -
                                 back.getTexture().getWidth() / 2,
-                        select.position.y + select.animation.getTexture().getHeight() + 85);
+                        select.position.y + select.animation.getTexture().getHeight() + 60);
             }
             else {
                 buy.render(spriteBatch);
