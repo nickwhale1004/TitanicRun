@@ -17,7 +17,21 @@ android {
         instrumentTest.setRoot('tests')
     }
     defaultConfig {
-        applicationId ='xcom.titanicrun.game'
+        applicationId ='com.titanicrun.game'
+    }
+    signingConfigs {
+        release {
+            storeFile file("D:\\Game Projects\\key.jks")
+            storePassword "titanic"
+            keyAlias "key"
+            keyPassword "titanic"
+        }
+        debug {
+            storeFile file("D:\\Game Projects\\key.jks")
+            storePassword "titanic"
+            keyAlias "key"
+            keyPassword "titanic"
+        }
     }
     productFlavors {
     }
@@ -122,4 +136,6 @@ idea {
     }
 }
 dependencies {
+    compile 'com.google.android.gms:play-services-ads:9.6.1'
+    compile 'com.google.android.gms:play-services-games:9.6.1'
 }

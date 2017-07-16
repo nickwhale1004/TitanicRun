@@ -25,6 +25,7 @@ import com.titanicrun.game.Screens.SkinScreen;
 import com.titanicrun.game.Screens.SplashScreen;
 
 public class TitanicClass extends ApplicationAdapter {
+	GPGS gpgs;
 	private SpriteBatch spriteBatch;
     public static AudioPlayerInt playBGM;
 	public static int kostylScore;
@@ -35,6 +36,9 @@ public class TitanicClass extends ApplicationAdapter {
 	private static OrthographicCamera camera;
 	public static boolean isPause;
 	public GameScreenManager gameScreenManager;
+	public TitanicClass(GPGS gpgs) {
+		this.gpgs = gpgs;
+	}
 	@Override
 	public void create () {
 		//ABC
@@ -88,6 +92,12 @@ public class TitanicClass extends ApplicationAdapter {
 			gameScreenManager.getCurrenScreen().update();
 		}
 		isPause = false;
+	}
+	@Override
+	public void dispose() {
+		spriteBatch.dispose();
+		if(gpgs.isConnected())
+			gpgs.disconnect();
 	}
 }
 

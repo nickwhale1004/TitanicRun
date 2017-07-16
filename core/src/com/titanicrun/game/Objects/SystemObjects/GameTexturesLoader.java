@@ -122,9 +122,14 @@ public class GameTexturesLoader {
         n = dictionaryString.size() / 121;
     }
     public void update() {
-        for(int i = 0; i < n; i++) {
-            dictionary.put(dictionaryString.get(index), anim(dictionaryString.get(index)));
-            index++;
+        if(index >= n) {
+            specialUpdate();
+        }
+        else {
+            for (int i = 0; i < n; i++) {
+                dictionary.put(dictionaryString.get(index), anim(dictionaryString.get(index)));
+                index++;
+            }
         }
     }
     public void specialUpdate() {

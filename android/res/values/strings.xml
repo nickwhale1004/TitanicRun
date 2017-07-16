@@ -2,5 +2,6 @@
 <resources>
 
     <string name="app_name">TitanicRun</string>
-
+    <string name="app_id">1092273704571</string>
+    <string name="connect_error">Can\'t connect(</string>
 </resources>
