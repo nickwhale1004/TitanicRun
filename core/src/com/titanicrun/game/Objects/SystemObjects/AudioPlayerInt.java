@@ -13,28 +13,33 @@ import java.util.Map;
  * Created by geniu on 23.04.2016.
  */
 public class AudioPlayerInt implements ApplicationListener {
-
+    public boolean isPlayMusic;
+    public boolean isPlaySounds;
     public Map<String, Music> dictionary;
-
+    public Map<String, Sound> soundDictionary;
     @Override
     public void create() {
         dictionary = new HashMap<String, Music>();
+        soundDictionary = new HashMap<String, Sound>();
         dictionary.put("BGM", Gdx.audio.newMusic(Gdx.files.internal("sound/gameplayTitanicRun.mp3")));
         dictionary.get("BGM").setLooping(true);
         dictionary.get("BGM").setVolume(0.1f);
-        dictionary.put("Water", Gdx.audio.newMusic(Gdx.files.internal("sound/water.mp3")));
+        dictionary.put("Water", Gdx.audio.newMusic(Gdx.files.internal("sound/water2.mp3")));
         dictionary.get("Water").setLooping(true);
         dictionary.get("Water").setVolume(0.1f);
-        dictionary.put("Death", Gdx.audio.newMusic(Gdx.files.internal("sound/death.mp3")));
-        dictionary.get("Death").setVolume(2f);
-        dictionary.put("DeathWater", Gdx.audio.newMusic(Gdx.files.internal("sound/deathWater.mp3")));
-        dictionary.get("DeathWater").setVolume(2f);
-        dictionary.put("Button", Gdx.audio.newMusic(Gdx.files.internal("sound/button.mp3")));
-        dictionary.get("Button").setVolume(2f);
-        dictionary.put("getObject", Gdx.audio.newMusic(Gdx.files.internal("sound/getObject.wav")));
-        dictionary.get("getObject").setVolume(0.1f);
-        dictionary.put("getShark", Gdx.audio.newMusic(Gdx.files.internal("sound/getShark.wav")));
-        dictionary.get("getShark").setVolume(0.2f);
+        dictionary.put("run", Gdx.audio.newMusic(Gdx.files.internal("sound/run.wav")));
+        dictionary.get("run").setLooping(true);
+        dictionary.get("run").setVolume(0.1f);
+        soundDictionary.put("Death", Gdx.audio.newSound(Gdx.files.internal("sound/death.mp3")));
+        soundDictionary.get("Death").setVolume(1, 2f);
+        soundDictionary.put("DeathWater", Gdx.audio.newSound(Gdx.files.internal("sound/deathWater.mp3")));
+        soundDictionary.get("DeathWater").setVolume(2,2f);
+        soundDictionary.put("Button", Gdx.audio.newSound(Gdx.files.internal("sound/button.mp3")));
+        soundDictionary.get("Button").setVolume(3,2f);
+        soundDictionary.put("getObject", Gdx.audio.newSound(Gdx.files.internal("sound/getObject.wav")));
+        soundDictionary.get("getObject").setVolume(4,0.1f);
+        soundDictionary.put("getShark", Gdx.audio.newSound(Gdx.files.internal("sound/getShark.wav")));
+        soundDictionary.get("getShark").setVolume(5,0.2f);
     }
 
     @Override
@@ -47,19 +52,22 @@ public class AudioPlayerInt implements ApplicationListener {
     }
 
     public void playMusic(String sound) {
-        if (Gdx.app.getPreferences("Music").getBoolean("Music")) {
+        if (isPlayMusic) {
             dictionary.get(sound).play();
         }
     }
 
     public void playSound(String sound) {
-        if (Gdx.app.getPreferences("Sound").getBoolean("Sound")) {
-            dictionary.get(sound).play();
+        if (isPlaySounds) {
+            soundDictionary.get(sound).play();
+            Gdx.app.log(sound, "played");
         }
     }
-
     public void pauseAudio(String sound) {
-        dictionary.get(sound).stop();
+        if(dictionary.containsKey(sound))
+            dictionary.get(sound).stop();
+        else
+            soundDictionary.get(sound).stop();
     }
 
     @Override
@@ -76,6 +84,9 @@ public class AudioPlayerInt implements ApplicationListener {
     public void dispose() {
         for(String s : dictionary.keySet()) {
             dictionary.get(s).dispose();
+        }
+        for(String s : soundDictionary.keySet()) {
+            soundDictionary.get(s).dispose();
         }
     }
 }

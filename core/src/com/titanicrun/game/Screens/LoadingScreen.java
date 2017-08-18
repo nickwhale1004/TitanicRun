@@ -1,6 +1,7 @@
 package com.titanicrun.game.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
+import com.titanicrun.game.TitanicClass;
 
 import javax.xml.transform.Result;
 
@@ -80,11 +82,21 @@ public class LoadingScreen extends Screen {
             if ((Gdx.app.getPreferences("Score").getInteger("Score") > 0) || (Gdx.app.getPreferences("Balance").getInteger("Balance") != 0)) {
                 gameScreenManager.getScreen("MenuScreen").update();
                 if (back0.end) {
+                    TitanicClass.playBGM.isPlaySounds = Gdx.app.getPreferences("Sound").getBoolean("Sound");
+                    TitanicClass.playBGM.isPlayMusic = Gdx.app.getPreferences("Music").getBoolean("Music");
                     gameScreenManager.setScreen("MenuScreen");
                 }
             } else {
                 gameScreenManager.getScreen("SplashScreen").update();
                 if (back0.end) {
+                    Preferences sound = Gdx.app.getPreferences("Sound");
+                    sound.putBoolean("Sound", true);
+                    sound.flush();
+                    Preferences music = Gdx.app.getPreferences("Music");
+                    music.putBoolean("Music", true);
+                    music.flush();
+                    TitanicClass.playBGM.isPlaySounds = Gdx.app.getPreferences("Sound").getBoolean("Sound");
+                    TitanicClass.playBGM.isPlayMusic = Gdx.app.getPreferences("Music").getBoolean("Music");
                     gameScreenManager.setScreen("SplashScreen");
                 }
             }

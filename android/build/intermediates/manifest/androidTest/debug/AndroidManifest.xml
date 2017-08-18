@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ccom.titanicrun.game.test">
+    package="com.titanicrun.game.test">
 
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="23" />
+    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
     <application>
         <uses-library android:name="android.test.runner" />
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="ccom.titanicrun.game"
+                     android:targetPackage="com.titanicrun.game"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for ccom.titanicrun.game"/>
+                     android:label="Tests for com.titanicrun.game"/>
 </manifest>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">TitanicRun</string>
     <string name="app_id">1092273704571</string>
-    <string name="connect_error">Can\'t connect(</string>
+    <string name="connect_error">Offline mode is on</string>
 </resources>

@@ -16,12 +16,9 @@ import com.titanicrun.game.TitanicClass;
 
 public class FallObject extends BaseObject {
     public  boolean wasTuched;
-    private AudioPlayerInt playBGM;
 
     public FallObject(GameScreen gameScreen, Animation animation, int type) {
         super(gameScreen, animation, new Vector2(0, 0));
-        playBGM = new AudioPlayerInt();
-        playBGM.create();
         set(animation, type);
     }
 
@@ -32,7 +29,7 @@ public class FallObject extends BaseObject {
         for (int i = 0; i < 2; i++) {
             if (!wasTuched && Gdx.input.isTouched(i)) {
                 if (TitanicClass.getMouse(i).overlaps(getBound())) {
-                    playBGM.playSound("getObject")    ;
+                    TitanicClass.playBGM.playSound("getObject");
                     wasTuched = true;
                     animation = Screen.anim("fallObj/+10.png");
                     gameScreen.gameScore.failingObjectCatched = true;
@@ -62,8 +59,8 @@ public class FallObject extends BaseObject {
         this.wasTuched = false;
         this.position.y = TitanicClass.ScreenHeight;
         if(type == 0) {
-            this.position.x = 30;
-        }
+        this.position.x = 30;
+    }
         else {
             this.position.x = TitanicClass.ScreenWidth-30-animation.getTexture().getWidth();
         }

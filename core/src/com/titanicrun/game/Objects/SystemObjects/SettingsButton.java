@@ -23,13 +23,13 @@ public class SettingsButton extends BaseObject {
     private float angle;
     private float rotateSpeed;
     private float size;
-    private AudioPlayerInt playBGM;
     Sprite sprite;
+    private boolean musicPlayed;
+
     public SettingsButton(Animation animation, Vector2 position){
         super(animation, position);
+        musicPlayed = false;
         this.process = 0;
-        this.playBGM = new AudioPlayerInt();
-        playBGM.create();
         this.size=100;
         this.sprite = new Sprite(animation.getTexture());
         this.rotateSpeed = 0;
@@ -94,8 +94,12 @@ public class SettingsButton extends BaseObject {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-        if (wasPressed) {
-            playBGM.playSound("Button");
+        if (wasPressed && !musicPlayed) {
+            TitanicClass.playBGM.playSound("Button");
+            musicPlayed = true;
+        }
+        if (!wasPressed) {
+            musicPlayed = false;
         }
         sprite.draw(spriteBatch);
     }
@@ -111,6 +115,7 @@ public class SettingsButton extends BaseObject {
         return  bound;
     }
     public void reset() {
+        musicPlayed = false;
         wasPressed = false;
         pressed = false;
     }

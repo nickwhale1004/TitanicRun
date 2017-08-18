@@ -16,9 +16,11 @@ import java.util.Map;
 public class GameTexturesLoader {
     static ArrayList<String> dictionaryString;
     static Map<String,Animation> dictionary ;
-    static int n = 0;
-    static int index = 0;
+    static int n;
+    static int index;
     public GameTexturesLoader() {
+        n = 0;
+        index = 0;
         dictionaryString = new ArrayList<String>();
         dictionary = new HashMap<String, Animation>();
         dictionaryString.add("backs/deathBack.png");
@@ -64,6 +66,9 @@ public class GameTexturesLoader {
         }
         for(int i = 1; i < 5; i++) {
             dictionaryString.add("fallObj/2fall"+i+".png");
+        }
+        for(int i = 1; i < 6; i++) {
+            dictionaryString.add("fallObj/3fall"+i+".png");
         }
         dictionaryString.add("fallObj/nigga1.png");
         dictionaryString.add("fallObj/nigga2.png");
@@ -119,6 +124,8 @@ public class GameTexturesLoader {
         dictionaryString.add("buttons/sounds2.png");
         dictionaryString.add("buttons/sounds4.png");
         dictionaryString.add("splashes/1backPrev.png");
+        dictionaryString.add("buttons/leader.png");
+        dictionaryString.add("titanic.png");
         n = dictionaryString.size() / 121;
     }
     public void update() {
@@ -146,5 +153,12 @@ public class GameTexturesLoader {
     }
     public static Animation anim(String s) {
         return new Animation(new Texture[] {new Texture(s)}, 1);
+    }
+    public static void dispose() {
+        for (String x: dictionaryString) {
+            for(Texture i:dictionary.get(x).getTextures()) {
+                i.dispose();
+            }
+        }
     }
 }

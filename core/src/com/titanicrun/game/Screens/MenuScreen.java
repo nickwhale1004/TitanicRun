@@ -15,13 +15,15 @@ import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.Objects.SystemObjects.SettingsButton;
 import com.titanicrun.game.TitanicClass;
 
+import static com.titanicrun.game.TitanicClass.playBGM;
+
 /**
  * Created by Никита on 03.02.2016.
  */
 public class MenuScreen extends Screen {
     private String screen;
     private SettingsButton settingsButton;
-    private Button playButton, skinButton;
+    private Button playButton, skinButton, leaderButton;
     private Water waterUp, waterMid, waterDown, ship;
     private Texture back;
     private byte process; // 0 -wait, 1 - toScreen, 2 - outScreen
@@ -38,6 +40,8 @@ public class MenuScreen extends Screen {
                 TitanicClass.ScreenHeight/2-animation.getTexture().getHeight()/2),0);
         this.skinButton = new Button( GameTexturesLoader.get("buttons/skin.png"),  GameTexturesLoader.get("buttons/skinTuched.png"),
                 new Vector2(playButton.position.x, playButton.position.y -  GameTexturesLoader.get("buttons/skin.png").getTexture().getHeight()-40),0);
+        this.leaderButton = new Button(GameTexturesLoader.get("buttons/leader.png"), GameTexturesLoader.get("buttons/leader.png"),
+                new Vector2(15, TitanicClass.ScreenHeight-74), 0);
         this.settingsButton = new SettingsButton ( GameTexturesLoader.get("buttons/settings.png"),
                 new Vector2(TitanicClass.ScreenWidth - 74, TitanicClass.ScreenHeight - 74));
         float speed = 0.15f;
@@ -72,6 +76,9 @@ public class MenuScreen extends Screen {
                     screen = "SettingScreen";
                     process = 1;
                 }
+                if(leaderButton.isPressed()) {
+                    TitanicClass.showLeaderboard();
+                }
             }
         } else if (process == 1) {
             slider.update();
@@ -83,23 +90,20 @@ public class MenuScreen extends Screen {
             slider.update();
             gameScreenManager.getScreen(screen).update();
             if (slider.end) {
-
                 gameScreenManager.setScreen(screen);
             }
         }
         if (process != 2) {
             skinButton.update();
             playButton.update();
+            leaderButton.update();
             settingsButton.update();
             waterDown.update();
             waterMid.update();
             waterUp.update();
             ship.update();
         }
-        if(Gdx.input.isButtonPressed(Input.Buttons.BACK)) {
-            Gdx.input.setCatchBackKey(true);
-            Gdx.app.exit();
-        }
+        Gdx.app.log(playBGM.isPlaySounds+"","");
     }
 
     @Override
@@ -115,7 +119,9 @@ public class MenuScreen extends Screen {
             waterDown.render(spriteBatch);
             playButton.render(spriteBatch);
             skinButton.render(spriteBatch);
+            leaderButton.render(spriteBatch);
             settingsButton.render(spriteBatch);
+           //spriteBatch.draw(GameTexturesLoader.get("titanic.png").getTexture(),0,500);
         }
         slider.render(spriteBatch);
     }
@@ -125,6 +131,7 @@ public class MenuScreen extends Screen {
         process = 0;
         playButton.reset();
         skinButton.reset();
+        leaderButton.reset();
         settingsButton.reset();
         slider.reset();
         slider.change(new Vector2(0,0));

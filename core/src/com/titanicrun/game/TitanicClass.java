@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
+import com.titanicrun.game.Objects.SystemObjects.MyInput;
 import com.titanicrun.game.Screens.EducationScreen;
 import com.titanicrun.game.Screens.GameScreen;
 import com.titanicrun.game.Screens.GameScreenManager;
@@ -25,8 +26,8 @@ import com.titanicrun.game.Screens.SkinScreen;
 import com.titanicrun.game.Screens.SplashScreen;
 
 public class TitanicClass extends ApplicationAdapter {
-	GPGS gpgs;
-	private SpriteBatch spriteBatch;
+	private static GPGS gpgs;
+	private static SpriteBatch spriteBatch;
     public static AudioPlayerInt playBGM;
 	public static int kostylScore;
 	public static boolean kostylIsEducation;
@@ -36,11 +37,14 @@ public class TitanicClass extends ApplicationAdapter {
 	private static OrthographicCamera camera;
 	public static boolean isPause;
 	public GameScreenManager gameScreenManager;
+	MyInput input;
+
 	public TitanicClass(GPGS gpgs) {
 		this.gpgs = gpgs;
 	}
 	@Override
 	public void create () {
+		input = new MyInput();
 		//ABC
 		for (int i = 0; i < 10; i++) {
 			scoreABC[i] = new Texture("numbers/" + i + ".png");
@@ -93,10 +97,27 @@ public class TitanicClass extends ApplicationAdapter {
 		}
 		isPause = false;
 	}
+	public static void showSnapshots() {
+		gpgs.showSavedGamesUI();
+	}
+	public static void showLeaderboard() {
+		if(gpgs.isConnected())
+			gpgs.showLeaderboard();
+	}
+	public static void addScore(int i) {
+		gpgs.submitScore(i);
+	}
 	@Override
 	public void dispose() {
+		//exit();
+	}
+	public static void exit() {
+		if(spriteBatch.isDrawing())
+			spriteBatch.end();
+		GameTexturesLoader.dispose();
 		spriteBatch.dispose();
-		if(gpgs.isConnected())
+		playBGM.dispose();
+		if (gpgs != null && gpgs.isConnected())
 			gpgs.disconnect();
 	}
 }

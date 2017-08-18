@@ -29,14 +29,9 @@ public class SettingsScreen extends  Screen {
     private Button menuButton;
     private Button soundsButton;
     private Button musicButton;
-    public SplashScreen splashScreen;
 
     public SettingsScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
-        if (!((Gdx.app.getPreferences("Score").getInteger("Score") > 0) || (Gdx.app.getPreferences("Balance").getInteger("Balance") != 0))) {
-            Gdx.app.getPreferences("Sound").putBoolean("Sound", true);
-            Gdx.app.getPreferences("Music").putBoolean("Music", true);
-        }
         prefsSound = Gdx.app.getPreferences("Sound");
         prefsMusic = Gdx.app.getPreferences("Music");
         soundsTurn = prefsSound.getBoolean("Sound");
@@ -93,7 +88,7 @@ public class SettingsScreen extends  Screen {
             prefsSound.flush();
         }
 
-        if (musicButton.isPressed()) {
+        if (musicButton.isPressed()){
             musicTurn = !musicTurn;
             if (musicTurn) {
                 musicButton = new Button(
@@ -116,8 +111,7 @@ public class SettingsScreen extends  Screen {
             process = 3;
             slider.change(new Vector2(-slider.getTexture().getWidth(), 0));
         }
-        if (menuButton.isPressed() || (Gdx.input.isKeyPressed(Input.Keys.BACK) && !Gdx.input.isCatchBackKey())) {
-            Gdx.input.setCatchBackKey(true);
+        if (menuButton.isPressed()) {
             process = 2;
         }
         if (process == 2) {
@@ -133,10 +127,14 @@ public class SettingsScreen extends  Screen {
                 slider.update();
                 gameScreenManager.getScreen(screen).update();
                 if (slider.end) {
+                    TitanicClass.playBGM.isPlaySounds = Gdx.app.getPreferences("Sound").getBoolean("Sound");
+                    TitanicClass.playBGM.isPlayMusic = Gdx.app.getPreferences("Music").getBoolean("Music");
                     gameScreenManager.setScreen(screen);
                 }
             }
             else {
+                TitanicClass.playBGM.isPlaySounds = Gdx.app.getPreferences("Sound").getBoolean("Sound");
+                TitanicClass.playBGM.isPlayMusic = Gdx.app.getPreferences("Music").getBoolean("Music");
                 gameScreenManager.setScreen(screen);
             }
         }

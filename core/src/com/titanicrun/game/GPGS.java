@@ -20,4 +20,5 @@ public interface GPGS {
 
     public void submitScore(long score);
     public void showLeaderboard();
+    public void showSavedGamesUI();
 }

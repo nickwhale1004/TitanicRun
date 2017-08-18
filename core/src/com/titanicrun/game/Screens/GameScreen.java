@@ -55,7 +55,7 @@ public class GameScreen extends Screen {
     }
     public void Load() {
         balanceSittings = Gdx.app.getPreferences("Balance");
-        lvl = 0;
+        lvl = 0 ;
         music = true;
         beginGame = true;
         touchToPlay= new MovingSizeObject(new Vector2(200,100), GameTexturesLoader.get("splashes/touchtoplay2.png"), 100, 140, 1.5f);
@@ -92,6 +92,7 @@ public class GameScreen extends Screen {
                 GameTexturesLoader.get("water3.png").getTexture()},10);
         water = new Water(this, waterAnim,
                 new Vector2(0,-waterAnim.getTexture().getHeight()/4), 0, 1.5f, 0.5f);
+        //FALL 1
         Animation[] animations = new Animation[8];
         for(int i = 1; i < 8; i++) {
             animations[i-1] = GameTexturesLoader.get("fallObj/fall"+i+".png");
@@ -99,6 +100,7 @@ public class GameScreen extends Screen {
         animations[7] = GameTexturesLoader.get("fallObj/fallMan1.png");
         fallObj = new ArrayList<FallObjectsCreator>();
         fallObj.add(new FallObjectsCreator(this,animations, 600));
+        //FALL 2
         Animation[] animations2 = new Animation[9];
         for(int i = 1; i < 5; i++) {
             animations2[i-1] = GameTexturesLoader.get("fallObj/2fall"+i+".png");
@@ -111,6 +113,16 @@ public class GameScreen extends Screen {
         GameTexturesLoader.get("fallObj/nigga2.png").getTexture()},4);
         animations2[8] = GameTexturesLoader.get("fallObj/spoon.png");
         fallObj.add(new FallObjectsCreator(this,animations2, 600));
+        //FALL 3
+        Animation[] animations3 = new Animation[8];
+        for(int i = 0; i < 3; i++) {
+            animations3[i] = GameTexturesLoader.get("fallObj/fall"+(i+5)+".png");
+        }
+        for(int i = 3; i < 8; i++) {
+            animations3[i] = GameTexturesLoader.get("fallObj/3fall"+(i-2)+".png");
+        }
+        fallObj.add(new FallObjectsCreator(this, animations3, 600));
+
         player.animation.update();
         water.update();
         backLvl.get(lvl).update();
@@ -119,11 +131,6 @@ public class GameScreen extends Screen {
 
     @Override
     public void update() {
-        if (Gdx.input.isKeyPressed(Input.Keys.BACK)) {
-            Gdx.input.setCatchBackKey(true);
-            pause = true;
-            gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
-        }
         if (!pause) {
             if (!beginGame)
                 shark.update();
@@ -148,8 +155,8 @@ public class GameScreen extends Screen {
             enemiesCreator.update();
             shadow.update();
             int t = lvl;
-            if(t>1)
-                t = 1;
+            if(t>2)
+                t = 2;
             fallObj.get(t).update();
         } else {
             if (Gdx.input.justTouched()) {
@@ -189,9 +196,9 @@ public class GameScreen extends Screen {
         player.render(spriteBatch);
         enemiesCreator.render(spriteBatch);
         int t = lvl;
-        if(t>1)
-            t = 1
-                    ;
+        if(t>2)
+            t = 2;
+
         fallObj.get(t).render(spriteBatch);
         shark.render(spriteBatch);
         water.render(spriteBatch);
@@ -205,6 +212,12 @@ public class GameScreen extends Screen {
         if (music) {
             TitanicClass.playBGM.playMusic("BGM");
             TitanicClass.playBGM.playMusic("Water");
+            if(!pause) {
+                TitanicClass.playBGM.playMusic("run");
+            }
+            else {
+                TitanicClass.playBGM.pauseAudio("run");
+            }
         }
     }
 
@@ -229,6 +242,7 @@ public class GameScreen extends Screen {
         int playerIndex = Gdx.app.getPreferences("Animation").getInteger("Animation");
         player = new Player(this, playerAnimations.get(playerIndex).run, playerAnimations.get(playerIndex).fly);
         TitanicClass.playBGM.pauseAudio("BGM");
+        TitanicClass.playBGM.pauseAudio("run");
         TitanicClass.playBGM.pauseAudio("Water");
         playBallance = new Balance(Gdx.app.getPreferences("Balance").getInteger("Balance"));
         music = true;
@@ -238,6 +252,7 @@ public class GameScreen extends Screen {
         music = false;
         TitanicClass.playBGM.pauseAudio("BGM");
         TitanicClass.playBGM.pauseAudio("Water");
+        TitanicClass.playBGM.pauseAudio("run");
         TitanicClass.kostylScore = score;
         balanceSittings.putInteger("Balance", playBallance.getBalance());
         balanceSittings.flush();

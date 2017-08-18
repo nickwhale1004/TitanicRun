@@ -37,8 +37,8 @@ public class Water extends BaseObject {
             }
         }
         if(gameScreen!= null && gameScreen.player.getBound().overlaps(getBound())) {
-            //gameScreen.player.Die();
-            //gameScreen.Die();
+            gameScreen.player.Die();
+            gameScreen.Die();
         }
     }
 

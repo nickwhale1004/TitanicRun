@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
 import com.google.android.gms.games.Games;
 
 
@@ -22,12 +23,13 @@ public class GPGSImpl implements GPGS, GoogleApiClient.ConnectionCallbacks,
     private static final int RC_SIGN_IN           = 9001;
     private static final int REQUEST_ACHIEVEMENTS = 9002;
     private static final int REQUEST_LEADERBOARD  = 9003; // increment next constants
+    private static final int RC_SAVED_GAMES = 9009;
 
     private final String[] ACHEIVEMENT = {
             "CgkI-5zYhOUfEAIQAQ",
             "CgkI-5zYhOUfEAIQAg"
     };
-    private final String   LEADERBOARD = "CgkI-5zYhOUfEAIQAw ";
+    private final String   LEADERBOARD = "CgkI-5zYhOUfEAIQAw";
     public    GoogleApiClient client;
     protected  AndroidLauncher context;
 
@@ -41,7 +43,11 @@ public class GPGSImpl implements GPGS, GoogleApiClient.ConnectionCallbacks,
         // В обновлениях написано, что нужно использовать ТОЛЬКО те АПИ, которые действительно
         // нужны.
         client = new GoogleApiClient.Builder( context )
-                .addApi( Games.API, gamesOptions )
+               // .addApi(gamesOptions)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(Games.API, gamesOptions).addScope(Games.SCOPE_GAMES)
+                .addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER)
                 .build();
         // .addApi( Plus.API ).addScope( Plus.SCOPE_PLUS_LOGIN ) - it is not necessary
         // .addScope( Games.SCOPE_GAMES ) - it is not necessary too
@@ -154,5 +160,12 @@ public class GPGSImpl implements GPGS, GoogleApiClient.ConnectionCallbacks,
         String error = connectionResult.getErrorMessage();
         BaseGameUtils.resolveConnectionFailure( context, client, connectionResult,
                                                 RC_SIGN_IN, error );
+    }
+    public void showSavedGamesUI() {
+        if (!isConnected()) return;
+        int maxNumberOfSavedGamesToShow = 5;
+        Intent savedGamesIntent = Games.Snapshots.getSelectSnapshotIntent(client,
+                "See My Saves", true, true, maxNumberOfSavedGamesToShow);
+        context.startActivityForResult(savedGamesIntent, RC_SAVED_GAMES);
     }
 }

@@ -112,6 +112,7 @@ public class DeathScreen extends Screen {
     public void update() {
         if(process == -1) {
             if(TitanicClass.kostylScore > record) {
+                TitanicClass.addScore(TitanicClass.kostylScore);
                 sittings.putInteger("Score", TitanicClass.kostylScore);
                 record = TitanicClass.kostylScore;
                 sittings.flush();
@@ -127,8 +128,7 @@ public class DeathScreen extends Screen {
                 score.update();
                 max.update();
                 moveButton.update();
-                if ((Gdx.input.isTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) || menu.isPressed() || Gdx.input.isKeyPressed(Input.Keys.BACK)) {
-                    Gdx.input.setCatchBackKey(true);
+                if ((Gdx.input.isTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) || menu.isPressed()) {
                     back.reverse();
                     if (TitanicClass.kostylIsEducation) {
                         gameScreenManager.getScreen("EducationScreen").reset();
@@ -141,8 +141,7 @@ public class DeathScreen extends Screen {
                     max.reverse();
                     moveButton.reverse();
                     process = 1;
-                    if(menu.isPressed() || Gdx.input.isKeyPressed(Input.Keys.BACK)){
-                        Gdx.input.setCatchBackKey(true);
+                    if(menu.isPressed()){
                         screen = "MenuScreen";
                         TitanicClass.isPause = true;
                     }
