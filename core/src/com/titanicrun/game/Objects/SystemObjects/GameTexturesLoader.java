@@ -125,7 +125,7 @@ public class GameTexturesLoader {
         dictionaryString.add("buttons/sounds4.png");
         dictionaryString.add("splashes/1backPrev.png");
         dictionaryString.add("buttons/leader.png");
-        dictionaryString.add("titanic.png");
+        dictionaryString.add("splashes/touchscreen.png");
         n = dictionaryString.size() / 121;
     }
     public void update() {

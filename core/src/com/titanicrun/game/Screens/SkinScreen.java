@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Rectangle;
@@ -16,6 +17,7 @@ import com.titanicrun.game.Objects.PlayObjects.Mark;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.Objects.SystemObjects.PlayerAnimation;
+import com.titanicrun.game.Objects.SystemObjects.PlayersNames;
 import com.titanicrun.game.Objects.SystemObjects.Putter;
 import  com.badlogic.gdx.graphics.Texture;
 import com.titanicrun.game.Objects.SystemObjects.Scroller;
@@ -34,9 +36,10 @@ import java.util.Map;
  */
 public class SkinScreen extends Screen {
 
-    private BitmapFont font, font2;
+    private BitmapFont font, font2, fontName;
     FreeTypeFontGenerator generator;
-    FreeTypeFontGenerator.FreeTypeFontParameter parameter, parameter2;
+    FreeTypeFontGenerator.FreeTypeFontParameter parameter, parameter2, parameter3;
+    GlyphLayout layout;
     private Putter tableSkin;
     private TouchPanel scroll;
     private Texture scrollBack, skinBack, skinUpBack;
@@ -65,15 +68,17 @@ public class SkinScreen extends Screen {
         this.playBalance = new Balance(balanceSitting.getInteger("Balance"));
         this.animSittings = Gdx.app.getPreferences("Animation");
         this.lockSittings = Gdx.app.getPreferences("Locked");
-        this.font = new BitmapFont();
-        this.font2 = new BitmapFont();
         this.generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/peepo.ttf"));
         this.parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         this.parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        this.parameter3 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         this.parameter.size = 30;
         this.parameter.color = Color.WHITE;
+        this.parameter3.size = 40;
+        this.parameter3.color = Color.WHITE;
+        this.fontName = generator.generateFont(parameter3);
         this.font = generator.generateFont(parameter);
-
+        this.layout = new GlyphLayout();
         //font.setColor(0.95f, 0.92f, 0.03f, 1);
         this.parameter2.size = 30;
         this.parameter2.color = new Color(0.95f, 0.92f, 0.03f, 1);
@@ -84,12 +89,12 @@ public class SkinScreen extends Screen {
         this.skinUpBack = GameTexturesLoader.get("backs/skinUp.png").getTexture();
         //К Н О П К И
         this.select = new Button(GameTexturesLoader.get("buttons/select.png"), GameTexturesLoader.get("buttons/selectTuched.png"),
-                new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 50), 0);
+                new Vector2(TitanicClass.ScreenWidth/2 + 6, TitanicClass.ScreenHeight/2 + 50), 0);
         this.menu = new Button(GameTexturesLoader.get("buttons/menuSmall.png"), GameTexturesLoader.get("buttons/menuSmallTuched.png"),
-                new Vector2(TitanicClass.ScreenWidth/2 - GameTexturesLoader.get("buttons/menu.png").getTexture().getWidth() - 23,
+                new Vector2(TitanicClass.ScreenWidth/2 - GameTexturesLoader.get("buttons/menu.png").getTexture().getWidth() - 13,
                         TitanicClass.ScreenHeight/2 + 50),0);
         this.buy = new Button(GameTexturesLoader.get("buttons/buy.png"), GameTexturesLoader.get("buttons/buyTuched.png"),
-                new Vector2(TitanicClass.ScreenWidth/2 + 20, TitanicClass.ScreenHeight/2 + 50),0);
+                new Vector2(TitanicClass.ScreenWidth/2 + 6, TitanicClass.ScreenHeight/2 + 50),0);
         //С П И С О К  К Н О П О К
         this.countOfPerson = 9;
         ArrayList<Button> buttons = new ArrayList<Button>();
@@ -167,7 +172,7 @@ public class SkinScreen extends Screen {
                 if(scroll.isPressed == 0)
                     buy.update();
                 if (buy.isPressed()) {
-                    if (playBalance.getBalance() - prices.getInteger(Integer.toString(scroll.items.getAnimation())) >= 0) {
+                    if (playBalance.getBalance() - prices.getInteger(scroll.items.getAnimation()+"") >= 0) {
                         gameScreenManager.addScreen(new BuyMessage(gameScreenManager, this, "Buy"));
                         lockSittings.putInteger(scroll.items.getAnimation()+"",1);
                         lockSittings.flush();
@@ -184,7 +189,7 @@ public class SkinScreen extends Screen {
                 process = 1;
             }
             if(messResult) {
-                playBalance.Buy(prices.getInteger(Integer.toString(scroll.items.getAnimation())));
+                playBalance.Buy(prices.getInteger(scroll.items.getAnimation()+""));
                 lockedIDs.put(scroll.items.getAnimation(), 1);
                 lockedMarks.set(scroll.items.getAnimation(),
                         new Mark(GameTexturesLoader.get("players/unknow.png"), tableSkin, -1, new Vector2(0, 0)));
@@ -253,22 +258,25 @@ public class SkinScreen extends Screen {
                 select.render(spriteBatch);
                 spriteBatch.draw(front.getTexture(), menu.position.x + menu.animation.getTexture().getWidth() / 2 -
                                 front.getTexture().getWidth() / 2,
-                        menu.position.y + menu.animation.getTexture().getHeight() + 60);
-                spriteBatch.draw(back.getTexture(), -5+select.position.x + select.animation.getTexture().getWidth() / 2 -
+                        menu.position.y + menu.animation.getTexture().getHeight() + 50);
+                spriteBatch.draw(back.getTexture(), select.position.x + select.animation.getTexture().getWidth() / 2 -
                                 back.getTexture().getWidth() / 2,
-                        select.position.y + select.animation.getTexture().getHeight() + 60);
+                        select.position.y + select.animation.getTexture().getHeight() + 50);
             }
             else {
                 buy.render(spriteBatch);
-                font.draw(spriteBatch, "PRICE: " + Integer.toString(prices.getInteger(Integer.toString(scroll.items.getAnimation()))), TitanicClass.ScreenWidth - 150, TitanicClass.ScreenHeight - 4);
+                font.draw(spriteBatch, "PRICE: " + prices.getInteger(scroll.items.getAnimation()+""), TitanicClass.ScreenWidth - 150, TitanicClass.ScreenHeight - 4);
             }
             /*
             C Т А Р А Я  О Т Р И С О В К А  Б А Л А Н С А
             playBalance.render(spriteBatch);
             */
             //Н О В А Я  О Т Р И С О В К А  Б А Л А Н С А
+            layout.setText(fontName, PlayersNames.getPlayerName(scroll.items.getAnimation()));
             font.draw(spriteBatch, "MONEY: ", 5, TitanicClass.ScreenHeight - 4);
             font2.draw(spriteBatch, Integer.toString(playBalance.getBalance()), 100, TitanicClass.ScreenHeight - 4);
+            fontName.draw(spriteBatch, PlayersNames.getPlayerName(scroll.items.getAnimation()),
+                    TitanicClass.ScreenWidth/2 - layout.width/2, TitanicClass.ScreenHeight - 35);
         }
         else {
             gameScreenManager.getScreen(screen).render(spriteBatch);

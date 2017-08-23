@@ -46,10 +46,8 @@ public class MovingSizeObject extends BaseObject{
             }
         }
         else if (process == 2) {
-            if(obj.end) {
                 obj.changeTo(0,4*speed);
                 process = 3;
-            }
         }
         else if (process == 3) {
             if(obj.end) {

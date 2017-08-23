@@ -7,20 +7,20 @@ import java.util.ArrayList;
  */
 
 public class PlayersNames {
-    ArrayList<String> names;
+    static ArrayList<String> names;
     public PlayersNames() {
         names = new ArrayList<String>();
-        names.add("Jack1");
-        names.add("Chan2");
-        names.add("Steven3");
-        names.add("Noname4");
-        names.add("Shady5");
-        names.add("Ten6");
-        names.add("Cap7");
-        names.add("Adam8");
-        names.add("Vera9");
+        names.add("JACK");
+        names.add("CHAN");
+        names.add("STEVEN");
+        names.add("NONAME");
+        names.add("SHADY");
+        names.add("XTEN");
+        names.add("CAP");
+        names.add("ADAM");
+        names.add("VERA");
     }
-    public String getPlayerName(int index) {
+    public static String getPlayerName(int index) {
         return names.get(index);
     }
 }

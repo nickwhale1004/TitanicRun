@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
+import com.titanicrun.game.Objects.SystemObjects.PlayersNames;
 import com.titanicrun.game.TitanicClass;
 
 import javax.xml.transform.Result;
@@ -23,6 +24,7 @@ public class LoadingScreen extends Screen {
     int process; //0 - in, 1 - work, 2 - out
     public LoadingScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
+        new PlayersNames();
         back0 = new MoveObject(anim("backs/loading/back0.png"), new Vector2(-480,0), new Vector2(0,0),15);
         back1 = new MoveObject(anim("backs/loading/back1.png"), new Vector2(-480,0), new Vector2(0,0),15);
         back2 = new MoveObject(anim("backs/loading/back2.png"), new Vector2(-480-308,0), new Vector2(-308,0),15);
@@ -97,6 +99,10 @@ public class LoadingScreen extends Screen {
                     music.flush();
                     TitanicClass.playBGM.isPlaySounds = Gdx.app.getPreferences("Sound").getBoolean("Sound");
                     TitanicClass.playBGM.isPlayMusic = Gdx.app.getPreferences("Music").getBoolean("Music");
+/*                  ЧИИИИИ
+                    Preferences lockSittings = Gdx.app.getPreferences("Locked");
+                    lockSittings.putInteger("5",1);
+                    lockSittings.flush();*/
                     gameScreenManager.setScreen("SplashScreen");
                 }
             }

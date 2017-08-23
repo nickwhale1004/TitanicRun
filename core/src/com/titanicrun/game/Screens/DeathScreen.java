@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
+import com.titanicrun.game.Objects.PlayObjects.MovingSizeObject;
 import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Objects.SystemObjects.Button;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
@@ -30,9 +31,12 @@ public class DeathScreen extends Screen {
     private Preferences sittings;
     private Text textGameOver, textScore, textOf, textRecord;
     private GlyphLayout layout;
+    private MovingSizeObject touchToPlay;
 
     public DeathScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
+        this.touchToPlay = new MovingSizeObject(new Vector2(300, 700),
+                GameTexturesLoader.get("splashes/touchscreen.png"), 120, 90, 1f);
         this.sittings = Gdx.app.getPreferences("Score");
         this.playBGM = new AudioPlayerInt();
         playBGM.create();
@@ -124,12 +128,16 @@ public class DeathScreen extends Screen {
             back.update();
             of.update();
             if (back.end) {
+                if(score.end)
+                    touchToPlay.update();
                 gameOver.update();
                 score.update();
                 max.update();
                 moveButton.update();
                 if ((Gdx.input.isTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) || menu.isPressed()) {
                     back.reverse();
+                    touchToPlay.die();
+                    touchToPlay.speed = 4f;
                     if (TitanicClass.kostylIsEducation) {
                         gameScreenManager.getScreen("EducationScreen").reset();
                     } else {
@@ -152,6 +160,7 @@ public class DeathScreen extends Screen {
             }
         }
         else if (process == 1) {
+            touchToPlay.update();
             gameOver.update();
             score.update();
             max.update();
@@ -183,6 +192,7 @@ public class DeathScreen extends Screen {
         gameOver.render(spriteBatch);
         score.render(spriteBatch);
         max.render(spriteBatch);
+        touchToPlay.render(spriteBatch);
     }
 
     @Override
@@ -204,5 +214,7 @@ public class DeathScreen extends Screen {
         gameOver.reset();
         score.reset();
         max.reset();
+        touchToPlay.reset();
+        touchToPlay.speed = 1f;
     }
 }

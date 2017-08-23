@@ -58,7 +58,8 @@ public class GameScreen extends Screen {
         lvl = 0 ;
         music = true;
         beginGame = true;
-        touchToPlay= new MovingSizeObject(new Vector2(200,100), GameTexturesLoader.get("splashes/touchtoplay2.png"), 100, 140, 1.5f);
+        touchToPlay= new MovingSizeObject(new Vector2(200,100), GameTexturesLoader.get("splashes/touchtoplay2.png"),
+                140, 100, 1.5f);
         gameScore = new GameScore(this);
         pause = true;
 
@@ -161,6 +162,7 @@ public class GameScreen extends Screen {
         } else {
             if (Gdx.input.justTouched()) {
                 touchToPlay.die();
+                touchToPlay.speed = 3f;
                 pause = false;
                 backLvl.get(lvl).pause = false;
             }
@@ -232,6 +234,7 @@ public class GameScreen extends Screen {
         music = true;
         shark.reset();
         touchToPlay.reset();
+        touchToPlay.speed = 1.5f;
         lvl = 0;
         scoreText.reset();
         score = 0;
