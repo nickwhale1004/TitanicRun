@@ -1,21 +1,15 @@
 package com.titanicrun.game.Screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
-import com.titanicrun.game.Objects.SystemObjects.Balance;
-import com.titanicrun.game.Objects.SystemObjects.Button;
 import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.PlayObjects.Water;
+import com.titanicrun.game.Objects.SystemObjects.Button;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.Objects.SystemObjects.SettingsButton;
 import com.titanicrun.game.TitanicClass;
-
-import static com.titanicrun.game.TitanicClass.playBGM;
 
 /**
  * Created by Никита on 03.02.2016.
@@ -103,7 +97,7 @@ public class MenuScreen extends Screen {
             waterUp.update();
             ship.update();
         }
-        Gdx.app.log(playBGM.isPlaySounds+"","");
+        //Gdx.app.log(playBGM.isPlaySounds+"","");
     }
 
     @Override

@@ -1,20 +1,18 @@
 package com.titanicrun.game.Screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.PlayObjects.Animation;
+import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.PlayObjects.MovingSizeObject;
 import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
 import com.titanicrun.game.Objects.SystemObjects.Button;
-import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.Objects.SystemObjects.Text;
-import com.titanicrun.game.Objects.SystemObjects.TextDraw;
 import com.titanicrun.game.TitanicClass;
 
 /**
@@ -28,6 +26,7 @@ public class DeathScreen extends Screen {
     private String screen;
     private byte process; //0 - left, 1 - right, 2 - play, 3 - menu
     private int record;
+    private boolean isMenu, isPressed;
     private Preferences sittings;
     private Text textGameOver, textScore, textOf, textRecord;
     private GlyphLayout layout;
@@ -80,6 +79,8 @@ public class DeathScreen extends Screen {
         this.moveButton = new MoveObject(menu,
                 new Vector2(TitanicClass.ScreenWidth / 2 - buttonAnim.getTexture().getWidth() / 2,
                         TitanicClass.ScreenHeight / 100 * 20), 10);
+        isMenu = false;
+        isPressed = false;
     }
 
     private void updatePosition() {
@@ -134,7 +135,14 @@ public class DeathScreen extends Screen {
                 score.update();
                 max.update();
                 moveButton.update();
-                if ((Gdx.input.isTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) || menu.isPressed()) {
+                if (Gdx.input.isTouched() && !TitanicClass.getMouse().overlaps(menu.getBound())) {
+                    isPressed = true;
+                }
+                if (menu.isPressed()) {
+                    isPressed = true;
+                    isMenu = true;
+                }
+                if (isPressed && !Gdx.input.isTouched()) {
                     back.reverse();
                     touchToPlay.die();
                     touchToPlay.speed = 4f;
@@ -149,13 +157,17 @@ public class DeathScreen extends Screen {
                     max.reverse();
                     moveButton.reverse();
                     process = 1;
-                    if(menu.isPressed()){
+                    //Gdx.app.log("Menu", isMenu + "");
+                    //Gdx.app.log("Pressed", isPressed + "");
+                    if(isMenu){
                         screen = "MenuScreen";
                         TitanicClass.isPause = true;
                     }
                     else{
                         screen = "GameScreen";
                     }
+                    isMenu = false;
+                    isPressed = false;
                 }
             }
         }
@@ -201,6 +213,8 @@ public class DeathScreen extends Screen {
         textScore.parameter.size = 75;
         textOf.parameter.size = 75;
         textRecord.parameter.size = 75;
+        isMenu = false;
+        isPressed = false;
        /*textScore.font = textScore.generator.generateFont(textScore.parameter);
         textOf.font = textOf.generator.generateFont(textOf.parameter);
         textRecord.font = textRecord.generator.generateFont(textRecord.parameter);*/
