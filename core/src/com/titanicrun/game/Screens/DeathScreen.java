@@ -172,6 +172,7 @@ public class DeathScreen extends Screen {
             }
         }
         else if (process == 1) {
+            TitanicClass.kostylIsDeathScreenEnd = 1;
             touchToPlay.update();
             gameOver.update();
             score.update();
@@ -188,6 +189,7 @@ public class DeathScreen extends Screen {
         }
         else if(process == 2) {
             TitanicClass.isPause = false;
+            TitanicClass.kostylIsDeathScreenEnd = 2;
             gameScreenManager.setScreen(screen);
         }
     }

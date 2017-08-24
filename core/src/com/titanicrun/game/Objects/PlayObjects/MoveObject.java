@@ -1,11 +1,9 @@
 package com.titanicrun.game.Objects.PlayObjects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.titanicrun.game.Objects.BaseObject;
 import com.badlogic.gdx.graphics.Texture;
-import com.titanicrun.game.Objects.SystemObjects.TextDraw;
 
 /**
  * Created by Никита on 30.01.2016.
@@ -16,7 +14,6 @@ public class MoveObject extends BaseObject {
     public Vector2 toPosition;
     public Vector2 speed;
     public Vector2 fromPosition;
-    private TextDraw textDraw;
     public BaseObject obj;
 
     public MoveObject(Animation animation, Vector2 position, Vector2 toPosition, float speedx, float speedy) {
@@ -26,11 +23,6 @@ public class MoveObject extends BaseObject {
     public MoveObject(Animation animation, Vector2 position, Vector2 toPosition, float speed) {
         super(animation, position);
         inicializate(toPosition,new Vector2(speed, speed));
-    }
-    public MoveObject(TextDraw textDraw, Vector2 toPosition, int speed) {
-        super(null, textDraw.drawPosition);
-        this.textDraw = textDraw;
-        inicializate(toPosition, new Vector2(speed, speed));
     }
     public MoveObject(BaseObject obj, Vector2 toPosition, int speed) {//
         super(obj.animation, obj.position);
@@ -84,9 +76,6 @@ public class MoveObject extends BaseObject {
         }
         else if (obj != null){
             obj.render(spriteBatch);
-        }
-        else {
-            textDraw.render(spriteBatch);
         }
     }
 

@@ -132,39 +132,42 @@ public class GameScreen extends Screen {
 
     @Override
     public void update() {
-        if (!pause) {
-            if (!beginGame)
-                shark.update();
-            gameScreenManager.removeScreen("Pause");
-            for (int i = 0; i < 2; i++) {
-                if (Gdx.input.isTouched(i) || TitanicClass.isPause) {
-                    if (((TitanicClass.getMouse(i).getY() >= TitanicClass.ScreenHeight - 125) &&
-                            (TitanicClass.getMouse(i).getY() < TitanicClass.ScreenHeight) &&
-                            (TitanicClass.getMouse(i).getX() > 0) &&
-                            (TitanicClass.getMouse(i).getX() < TitanicClass.ScreenWidth)) || TitanicClass.isPause) {
-                        pause = true;
-                        gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
-                        break;
+        if (TitanicClass.kostylIsDeathScreenEnd != 1) {
+            TitanicClass.kostylIsDeathScreenEnd = 0;
+            if (!pause) {
+                if (!beginGame)
+                    shark.update();
+                gameScreenManager.removeScreen("Pause");
+                for (int i = 0; i < 2; i++) {
+                    if (Gdx.input.isTouched(i) || TitanicClass.isPause) {
+                        if (((TitanicClass.getMouse(i).getY() >= TitanicClass.ScreenHeight - 125) &&
+                                (TitanicClass.getMouse(i).getY() < TitanicClass.ScreenHeight) &&
+                                (TitanicClass.getMouse(i).getX() > 0) &&
+                                (TitanicClass.getMouse(i).getX() < TitanicClass.ScreenWidth)) || TitanicClass.isPause) {
+                            pause = true;
+                            gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
+                            break;
+                        }
                     }
                 }
-            }
-            if (Gdx.input.isKeyPressed(Input.Keys.P)) {
-                pause = true;
-                gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
-            }
-            player.update();
-            enemiesCreator.update();
-            shadow.update();
-            int t = lvl;
-            if(t>2)
-                t = 2;
-            fallObj.get(t).update();
-        } else {
-            if (Gdx.input.justTouched()) {
-                touchToPlay.die();
-                touchToPlay.speed = 3f;
-                pause = false;
-                backLvl.get(lvl).pause = false;
+                if (Gdx.input.isKeyPressed(Input.Keys.P)) {
+                    pause = true;
+                    gameScreenManager.addScreen(new PauseScreen(gameScreenManager, this, "Pause"));
+                }
+                player.update();
+                enemiesCreator.update();
+                shadow.update();
+                int t = lvl;
+                if (t > 2)
+                    t = 2;
+                fallObj.get(t).update();
+            } else {
+                if (Gdx.input.justTouched()) {
+                    touchToPlay.die();
+                    touchToPlay.speed = 3f;
+                    pause = false;
+                    backLvl.get(lvl).pause = false;
+                }
             }
         }
         if (touchToPlay.end) {

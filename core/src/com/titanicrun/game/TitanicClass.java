@@ -2,28 +2,15 @@ package com.titanicrun.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.LifecycleListener;
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.titanicrun.game.Objects.SystemObjects.AudioPlayerInt;
-import com.titanicrun.game.Objects.SystemObjects.Balance;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
-import com.titanicrun.game.Objects.SystemObjects.MyInput;
-import com.titanicrun.game.Screens.EducationScreen;
-import com.titanicrun.game.Screens.GameScreen;
 import com.titanicrun.game.Screens.GameScreenManager;
 import com.titanicrun.game.Screens.LoadingScreen;
-import com.titanicrun.game.Screens.MenuScreen;
-import com.titanicrun.game.Screens.PauseScreen;
-import com.titanicrun.game.Screens.SettingsScreen;
-import com.titanicrun.game.Screens.SkinScreen;
-import com.titanicrun.game.Screens.SplashScreen;
 
 public class TitanicClass extends ApplicationAdapter {
 	private static GPGS gpgs;
@@ -31,28 +18,21 @@ public class TitanicClass extends ApplicationAdapter {
     public static AudioPlayerInt playBGM;
 	public static int kostylScore;
 	public static boolean kostylIsEducation;
-	public static Texture[] scoreABC = new Texture[11];
+	public static int kostylIsDeathScreenEnd;
 	public static final int ScreenHeight = 800;
 	public static final int ScreenWidth = 480;
 	private static OrthographicCamera camera;
 	public static boolean isPause;
 	public GameScreenManager gameScreenManager;
-	MyInput input;
 
 	public TitanicClass(GPGS gpgs) {
 		this.gpgs = gpgs;
 	}
 	@Override
 	public void create () {
-		input = new MyInput();
-		//ABC
-		for (int i = 0; i < 10; i++) {
-			scoreABC[i] = new Texture("numbers/" + i + ".png");
-		}
 		playBGM = new AudioPlayerInt();
         playBGM.create();
 		isPause = false;
-		scoreABC[10] = new Texture("numbers/space.png");
 		gameScreenManager = new GameScreenManager();
 		gameScreenManager.addScreen(new LoadingScreen(gameScreenManager, "LoadingScreen"));
 		spriteBatch = new SpriteBatch();
@@ -105,7 +85,9 @@ public class TitanicClass extends ApplicationAdapter {
 			gpgs.showLeaderboard();
 	}
 	public static void addScore(int i) {
-		gpgs.submitScore(i);
+		if (gpgs != null) {
+			gpgs.submitScore(i);
+		}
 	}
 	@Override
 	public void dispose() {
