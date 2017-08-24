@@ -1,24 +1,19 @@
 package com.titanicrun.game.Screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.titanicrun.game.Objects.PlayObjects.MoveObject;
+import com.titanicrun.game.Objects.SystemObjects.Button;
 import com.titanicrun.game.Objects.SystemObjects.GameTexturesLoader;
 import com.titanicrun.game.TitanicClass;
-import com.titanicrun.game.Objects.PlayObjects.Animation;
-import com.titanicrun.game.Objects.PlayObjects.MoveObject;
-import com.titanicrun.game.Objects.PlayObjects.MovingSizeObject;
-import com.titanicrun.game.Objects.SystemObjects.Button;
 
 /**
  * Created by User on 16.04.2017.
  */
 
 public class SettingsScreen extends  Screen {
-    private Preferences prefsSound, prefsMusic;
     private boolean soundsTurn;
     private boolean musicTurn;
     private String screen;
@@ -32,10 +27,14 @@ public class SettingsScreen extends  Screen {
 
     public SettingsScreen(GameScreenManager gameScreenManager, String name) {
         super(gameScreenManager, name);
-        prefsSound = Gdx.app.getPreferences("Sound");
-        prefsMusic = Gdx.app.getPreferences("Music");
-        soundsTurn = prefsSound.getBoolean("Sound");
-        musicTurn = prefsMusic.getBoolean("Music");
+        if (!((Gdx.app.getPreferences("Score").getInteger("Score") > 0) || (Gdx.app.getPreferences("Balance").getInteger("Balance") != 0))) {
+            soundsTurn = true;
+            musicTurn = true;
+        } else {
+            soundsTurn = Gdx.app.getPreferences("Sound").getBoolean("Sound");
+            musicTurn = Gdx.app.getPreferences("Music").getBoolean("Music");
+        }
+        Gdx.app.log("Music", musicTurn + "");
         slider = new MoveObject(GameTexturesLoader.get("backs/runner.png"), new Vector2(TitanicClass.ScreenWidth, 0),
                 new Vector2(0,0),20);
         background = GameTexturesLoader.get("backs/background.png").getTexture();
@@ -84,8 +83,9 @@ public class SettingsScreen extends  Screen {
                         new Vector2(TitanicClass.ScreenWidth/2 - 110, TitanicClass.ScreenHeight/2 + 70),0);
                 soundsButton.update();
             }
-            prefsSound.putBoolean("Sound", soundsTurn);
-            prefsSound.flush();
+            Gdx.app.getPreferences("Sound").putBoolean("Sound", soundsTurn);
+            TitanicClass.playBGM.isPlaySounds = Gdx.app.getPreferences("Sound").getBoolean("Sound");
+            Gdx.app.getPreferences("Sound").flush();
         }
 
         if (musicButton.isPressed()){
@@ -101,8 +101,9 @@ public class SettingsScreen extends  Screen {
                         new Vector2(TitanicClass.ScreenWidth/2 + 10, TitanicClass.ScreenHeight/2 + 70),0);
                 musicButton.update();
             }
-            prefsMusic.putBoolean("Music", musicTurn);
-            prefsMusic.flush();
+            Gdx.app.getPreferences("Music").putBoolean("Music", musicTurn);
+            TitanicClass.playBGM.isPlayMusic = Gdx.app.getPreferences("Music").getBoolean("Music");
+            Gdx.app.getPreferences("Music").flush();
         }
 
         if (historyButton.isPressed()) {
@@ -127,14 +128,10 @@ public class SettingsScreen extends  Screen {
                 slider.update();
                 gameScreenManager.getScreen(screen).update();
                 if (slider.end) {
-                    TitanicClass.playBGM.isPlaySounds = Gdx.app.getPreferences("Sound").getBoolean("Sound");
-                    TitanicClass.playBGM.isPlayMusic = Gdx.app.getPreferences("Music").getBoolean("Music");
                     gameScreenManager.setScreen(screen);
                 }
             }
             else {
-                TitanicClass.playBGM.isPlaySounds = Gdx.app.getPreferences("Sound").getBoolean("Sound");
-                TitanicClass.playBGM.isPlayMusic = Gdx.app.getPreferences("Music").getBoolean("Music");
                 gameScreenManager.setScreen(screen);
             }
         }

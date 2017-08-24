@@ -4,7 +4,6 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.titanicrun.game.Objects.PlayObjects.MoveObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,7 +59,6 @@ public class AudioPlayerInt implements ApplicationListener {
     public void playSound(String sound) {
         if (isPlaySounds) {
             soundDictionary.get(sound).play();
-            Gdx.app.log(sound, "played");
         }
     }
     public void pauseAudio(String sound) {
