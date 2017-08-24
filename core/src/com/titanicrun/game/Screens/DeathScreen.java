@@ -51,7 +51,7 @@ public class DeathScreen extends Screen {
 
 
         this.layout = new GlyphLayout();
-        this.textGameOver = new Text(new Vector2(0, 0), "GAME OVER", new Color(1f, 1f, 1f, 1f));
+        this.textGameOver = new Text(new Vector2(0, 0), "GAME OVER", new Color(1f, 1f, 1f, 1f), false);
         this.textGameOver.parameter.size = 75;
         this.textGameOver.font = this.textGameOver.generator.generateFont(textGameOver.parameter);
         layout.setText(textGameOver.font, textGameOver.textValue);
@@ -59,15 +59,15 @@ public class DeathScreen extends Screen {
         textGameOver.position.y = TitanicClass.ScreenHeight + layout.height + 150;
         this.gameOver = new MoveObject(textGameOver, new Vector2(TitanicClass.ScreenWidth / 2 - layout.width / 2, TitanicClass.ScreenHeight / 2 - layout.height + 150), 13);
         //textScore parameters set
-        this.textScore = new Text (new Vector2(0, 0), TitanicClass.kostylScore + "", new Color(1f, 1f, 1f, 1f));
+        this.textScore = new Text (new Vector2(0, 0), TitanicClass.kostylScore + "", new Color(1f, 1f, 1f, 1f), false);
         this.textScore.parameter.size = 75;
         this.textScore.font = this.textScore.generator.generateFont(textScore.parameter);
         //textOf parameters set
-        this.textOf = new Text(new Vector2(0, 0), " of ", new Color(1f, 1f, 1f, 1f));
+        this.textOf = new Text(new Vector2(0, 0), " of ", new Color(1f, 1f, 1f, 1f), false);
         this.textOf.parameter.size = 75;
         this.textOf.font = this.textOf.generator.generateFont(textOf.parameter);
         //textRecord parameters set
-        this.textRecord = new Text(new Vector2(0,0), record + "", new Color(1f, 1f, 1f, 1f));
+        this.textRecord = new Text(new Vector2(0,0), record + "", new Color(1f, 1f, 1f, 1f), false);
         this.textRecord.parameter.size = 75;
         this.textRecord.font = this.textRecord.generator.generateFont(textRecord.parameter);
         updatePosition();

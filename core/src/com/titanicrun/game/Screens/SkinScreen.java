@@ -21,6 +21,7 @@ import com.titanicrun.game.Objects.SystemObjects.PlayersNames;
 import com.titanicrun.game.Objects.SystemObjects.Putter;
 import  com.badlogic.gdx.graphics.Texture;
 import com.titanicrun.game.Objects.SystemObjects.Scroller;
+import com.titanicrun.game.Objects.SystemObjects.Text;
 import com.titanicrun.game.Objects.SystemObjects.TouchPanel;
 import com.titanicrun.game.Screens.Messages.BuyMessage;
 import com.titanicrun.game.Screens.Messages.CantBuyMessage;
@@ -36,10 +37,7 @@ import java.util.Map;
  */
 public class SkinScreen extends Screen {
 
-    private BitmapFont font, font2, fontName;
-    FreeTypeFontGenerator generator;
-    FreeTypeFontGenerator.FreeTypeFontParameter parameter, parameter2, parameter3;
-    GlyphLayout layout;
+    private Text money, moneyVal, price, playerName;
     private Putter tableSkin;
     private TouchPanel scroll;
     private Texture scrollBack, skinBack, skinUpBack;
@@ -68,21 +66,12 @@ public class SkinScreen extends Screen {
         this.playBalance = new Balance(balanceSitting.getInteger("Balance"));
         this.animSittings = Gdx.app.getPreferences("Animation");
         this.lockSittings = Gdx.app.getPreferences("Locked");
-        this.generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/peepo.ttf"));
-        this.parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        this.parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        this.parameter3 = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        this.parameter.size = 30;
-        this.parameter.color = Color.WHITE;
-        this.parameter3.size = 40;
-        this.parameter3.color = Color.WHITE;
-        this.fontName = generator.generateFont(parameter3);
-        this.font = generator.generateFont(parameter);
-        this.layout = new GlyphLayout();
-        //font.setColor(0.95f, 0.92f, 0.03f, 1);
-        this.parameter2.size = 30;
-        this.parameter2.color = new Color(0.95f, 0.92f, 0.03f, 1);
-        this.font2 = generator.generateFont(parameter2);
+        this.money = new Text(new Vector2(5, TitanicClass.ScreenHeight - 4), "MONEY: ", Color.WHITE, 25, false);
+        this.moneyVal = new Text(new Vector2(100, TitanicClass.ScreenHeight - 4), "null", Color.YELLOW, 25, false);
+        this.price = new Text(new Vector2(TitanicClass.ScreenWidth - 150, TitanicClass.ScreenHeight - 4),
+                "null", Color.WHITE, 25, false);
+        this.playerName = new Text(new Vector2(TitanicClass.ScreenWidth/2, TitanicClass.ScreenHeight-20),
+                "null", Color.WHITE, 40, true);
         //Т Е К С Т У Р Ы
         this.scrollBack = GameTexturesLoader.get("sllBack.png").getTexture();
         this.skinBack = GameTexturesLoader.get("backs/skin.png").getTexture();
@@ -265,18 +254,14 @@ public class SkinScreen extends Screen {
             }
             else {
                 buy.render(spriteBatch);
-                font.draw(spriteBatch, "PRICE: " + prices.getInteger(scroll.items.getAnimation()+""), TitanicClass.ScreenWidth - 150, TitanicClass.ScreenHeight - 4);
+                price.textValue = "PRICE: " + prices.getInteger(scroll.items.getAnimation()+"");
+                price.render(spriteBatch);
             }
-            /*
-            C Т А Р А Я  О Т Р И С О В К А  Б А Л А Н С А
-            playBalance.render(spriteBatch);
-            */
-            //Н О В А Я  О Т Р И С О В К А  Б А Л А Н С А
-            layout.setText(fontName, PlayersNames.getPlayerName(scroll.items.getAnimation()));
-            font.draw(spriteBatch, "MONEY: ", 5, TitanicClass.ScreenHeight - 4);
-            font2.draw(spriteBatch, Integer.toString(playBalance.getBalance()), 100, TitanicClass.ScreenHeight - 4);
-            fontName.draw(spriteBatch, PlayersNames.getPlayerName(scroll.items.getAnimation()),
-                    TitanicClass.ScreenWidth/2 - layout.width/2, TitanicClass.ScreenHeight - 35);
+            money.render(spriteBatch);
+            moneyVal.textValue = playBalance.getBalance()+"";
+            moneyVal.render(spriteBatch);
+            playerName.textValue = PlayersNames.getPlayerName(scroll.items.getAnimation())+"";
+            playerName.render(spriteBatch);
         }
         else {
             gameScreenManager.getScreen(screen).render(spriteBatch);

@@ -29,7 +29,7 @@ public class GameScore extends BaseObject {
     public GameScore(GameScreen gameScreen) {
         this.gameScreen = gameScreen;
         layout = new GlyphLayout();
-        ballanceText = new Text(new Vector2(0, 0), Integer.toString(0), new Color(0.95f, 0.92f, 0.03f, 1));
+        ballanceText = new Text(new Vector2(0, 0), Integer.toString(0), new Color(0.95f, 0.92f, 0.03f, 1), false);
         failingObjectCatched = false;
         objectFalled = false;
         isFirst = true;

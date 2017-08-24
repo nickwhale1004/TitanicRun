@@ -127,7 +127,7 @@ public class GameScreen extends Screen {
         player.animation.update();
         water.update();
         backLvl.get(lvl).update();
-        scoreText = new Text(new Vector2(20, TitanicClass.ScreenHeight - 12), score+"", Color.WHITE);
+        scoreText = new Text(new Vector2(20, TitanicClass.ScreenHeight - 12), score+"", Color.WHITE, false);
     }
 
     @Override
